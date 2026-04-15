@@ -74,6 +74,12 @@
             transition: background 0.2s, color 0.2s;
         }
         
+        .nav-icon img {
+    		width: 20px;
+    		height: 20px;
+    		object-fit: contain;
+		}
+        
         .nav-icon:hover {
             background: #e8e0d8;
             color: #8b1a1a;
@@ -675,10 +681,10 @@
     </ul>
 
     <div class="nav-right">
-        <a href="#" class="nav-icon" title="Search">&#128269;</a>
-        <a href="#" class="nav-icon" title="Wishlist">&#9734;</a>
-        <a href="#" class="nav-icon" title="Bag">&#128717;</a>
-        <a href="#" class="nav-icon" title="Account">&#128100;</a>
+        <a href="#" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
+        <a href="#" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Star"></a>
+        <a href="#" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
+        <a href="#" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="User"></a>
         <a href="#" class="btn-seller">Be a Seller</a>
     </div>
 </nav>
