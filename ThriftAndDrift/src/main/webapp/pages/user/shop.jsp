@@ -460,8 +460,15 @@
 		.newsletter-form {
     		display: flex;
     		flex-direction: column;
-    		gap: 20px;
-    		min-width: 300px;
+    		gap: 14px;
+    		min-width: 340px;
+		}
+		
+		.newsletter-form form {
+    		display: flex;
+    		flex-direction: column;
+    		gap: 14px;
+    		width: 100%;
 		}
 
 		.newsletter-input-wrap {
@@ -469,9 +476,8 @@
     		align-items: center;
     		background: #fff;
     		border-radius: 30px;
-    		padding: 0px 18px;
+    		padding: 14px 22px;
     		gap: 10px;
-    		height: 48px;
     		box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);
 		}
 
@@ -489,14 +495,12 @@
     		color: #7a1212;
     		border: none;
     		border-radius: 30px;
-    		padding: 0px 28px;
-    		height: 48px;
+    		padding: 14px 32px;
     		font-size: 14px;
     		font-weight: 700;
     		cursor: pointer;
-    		transition: background 0.2s, transform 0.15s;
-    		align-self: flex-start;
-    		white-space: nowrap;
+    		transition: 0.3s;
+    		width: 100%; 
 		}
 
 		.btn-subscribe:hover {
