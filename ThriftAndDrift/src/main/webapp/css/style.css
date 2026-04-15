@@ -1,1 +1,267 @@
 @charset "UTF-8";
+
+/* basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f3efed;
+    color: #111;
+}
+
+/* full page layout */
+.auth-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background-color: #f3efed;
+}
+
+/* left side */
+.auth-left {
+    width: 40%;
+    min-height: 100vh;
+    padding: 45px 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-left {
+    position: relative;
+}
+
+.register-left {
+    position: relative;
+}
+
+.form-box {
+    width: 100%;
+    max-width: 360px;
+}
+
+.register-form-box {
+    margin-top: -40px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #111;
+}
+
+.sub-text {
+    color: #8e8b8b;
+    font-size: 15px;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+/* inputs */
+form input[type="email"],
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 15px 16px;
+    margin-bottom: 18px;
+    border: 1px solid #d5d0cf;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    font-size: 14px;
+    outline: none;
+}
+
+form input:focus {
+    border: 1px solid #9d0d0d;
+    background-color: #fff;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    display: block;
+    color: #7d7a7a;
+}
+
+.password-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.small-link {
+    font-size: 12px;
+    color: #8a8888;
+    text-decoration: underline;
+    margin-bottom: 6px;
+}
+
+.save-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0 22px 0;
+}
+
+.save-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+}
+
+.check-text {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #222;
+}
+
+/* button */
+.main-btn {
+    width: 100%;
+    border: none;
+    background-color: #980b0b;
+    color: white;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.main-btn:hover {
+    background-color: #7f0909;
+}
+
+/* bottom texts */
+.bottom-text {
+    margin-top: 22px;
+    text-align: center;
+    color: #6c6868;
+    font-size: 15px;
+}
+
+.bottom-text a {
+    color: #980b0b;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.admin-link {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.admin-link a {
+    color: #8d8a8a;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+/* brand text */
+.brand {
+    font-size: 30px;
+    font-weight: 900;
+    color: #980b0b;
+    letter-spacing: -1px;
+}
+
+.top-brand {
+    position: absolute;
+    top: 120px;
+    left: 55px;
+}
+
+.bottom-brand {
+    position: absolute;
+    bottom: 60px;
+    left: 55px;
+}
+
+/* right side */
+.auth-right {
+    width: 60%;
+    min-height: 100vh;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-box {
+    width: 100%;
+    height: calc(100vh - 36px);
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* use your own images here */
+.login-image {
+    background-image: url("../images/login-side.jpg");
+}
+
+.register-image {
+    background-image: url("../images/register-side.jpg");
+}
+
+/* messages */
+.message {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    font-size: 14px;
+}
+
+.error-message {
+    background-color: #ffe8e8;
+    color: #9b1111;
+    border: 1px solid #e6b7b7;
+}
+
+.success-message {
+    background-color: #eaf8ea;
+    color: #226622;
+    border: 1px solid #b7d8b7;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+    .auth-page {
+        flex-direction: column;
+    }
+
+    .auth-left,
+    .auth-right {
+        width: 100%;
+    }
+
+    .auth-left {
+        min-height: auto;
+        padding: 40px 25px;
+    }
+
+    .auth-right {
+        padding: 0 25px 25px 25px;
+        min-height: auto;
+    }
+
+    .image-box {
+        height: 350px;
+    }
+
+    .top-brand,
+    .bottom-brand {
+        position: static;
+        margin-bottom: 30px;
+    }
+
+    .register-form-box {
+        margin-top: 0;
+    }
+}
