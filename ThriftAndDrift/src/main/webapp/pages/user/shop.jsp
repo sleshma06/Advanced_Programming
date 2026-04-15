@@ -22,7 +22,7 @@
         /* ── NAVBAR ── */
         .navbar {
             background-color: #f0ebe3;
-            padding: 14px 40px;
+            padding: 16px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -30,31 +30,36 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 36px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #1a1a1a;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.2s, border-color 0.2s;
         }
 
         .nav-links a:hover {
             color: #8b1a1a;
+            border-bottom: 2px solid #8b1a1a;
         }
 
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
         }
 
         .nav-icon {
@@ -63,24 +68,34 @@
             cursor: pointer;
             font-size: 18px;
             color: #1a1a1a;
-            padding: 4px;
+            padding: 6px;
             text-decoration: none;
+            border-radius: 50%;
+            transition: background 0.2s, color 0.2s;
+        }
+        
+        .nav-icon:hover {
+            background: #e8e0d8;
+            color: #8b1a1a;
         }
 
         .btn-seller {
             background-color: #8b1a1a;
             color: #fff;
             border: none;
-            padding: 9px 18px;
+            padding: 10px 20px;
             border-radius: 20px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             text-decoration: none;
+            letter-spacing: 0.4px;
+            transition: background 0.2s, transform 0.15s;
         }
 
         .btn-seller:hover {
             background-color: #6e1414;
+            transform: translateY(-1px);
         }
 
         /* ── PAGE TITLE ── */
@@ -423,67 +438,71 @@
         }
 
        .newsletter-banner {
-    background: linear-gradient(135deg, #7a1212, #a11c1c);
-    border-radius: 16px;
-    margin: 40px;
-    padding: 50px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
+    		background: linear-gradient(135deg, #7a1212, #a11c1c);
+    		border-radius: 16px;
+    		margin: 40px;
+    		padding: 50px 60px;
+    		display: flex;
+    		align-items: center;
+    		justify-content: space-between;
+    		gap: 40px;
+    		box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+		}
 
-.newsletter-text {
-    color: #fff;
-    font-size: 28px;
-    font-weight: 800;
-    max-width: 420px;
-    line-height: 1.4;
-}
+		.newsletter-text {
+    		color: #fff;
+    		font-size: 28px;
+    		font-weight: 800;
+    		max-width: 420px;
+    		line-height: 1.4;
+		}
 
-.newsletter-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    min-width: 300px;
-}
+		.newsletter-form {
+    		display: flex;
+    		flex-direction: column;
+    		gap: 20px;
+    		min-width: 300px;
+		}
 
-.newsletter-input-wrap {
-    display: flex;
-    align-items: center;
-    background: #fff;
-    border-radius: 30px;
-    padding: 12px 18px;
-    gap: 10px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);
-}
+		.newsletter-input-wrap {
+    		display: flex;
+    		align-items: center;
+    		background: #fff;
+    		border-radius: 30px;
+    		padding: 0px 18px;
+    		gap: 10px;
+    		height: 48px;
+    		box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);
+		}
 
-.newsletter-input-wrap input {
-    border: none;
-    outline: none;
-    font-size: 14px;
-    width: 100%;
-    background: transparent;
-}
+		.newsletter-input-wrap input {
+    		border: none;
+    		outline: none;
+    		font-size: 14px;
+    		width: 100%;
+    		background: transparent;
+    		height: 100%;
+		}
 
-.btn-subscribe {
-    background: #fff;
-    color: #7a1212;
-    border: none;
-    border-radius: 30px;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-    align-self: flex-start;
-}
+		.btn-subscribe {
+    		background: #fff;
+    		color: #7a1212;
+    		border: none;
+    		border-radius: 30px;
+    		padding: 0px 28px;
+    		height: 48px;
+    		font-size: 14px;
+    		font-weight: 700;
+    		cursor: pointer;
+    		transition: background 0.2s, transform 0.15s;
+    		align-self: flex-start;
+    		white-space: nowrap;
+		}
 
-.btn-subscribe:hover {
-    background: #f0ebe3;
-    transform: translateY(-2px);
-}
+		.btn-subscribe:hover {
+   			 background: #f0ebe3;
+    		transform: translateY(-2px);
+		}
 
         /* ── FOOTER ── */
         .footer {
@@ -493,7 +512,7 @@
 
         .footer-top {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
+            grid-template-columns: 1.5fr 1fr 1fr;
             gap: 40px;
             padding-bottom: 32px;
             border-bottom: 1px solid #eee;
@@ -532,11 +551,11 @@
             text-decoration: none;
         }
         .footer-social a img {
-    			width: 22px;
-    			height: 22px;
-    			object-fit: contain;
-    			display: block;
-			}
+    		width: 22px;
+    		height: 22px;
+    		object-fit: contain;
+    		display: block;
+		}
 
         .footer-col h4 {
             font-size: 13px;
@@ -563,18 +582,6 @@
             color: #8b1a1a;
         }
 
-        .footer-logos {
-            display: flex;
-            gap: 10px;
-        }
-
-        .footer-logo-box {
-            width: 60px;
-            height: 40px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: #f5f5f5;
-        }
 
         .footer-brand-name {
             font-size: 72px;
@@ -596,7 +603,7 @@
         }
 
 
-        /* ── RESPONSIVE (mobile) ── */
+        /* ── RESPONSIVE ── */
         @media (max-width: 640px) {
             .navbar {
                 padding: 12px 20px;
