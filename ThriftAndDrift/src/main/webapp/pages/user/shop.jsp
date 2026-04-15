@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop page</title>
     <style>
+
+        /* Reset: remove default margin/padding from all elements */
         * {
             margin: 0;
             padding: 0;
@@ -13,7 +15,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #f0ebe3;
             color: #1a1a1a;
         }
@@ -76,20 +78,10 @@
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
-            white-space: nowrap;
         }
 
         .btn-seller:hover {
             background-color: #6e1414;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 22px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #1a1a1a;
         }
 
         /* ── PAGE TITLE ── */
@@ -99,7 +91,7 @@
         }
 
         .page-title h1 {
-            font-size: clamp(32px, 6vw, 60px);
+            font-size: 48px;
             font-weight: 900;
             color: #8b1a1a;
             letter-spacing: 2px;
@@ -118,12 +110,11 @@
         /* ── SIDEBAR FILTERS ── */
         .sidebar {
             width: 220px;
-            min-width: 220px;
             background: #fff;
             border-radius: 8px;
             padding: 16px;
-            height: fit-content;
             border: 1px solid #e0dbd3;
+            height: fit-content;
         }
 
         .sidebar-header {
@@ -155,12 +146,6 @@
             font-size: 13px;
             font-weight: 600;
             margin-bottom: 8px;
-            cursor: pointer;
-        }
-
-        .filter-section-title .arrow {
-            font-size: 10px;
-            color: #888;
         }
 
         .filter-item {
@@ -177,16 +162,7 @@
             color: #8b1a1a;
         }
 
-        .filter-item .arrow {
-            font-size: 10px;
-            color: #aaa;
-        }
-
         /* Price Slider */
-        .price-range {
-            margin: 8px 0;
-        }
-
         .price-range input[type="range"] {
             width: 100%;
             accent-color: #8b1a1a;
@@ -251,7 +227,6 @@
             font-size: 11px;
             color: #888;
             margin-left: 4px;
-            align-self: center;
         }
 
         /* Apply Filter Button */
@@ -275,7 +250,6 @@
         /* ── PRODUCT AREA ── */
         .product-area {
             flex: 1;
-            min-width: 0;
         }
 
         .product-area-header {
@@ -291,24 +265,8 @@
         }
 
         .product-meta {
-            display: flex;
-            align-items: center;
-            gap: 8px;
             font-size: 12px;
             color: #666;
-        }
-
-        .product-meta strong {
-            color: #1a1a1a;
-        }
-
-        .sort-select {
-            border: none;
-            background: transparent;
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            color: #1a1a1a;
         }
 
         /* Product Grid */
@@ -323,13 +281,12 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #e8e3db;
-            position: relative;
         }
 
         .product-img-wrap {
             position: relative;
             background: #f5f0ea;
-            aspect-ratio: 3/4;
+            height: 280px;
             overflow: hidden;
         }
 
@@ -351,7 +308,6 @@
             padding: 2px 8px;
             border-radius: 2px;
             background: #fff;
-            letter-spacing: 0.5px;
         }
 
         .wishlist-btn {
@@ -404,17 +360,12 @@
             font-weight: 600;
             cursor: pointer;
             color: #1a1a1a;
-            white-space: nowrap;
         }
 
         .btn-add-bag:hover {
             background: #8b1a1a;
             color: #fff;
             border-color: #8b1a1a;
-        }
-
-        .bag-icon {
-            font-size: 13px;
         }
 
         /* ── PAGINATION ── */
@@ -446,10 +397,9 @@
         .page-btn.active {
             background: #1a1a1a;
             color: #fff;
-            border-radius: 4px;
         }
 
-        .page-btn:hover:not(.active) {
+        .page-btn:hover {
             background: #eee;
         }
 
@@ -473,73 +423,68 @@
             color: #8b1a1a;
         }
 
-        /* ── NEWSLETTER BANNER ── */
-        .newsletter-banner {
-            background-color: #7a1212;
-            border-radius: 12px;
-            margin: 40px 40px;
-            padding: 36px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
+       .newsletter-banner {
+    background: linear-gradient(135deg, #7a1212, #a11c1c);
+    border-radius: 16px;
+    margin: 40px;
+    padding: 50px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
 
-        .newsletter-text {
-            color: #fff;
-            font-size: clamp(16px, 2.5vw, 22px);
-            font-weight: 800;
-            font-style: italic;
-            max-width: 380px;
-            line-height: 1.3;
-        }
+.newsletter-text {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    max-width: 420px;
+    line-height: 1.4;
+}
 
-        .newsletter-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            min-width: 260px;
-        }
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 300px;
+}
 
-        .newsletter-input-wrap {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            border-radius: 24px;
-            padding: 8px 16px;
-            gap: 8px;
-        }
+.newsletter-input-wrap {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 30px;
+    padding: 12px 18px;
+    gap: 10px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);
+}
 
-        .newsletter-input-wrap span {
-            color: #888;
-            font-size: 14px;
-        }
+.newsletter-input-wrap input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    background: transparent;
+}
 
-        .newsletter-input-wrap input {
-            border: none;
-            outline: none;
-            font-size: 13px;
-            width: 100%;
-            background: transparent;
-            color: #1a1a1a;
-        }
+.btn-subscribe {
+    background: #fff;
+    color: #7a1212;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: flex-start;
+}
 
-        .btn-subscribe {
-            background: #fff;
-            color: #1a1a1a;
-            border: none;
-            border-radius: 24px;
-            padding: 10px 20px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .btn-subscribe:hover {
-            background: #f0ebe3;
-        }
+.btn-subscribe:hover {
+    background: #f0ebe3;
+    transform: translateY(-2px);
+}
 
         /* ── FOOTER ── */
         .footer {
@@ -587,6 +532,12 @@
             color: #1a1a1a;
             text-decoration: none;
         }
+        .footer-social a img {
+    			width: 22px;
+    			height: 22px;
+    			object-fit: contain;
+    			display: block;
+			}
 
         .footer-col h4 {
             font-size: 13px;
@@ -616,7 +567,6 @@
         .footer-logos {
             display: flex;
             gap: 10px;
-            align-items: flex-start;
         }
 
         .footer-logo-box {
@@ -628,7 +578,7 @@
         }
 
         .footer-brand-name {
-            font-size: clamp(40px, 8vw, 80px);
+            font-size: 72px;
             font-weight: 900;
             color: #1a1a1a;
             letter-spacing: -1px;
@@ -637,6 +587,7 @@
             text-transform: uppercase;
         }
 
+		
         .footer-copy {
             text-align: center;
             font-size: 12px;
@@ -645,42 +596,17 @@
             border-top: 1px solid #eee;
         }
 
-        /* ── RESPONSIVE ── */
-        @media (max-width: 900px) {
-            .main-layout {
-                padding: 0 20px 32px;
-                gap: 16px;
-            }
 
-            .sidebar {
-                width: 180px;
-                min-width: 180px;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-top {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .newsletter-banner {
-                margin: 32px 20px;
-            }
-        }
-
+        /* ── RESPONSIVE (mobile) ── */
         @media (max-width: 640px) {
             .navbar {
                 padding: 12px 20px;
             }
 
             .nav-links {
-    			display: flex;
-    			flex-wrap: wrap;
-    			gap: 16px;
-			}
-          
+                flex-wrap: wrap;
+                gap: 12px;
+            }
 
             .main-layout {
                 flex-direction: column;
@@ -689,7 +615,6 @@
 
             .sidebar {
                 width: 100%;
-                min-width: unset;
             }
 
             .size-grid {
@@ -699,12 +624,6 @@
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
-            }
-
-            .product-area-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
             }
 
             .newsletter-banner {
@@ -728,21 +647,9 @@
             }
 
             .footer-brand-name {
-                font-size: 11vw;
+                font-size: 40px;
             }
-
-            .pagination {
-                gap: 8px;
-            }
-
-            .page-numbers {
-                gap: 2px;
-            }
-
-            .page-btn {
-                padding: 5px 7px;
-                font-size: 12px;
-            }
+            
         }
     </style>
 </head>
@@ -757,8 +664,6 @@
         <li><a href="#">Contact</a></li>
     </ul>
 
-  
-
     <div class="nav-right">
         <a href="#" class="nav-icon" title="Search">&#128269;</a>
         <a href="#" class="nav-icon" title="Wishlist">&#9734;</a>
@@ -768,7 +673,6 @@
     </div>
 </nav>
 
-
 <!-- ── PAGE TITLE ── -->
 <div class="page-title">
     <h1>Explore Products</h1>
@@ -777,7 +681,7 @@
 <!-- ── MAIN LAYOUT ── -->
 <div class="main-layout">
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR FILTERS -->
     <aside class="sidebar">
         <div class="sidebar-header">
             <span>Filters</span>
@@ -786,18 +690,18 @@
 
         <!-- Categories -->
         <div class="filter-section">
-            <div class="filter-item"><span>Tops</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Skirts</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Outerwears</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Pants</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Others</span><span class="arrow">&#8250;</span></div>
+            <div class="filter-item"><span>Tops</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Skirts</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Outerwears</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Pants</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Others</span><span>&#8250;</span></div>
         </div>
 
         <!-- Price -->
         <div class="filter-section">
             <div class="filter-section-title">
                 <span>Price</span>
-                <span class="arrow">&#8743;</span>
+                <span>&#8743;</span>
             </div>
             <div class="price-range">
                 <input type="range" min="99" max="10000" value="10000">
@@ -812,16 +716,16 @@
         <div class="filter-section">
             <div class="filter-section-title">
                 <span>Size</span>
-                <span class="arrow">&#8743;</span>
+                <span>&#8743;</span>
             </div>
+            
             <div class="size-grid">
-                <button class="size-btn">XX-S</button>
-                <button class="size-btn">X-S</button>
+            
                 <button class="size-btn">S</button>
                 <button class="size-btn">M</button>
                 <button class="size-btn active">L</button>
                 <button class="size-btn">XL</button>
-               
+                
             </div>
         </div>
 
@@ -829,9 +733,9 @@
         <div class="filter-section">
             <div class="filter-section-title">
                 <span>Condition</span>
-                <span class="arrow">&#8743;</span>
+                <span>&#8743;</span>
             </div>
-            <div style="display:flex;align-items:center;">
+            <div style="display:flex; align-items:center;">
                 <div class="stars">
                     <span class="star">&#9733;</span>
                     <span class="star">&#9733;</span>
@@ -847,15 +751,15 @@
         <div class="filter-section">
             <div class="filter-section-title">
                 <span>Style</span>
-                <span class="arrow">&#8743;</span>
+                <span>&#8743;</span>
             </div>
-            <div class="filter-item"><span>Casual</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Formal</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Party</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Traditional</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>New In</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Designer</span><span class="arrow">&#8250;</span></div>
-            <div class="filter-item"><span>Others</span><span class="arrow">&#8250;</span></div>
+            <div class="filter-item"><span>Casual</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Formal</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Party</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Traditional</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>New In</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Designer</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Others</span><span>&#8250;</span></div>
         </div>
 
         <button class="btn-apply">Apply Filter</button>
@@ -866,8 +770,7 @@
         <div class="product-area-header">
             <h2>Skirts</h2>
             <div class="product-meta">
-                <span>Showing 1-2 of 2 Products</span>
-                <span>&nbsp;&nbsp;Sort by: <strong>Newest First &#8964;</strong></span>
+                <span>Showing 1-2 of 2 Products &nbsp;&nbsp; Sort by: <strong>Newest First &#8964;</strong></span>
             </div>
         </div>
 
@@ -877,20 +780,19 @@
             <div class="product-card">
                 <div class="product-img-wrap">
                     <span class="badge-new">New-in</span>
-                   
-                    <img src="images/c4.jfif" alt="brown skirt">
+                    <img src="${pageContext.request.contextPath}/images/c4.jfif" alt="brown skirt">
                     <button class="wishlist-btn" title="Add to Wishlist">&#9734;</button>
                 </div>
                 <div class="product-info">
                     <p class="product-name">brown skirt</p>
                     <div class="product-bottom">
-                        <span class="product-price">Rs 350</span>
+                        <span class="product-price">Rs 450</span>
                         <form method="post" action="cart">
                             <input type="hidden" name="productId" value="1">
-                            <input type="hidden" name="productName" value="Polka-dot skirt">
-                            <input type="hidden" name="productPrice" value="750">
+                            <input type="hidden" name="productName" value="brown skirt">
+                            <input type="hidden" name="productPrice" value="450">
                             <button type="submit" class="btn-add-bag">
-                                <span class="bag-icon">&#128717;</span> Add to Bag
+                                <span>&#128717;</span> Add to Bag
                             </button>
                         </form>
                     </div>
@@ -901,8 +803,7 @@
             <div class="product-card">
                 <div class="product-img-wrap">
                     <span class="badge-new">New-in</span>
-                  
-                    <img src="images/c3.jfif" alt="Short jean skirt">
+                    <img src="${pageContext.request.contextPath}/images/c3.jfif" alt="Short jean skirt">
                     <button class="wishlist-btn" title="Add to Wishlist">&#9734;</button>
                 </div>
                 <div class="product-info">
@@ -914,7 +815,7 @@
                             <input type="hidden" name="productName" value="Short jean skirt">
                             <input type="hidden" name="productPrice" value="290">
                             <button type="submit" class="btn-add-bag">
-                                <span class="bag-icon">&#128717;</span> Add to Bag
+                                <span>&#128717;</span> Add to Bag
                             </button>
                         </form>
                     </div>
@@ -930,7 +831,7 @@
                 <button class="page-btn active">1</button>
                 <button class="page-btn">2</button>
                 <button class="page-btn">3</button>
-                <span style="font-size:13px;padding:0 4px;color:#888;">...</span>
+                <span style="font-size:13px; color:#888;">...</span>
                 <button class="page-btn">8</button>
                 <button class="page-btn">9</button>
                 <button class="page-btn">10</button>
@@ -943,13 +844,14 @@
 <!-- ── NEWSLETTER BANNER ── -->
 <div class="newsletter-banner">
     <div class="newsletter-text">
-        Not only sell, but share the memories behind your wardrobe.
-    </div>
+    Not only sell, but share the memories<br>
+    behind your wardrobe.
+</div>
     <div class="newsletter-form">
         <form method="post" action="newsletter">
             <div class="newsletter-input-wrap">
                 <span>&#9993;</span>
-                <input type="email" name="email" placeholder="Enter your email address">
+                <input type="email" name="email" placeholder="Enter your email address" required>
             </div>
             <button type="submit" class="btn-subscribe">Subscribe to Newsletter</button>
         </form>
@@ -966,9 +868,11 @@
             <p>01 4335544</p>
             <a href="#" class="site-link">thrift&amp;drift.com</a>
             <div class="footer-social">
-                <a href="#" title="Instagram">&#9398;</a>
-                <a href="#" title="Twitch">&#9654;</a>
-                <a href="#" title="Facebook">&#9646;</a>
+                <a href="https://www.instagram.com" target="_blank" title="Instagram"><img src="${pageContext.request.contextPath}/images/social.png" alt="Instagram"></a>
+				<a href="https://www.tiktok.com" target="_blank" title="TikTok"><img src="${pageContext.request.contextPath}/images/tik-tok.png" alt="TikTok"></a>
+				<a href="https://www.twitter.com" target="_blank" title="Twitter"><img src="${pageContext.request.contextPath}/images/twitter.png" alt="Twitter"></a>
+				<a href="https://www.whatsapp.com" target="_blank" title="WhatsApp"><img src="${pageContext.request.contextPath}/images/whatsapp (1).png" alt="WhatsApp"></a>
+				<a href="https://www.youtube.com" target="_blank" title="YouTube"><img src="${pageContext.request.contextPath}/images/youtube.png" alt="YouTube"></a>
             </div>
         </div>
 
