@@ -7,7 +7,6 @@
     <title>Shop page</title>
     <style>
 
-        /* Reset: remove default margin/padding from all elements */
         * {
             margin: 0;
             padding: 0;
