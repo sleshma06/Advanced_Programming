@@ -66,14 +66,20 @@
             padding: 4px;
             text-decoration: none;
         }
+        
+        .nav-icon img {
+   			 width: 20px;
+   			 height: 20px;
+    		object-fit: contain;
+		}
 
         .btn-seller {
             background-color: #8b1a1a;
             color: #fff;
             border: none;
-            padding: 9px 18px;
+            padding: 11px 24px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
@@ -108,7 +114,7 @@
 
         /* ── SIDEBAR FILTERS ── */
         .sidebar {
-            width: 220px;
+            width: 270px;
             background: #fff;
             border-radius: 8px;
             padding: 16px;
@@ -664,10 +670,10 @@
     </ul>
 
     <div class="nav-right">
-        <a href="#" class="nav-icon" title="Search">&#128269;</a>
-        <a href="#" class="nav-icon" title="Wishlist">&#9734;</a>
-        <a href="#" class="nav-icon" title="Bag">&#128717;</a>
-        <a href="#" class="nav-icon" title="Account">&#128100;</a>
+        <a href="#" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
+        <a href="#" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Star"></a>
+        <a href="#" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
+        <a href="#" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="Instagram"></a>
         <a href="#" class="btn-seller">Be a Seller</a>
     </div>
 </nav>
