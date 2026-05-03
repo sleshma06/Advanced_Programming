@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
 
-    <!-- CORRECTED FONTS: Bebas Neue + Montserrat + Inter fallback -->
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
