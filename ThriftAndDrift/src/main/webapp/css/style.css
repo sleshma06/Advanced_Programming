@@ -1,1 +1,542 @@
-@charset "UTF-8";
+/* ============================================
+   ThriftAndDrift - Main Stylesheet
+   Pure CSS (No Bootstrap) - Flexbox + Media Queries
+   ============================================ */
+
+/* --- Google Fonts Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+    --clr-bg: #faf6f1;
+    --clr-surface: #ffffff;
+    --clr-primary: #b05c34;
+    --clr-primary-dark: #8a4527;
+    --clr-secondary: #d4a96a;
+    --clr-text: #2c1e10;
+    --clr-text-muted: #7a6652;
+    --clr-border: #e0d4c3;
+    --clr-error: #c0392b;
+    --clr-success: #2e7d52;
+    --clr-input-bg: #fdf9f5;
+
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --shadow-card: 0 4px 24px rgba(44, 30, 16, 0.10);
+    --shadow-btn: 0 2px 8px rgba(176, 92, 52, 0.25);
+
+    --transition: 0.22s ease;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+a {
+    color: var(--clr-primary);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--clr-primary-dark);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ============================================
+   AUTH LAYOUT (Login & Registration pages)
+   ============================================ */
+
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+}
+
+/* Left decorative panel */
+.auth-banner {
+    flex: 1;
+    background-color: var(--clr-primary);
+    background-image:
+        radial-gradient(ellipse at 20% 80%, rgba(212, 169, 106, 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(44, 30, 16, 0.3) 0%, transparent 55%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 18px,
+            rgba(255,255,255,0.03) 18px,
+            rgba(255,255,255,0.03) 19px
+        );
+}
+
+.auth-banner-logo {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-banner-tagline {
+    color: rgba(255,255,255,0.75);
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3rem;
+}
+
+.auth-banner-illustration {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.auth-banner-illustration .big-icon {
+    font-size: 6rem;
+    opacity: 0.55;
+    display: block;
+    margin-bottom: 1.5rem;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+}
+
+.auth-banner-quote {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    font-style: italic;
+    max-width: 240px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+/* Right form panel */
+.auth-form-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 2rem;
+    background: var(--clr-surface);
+    overflow-y: auto;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+}
+
+.auth-card-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--clr-text);
+    margin-bottom: 0.3rem;
+}
+
+.auth-card-subtitle {
+    color: var(--clr-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2.2rem;
+    font-weight: 300;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+.form-group {
+    margin-bottom: 1.3rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.72rem 1rem;
+    background-color: var(--clr-input-bg);
+    border: 1.5px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--clr-text);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+    appearance: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 0 3px rgba(176, 92, 52, 0.12);
+    background-color: #ffffff;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #bbb3a8;
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a6652' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Checkbox */
+.form-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    margin-bottom: 1.3rem;
+}
+
+.form-check input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: var(--clr-primary);
+    cursor: pointer;
+}
+
+.form-check label {
+    text-transform: none;
+    font-size: 0.88rem;
+    color: var(--clr-text-muted);
+    letter-spacing: 0;
+    margin-bottom: 0;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+/* --- Error / Success Messages --- */
+.msg-error {
+    background-color: #fdf0ef;
+    border: 1.5px solid #e8a59e;
+    border-left: 4px solid var(--clr-error);
+    color: var(--clr-error);
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    margin-bottom: 1.3rem;
+}
+
+.msg-success {
+    background-color: #edf7f1;
+    border: 1.5px solid #8ec8a8;
+    border-left: 4px solid var(--clr-success);
+    color: var(--clr-success);
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    margin-bottom: 1.3rem;
+}
+
+.field-error {
+    color: var(--clr-error);
+    font-size: 0.78rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.78rem 1.6rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    text-decoration: none;
+    line-height: 1;
+}
+
+.btn-primary {
+    background-color: var(--clr-primary);
+    color: #ffffff;
+    box-shadow: var(--shadow-btn);
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(176, 92, 52, 0.35);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--clr-primary);
+    border: 1.5px solid var(--clr-primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--clr-primary);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.4rem 0;
+    color: var(--clr-border);
+    font-size: 0.82rem;
+    color: var(--clr-text-muted);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--clr-border);
+}
+
+/* ============================================
+   AUTH FOOTER LINK
+   ============================================ */
+
+.auth-footer {
+    margin-top: 1.8rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--clr-text-muted);
+}
+
+.auth-footer a {
+    font-weight: 500;
+}
+
+/* Section separator for registration */
+.section-label {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--clr-text);
+    border-bottom: 1.5px solid var(--clr-border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.2rem;
+    margin-top: 1.5rem;
+}
+
+/* ============================================
+   NAVBAR (for shop/index pages)
+   ============================================ */
+
+.navbar {
+    background: var(--clr-surface);
+    border-bottom: 1.5px solid var(--clr-border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(44,30,16,0.06);
+}
+
+.navbar-brand {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--clr-primary);
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    color: var(--clr-primary-dark);
+    text-decoration: none;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+}
+
+.navbar-nav a {
+    font-size: 0.93rem;
+    color: var(--clr-text-muted);
+    font-weight: 400;
+    transition: color var(--transition);
+}
+
+.navbar-nav a:hover {
+    color: var(--clr-primary);
+    text-decoration: none;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center { text-align: center; }
+.text-muted  { color: var(--clr-text-muted); }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+
+/* ============================================
+   RESPONSIVE - MEDIA QUERIES
+   ============================================ */
+
+@media (max-width: 900px) {
+    .auth-banner {
+        display: none; /* Hide decorative banner on tablets */
+    }
+
+    .auth-form-panel {
+        padding: 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-form-panel {
+        padding: 1.5rem 1rem;
+        justify-content: flex-start;
+        padding-top: 2rem;
+    }
+
+    .auth-card-title {
+        font-size: 1.6rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .navbar-nav {
+        gap: 0.8rem;
+    }
+}
+
+@media (min-width: 901px) {
+    /* Show top logo inside banner only; hide mobile logo */
+    .auth-mobile-logo {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .auth-mobile-logo {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--clr-primary);
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+}
