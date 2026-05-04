@@ -17,7 +17,7 @@
             <p>Welcome back! Please login to continue.</p>
         </div>
 
-        <!-- Show error message if login fails -->
+   
         <%
             String errorMsg = (String) request.getAttribute("error");
             if (errorMsg != null) {
