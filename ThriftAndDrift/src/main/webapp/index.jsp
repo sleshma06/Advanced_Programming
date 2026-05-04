@@ -21,7 +21,7 @@
 
 <!-- ========================
      SECTION 1 — NAVBAR
-     (LEFT: text links | RIGHT: icons + Be a Seller)
+     (
      ======================== -->
 <nav class="navbar">
 
@@ -44,7 +44,7 @@
             </svg>
         </a>
 
-        <%-- Wishlist / Star icon (matching reference) --%>
+        <%-- Wishlist / Star icon  --%>
         <a href="${pageContext.request.contextPath}/wishlist" title="Wishlist">
             <svg class="icon-svg" viewBox="0 0 24 24">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
@@ -91,8 +91,7 @@
 <section class="hero">
 
     <img class="hero-img"
-         src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80"
-         alt="Clothing rack - Thrift and Drift">
+         <img src="${pageContext.request.contextPath}/images/hanger.jpg" alt="brown skirt">         alt="Clothing rack - Thrift and Drift">
 
     <%-- Frosted glass center card --%>
     <div class="hero-overlay">
@@ -140,7 +139,7 @@
             <span class="product-wishlist">
                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </span>
-            <img class="product-card-img" src="https://picsum.photos/seed/dress1/300/280" alt="Flouncy Lace">
+            <img class="product-card-img" s<img src="${pageContext.request.contextPath}/images/c2.jfif"   alt="Flouncy Lace">
             <div class="product-name">Flouncy Lace</div>
             <div class="product-rating">
                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -156,7 +155,7 @@
             <span class="product-wishlist">
                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </span>
-            <img class="product-card-img" src="https://picsum.photos/seed/denim2/300/280" alt="Denim Jeans">
+            <img class="product-card-img" <img src="${pageContext.request.contextPath}/images/denim.jpg"  alt="Denim Jeans">
             <div class="product-name">Denim Jeans</div>
             <div class="product-rating">
                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -172,7 +171,7 @@
             <span class="product-wishlist">
                 <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
             </span>
-            <img class="product-card-img" src="https://picsum.photos/seed/black3/300/280" alt="Denim Skirt">
+            <img src="${pageContext.request.contextPath}/images/c4.jfif" alt="brown skirt">
             <div class="product-name">Denim Skirt</div>
             <div class="product-rating">
                 <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -209,17 +208,17 @@
     <div class="designer-grid">
 
         <a href="${pageContext.request.contextPath}/product?id=10" class="designer-card">
-            <img src="https://picsum.photos/seed/lace10/400/340" alt="Zara Patterned Maxi Dress">
+            <img src="${pageContext.request.contextPath}/images/DiorEmb.jpg"  alt="Zara Patterned Maxi Dress">
             <div class="designer-card-label">ZARA PATTERNED MAXI DRESS</div>
         </a>
 
         <a href="${pageContext.request.contextPath}/product?id=11" class="designer-card">
-            <img src="https://picsum.photos/seed/green11/400/340" alt="Prada Corbell Coat">
+            <img src="${pageContext.request.contextPath}/images/PradaCoat.jpg"  alt="Prada Corbell Coat">
             <div class="designer-card-label">PRADA CORBELL BRIGHT UP LET HER COAT</div>
         </a>
 
         <a href="${pageContext.request.contextPath}/product?id=12" class="designer-card">
-            <img src="https://picsum.photos/seed/beige12/400/340" alt="Gucci Canvas Coat">
+            <img src="${pageContext.request.contextPath}/images/gucci.jpg"  alt="Gucci Canvas Coat">
             <div class="designer-card-label">GUCCI COTTON CANVAS NAOMI COAT</div>
         </a>
 
@@ -231,7 +230,9 @@
      ======================== -->
 <section class="story-section">
 
-    <img class="story-bg-img" src="https://picsum.photos/seed/fabric20/1400/480" alt="Our Story background">
+    <img class="story-bg-img"
+     src="${pageContext.request.contextPath}/images/ourStory.jpg"
+     alt="Our Story background">
     <div class="story-overlay"></div>
 
     <div class="story-content">
@@ -310,10 +311,8 @@
 
         <%-- Right: 2x2 image grid --%>
         <div class="sell-banner-images">
-            <img src="https://picsum.photos/seed/sell1/250/150" alt="">
-            <img src="https://picsum.photos/seed/sell2/250/150" alt="">
-            <img src="https://picsum.photos/seed/sell3/250/150" alt="">
-            <img src="https://picsum.photos/seed/sell4/250/150" alt="">
+            <img src="${pageContext.request.contextPath}/images/clothesCloset.jpg"  alt="Prada Corbell Coat">
+            
         </div>
 
     </div>
@@ -354,7 +353,7 @@
 
     <%-- Left: image --%>
     <div class="contact-img-side">
-        <img src="https://picsum.photos/seed/contact30/700/400" alt="Contact us">
+        <img src="${pageContext.request.contextPath}/images/ContactUs.jpg"   alt="Contact us">
     </div>
 
     <%-- Right: form --%>
