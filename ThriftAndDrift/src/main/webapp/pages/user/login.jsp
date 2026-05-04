@@ -1,67 +1,73 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Login - Thrift&Drift</title>
-<link rel="stylesheet" href="<%= request.getContextPath() %>/css/style.css">
+    <meta charset="UTF-8">
+    <title>Login - ThriftAndDrift</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login.css">
 </head>
 <body>
 
-    <div class="auth-page">
+<div class="page-wrapper">
 
-        <div class="auth-left login-left">
-            <div class="brand top-brand">THRIFT&DRIFT</div>
+    <div class="login-box">
 
-            <div class="form-box">
-                <h1>Log in</h1>
-                <p class="sub-text">Sign in to drift your way to better finds.</p>
-
-                <% String error = request.getParameter("error"); %>
-                <% if(error != null){ %>
-                    <div class="message error-message"><%= error %></div>
-                <% } %>
-
-                <% String success = request.getParameter("success"); %>
-                <% if(success != null){ %>
-                    <div class="message success-message"><%= success %></div>
-                <% } %>
-
-                <form action="#" method="post">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="advancedprogramming@gmail.com" required>
-
-                    <div class="password-top">
-                        <label>Password</label>
-                        <a href="#" class="small-link">forgot password?</a>
-                    </div>
-                    <input type="password" name="password" placeholder="Password" required>
-
-                    <div class="save-row">
-                        <input type="checkbox" id="saveInfo" name="saveInfo">
-                        <label for="saveInfo" class="check-text">save login info</label>
-                    </div>
-
-                    <button type="submit" class="main-btn">Login</button>
-                </form>
-
-                <p class="bottom-text">
-                    Dont have an account?
-                    <a href="<%= request.getContextPath() %>/pages/user/register.jsp">Create one</a>
-                </p>
-
-                <p class="admin-link">
-                    <a href="#">Login as admin</a>
-                </p>
-            </div>
+        <div class="logo-area">
+            <h1>ThriftAndDrift</h1>
+            <p>Welcome back! Please login to continue.</p>
         </div>
 
-        <div class="auth-right image-right">
-            <div class="image-box login-image"></div>
+        <!-- Show error message if login fails -->
+        <%
+            String errorMsg = (String) request.getAttribute("error");
+            if (errorMsg != null) {
+        %>
+            <div class="error-message">
+                <%= errorMsg %>
+            </div>
+        <% } %>
+
+        <!-- Show success message if redirected after registration -->
+        <%
+            String successMsg = (String) request.getAttribute("success");
+            if (successMsg != null) {
+        %>
+            <div class="success-message">
+                <%= successMsg %>
+            </div>
+        <% } %>
+
+        <form action="${pageContext.request.contextPath}/LoginServlet" method="post">
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required />
+            </div>
+
+            <div class="form-group remember-row">
+                <label class="checkbox-label">
+                    <input type="checkbox" name="remember" /> Remember me
+                </label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn-login">Login</button>
+            </div>
+
+        </form>
+
+        <div class="register-link">
+            <p>Don't have an account? <a href="${pageContext.request.contextPath}/pages/user/register.jsp">Register here</a></p>
         </div>
 
     </div>
+
+</div>
 
 </body>
 </html>
