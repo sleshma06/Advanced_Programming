@@ -1,0 +1,1270 @@
+/* ===========================
+   THRIFT & DRIFT - style.css
+   =========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;800&display=swap');
+/* ---- CSS Variables ---- */
+:root {
+  --red:        #8B1A1A;
+  --cream:      #F7F3EE;
+  --white:      #FFFFFF;
+  --black:      #1A1A1A;
+  --gray-light: #E8E2DB;
+  --gray-text:  #888888;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  background-color: var(--cream);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+section, div, nav, footer {
+  width: 100%;
+}
+
+/* ============================
+   SECTION 1 — NAVBAR
+   ============================ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: var(--cream);
+  height: 52px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* LEFT: nav text links */
+.navbar-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li a {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+.navbar-links li a:hover {
+  border-bottom: 1px solid var(--red);
+}
+
+/* RIGHT: icons + Be a Seller button */
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;   
+}
+
+.navbar-icons a {
+  display: flex;
+  align-items: center;
+  color: var(--black);
+}
+
+.icon-svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--black);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* "Be a Seller" pill button — dark red, rounded */
+.btn-sell {
+  background: var(--red);
+  color: var(--white) !important;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-sell:hover {
+  opacity: 0.88;
+}
+
+/* ============================
+   BRAND HEADING BLOCK
+   (big THRIFT&DRIFT + tagline strip, sits between navbar and hero image)
+   ============================ */
+.brand-heading-block {
+   width: 100vw;
+   margin-left: calc(50% - 50vw);
+  background: var(--cream);
+  padding: 10px 24px 4px 24px;
+   text-align: center; 
+}
+
+.brand-heading-block .brand-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight:900;
+   font-size: clamp(100px, 18vw, 210px);
+  color: var(--red);
+  line-height: 0.95;
+  letter-spacing: 4px;
+  display: block;
+  width: 100%;
+}
+
+/* Small scrolling tagline row below the big title */
+.brand-tagline-row {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 6px 0 8px 0;
+}
+
+.brand-tagline-row span {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  color: var(--black);
+  opacity: 0.6;
+  letter-spacing: 0.3px;
+  display: inline-block;
+  animation: tagline-scroll 20s linear infinite;
+}
+
+
+
+
+/* ============================
+   SECTION 2 — HERO
+   ============================ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Frosted glass center card — very rounded like reference */
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 28px;
+  padding: 36px 40px 32px 40px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+.hero-overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 34px;
+  line-height: 1.15;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+
+.hero-overlay p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--black);
+  opacity: 0.65;
+  margin-bottom: 22px;
+  letter-spacing: 0.2px;
+}
+
+/* "Shop Now" — outline pill button matching reference */
+.btn-primary {
+  display: inline-block;
+  background: transparent;
+  color: var(--black);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  padding: 9px 32px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(0,0,0,0.35);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+/* Bottom-right badge circle */
+.hero-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  letter-spacing: 0.5px;
+}
+
+/* ============================
+   SECTION 3 — CATEGORY SCROLL STRIP
+   ============================ */
+.category-bar {
+  width: 100%;
+  height: 40px;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.category-bar-track {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  flex-shrink: 0;
+}
+
+.category-bar-track span {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--white);
+  padding-right: 0;
+  display: inline-block;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================
+   SECTION 4 — NEW-IN FRESH DROPS
+   ============================ */
+.new-in-section {
+  width: 100%;
+  background: var(--cream);
+  padding: 80px 60px;
+}
+
+.new-in-section .section-heading {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 42px;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+
+/* Filter tabs */
+.filter-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-tab {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 7px 16px;
+  border-radius: 20px;
+  color: var(--gray-text);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-tab:hover {
+  border-color: var(--black);
+}
+
+.filter-tab.active {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+/* Product grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: var(--white);
+  border: 1px solid var(--gray-light);
+  border-radius: 4px;
+  padding: 16px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.product-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--red);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 9px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.product-wishlist {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.product-wishlist svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--gray-text);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.product-card-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* placeholder if no image */
+.product-img-placeholder {
+  width: 100%;
+  height: 220px;
+  background: var(--gray-light);
+  border-radius: 2px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-img-placeholder svg {
+  width: 36px;
+  height: 36px;
+  opacity: 0.3;
+  stroke: var(--gray-text);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.product-name {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+
+/* Rating row */
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.product-rating svg {
+  width: 12px;
+  height: 12px;
+  fill: #F4A41B;
+  stroke: none;
+}
+
+.product-rating span {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--gray-text);
+}
+
+/* Price badge */
+.product-price {
+  display: inline-block;
+  background: var(--cream);
+  border: 1px solid var(--gray-light);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--red);
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+/* Add now button */
+.btn-add-cart {
+  display: block;
+  width: 100%;
+  background: var(--red);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 9px 0;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: opacity 0.15s;
+}
+
+.btn-add-cart:hover {
+  opacity: 0.88;
+  color: var(--white);
+}
+
+/* Pagination dots */
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 32px;
+}
+
+.pagination-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gray-light);
+  display: inline-block;
+}
+
+.pagination-dots span.active {
+  background: var(--red);
+}
+
+/* For better finds link */
+.view-more-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.view-more-link a {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--red);
+  text-decoration: underline;
+}
+
+/* ============================
+   SECTION 5 — DESIGNER FINDS
+   ============================ */
+.designer-section {
+  width: 100%;
+  background: var(--cream);
+  padding: 80px 60px;
+}
+
+.designer-section .section-heading {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 42px;
+  color: var(--red);
+  margin-bottom: 40px;
+}
+
+.designer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.designer-card {
+  display: block;
+  cursor: pointer;
+}
+
+.designer-card img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+.designer-img-placeholder {
+  width: 100%;
+  height: 340px;
+  background: var(--gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.designer-img-placeholder svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.25;
+  stroke: var(--gray-text);
+  fill: none;
+  stroke-width: 1.2;
+}
+
+.designer-card-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gray-text);
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* ============================
+   SECTION 6 — OUR STORY
+   ============================ */
+.story-section {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+}
+
+.story-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.story-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.62);
+}
+
+.story-content {
+  position: absolute;
+  inset: 0;
+  padding: 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.story-tag {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+.story-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.story-content p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: 28px;
+}
+
+.story-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-outline-white {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid var(--white);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-outline-white:hover {
+  opacity: 0.88;
+}
+
+/* Bottom bar */
+.story-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+}
+
+.story-footer span {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+.story-footer a {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--white);
+  letter-spacing: 0.5px;
+}
+
+/* ============================
+   SECTION 7 — WHERE SUSTAINABLE MEETS STYLE
+   ============================ */
+.features-section {
+  width: 100%;
+  background: var(--cream);
+  padding: 80px 60px;
+}
+
+.features-section .section-heading {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 42px;
+  color: var(--red);
+  line-height: 1.2;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto 56px auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto 72px auto;
+}
+
+.feature-item {
+  text-align: left;
+}
+
+.feature-icon {
+  width: 28px;
+  height: 28px;
+  stroke: var(--black);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.feature-item h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.feature-item p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--gray-text);
+  line-height: 1.6;
+}
+
+/* CTA Banner */
+.sell-banner {
+  width: 100%;
+  background: var(--red);
+  border-radius: 4px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 180px;
+}
+
+.sell-banner-text {
+  padding: 44px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sell-banner-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.sell-banner-text p {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 20px;
+}
+
+.btn-white {
+  display: inline-block;
+  width: fit-content;
+  background: var(--white);
+  color: var(--red);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 9px 22px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-white:hover {
+  opacity: 0.88;
+}
+
+/* 2x2 image grid (right half of sell banner) */
+.sell-banner-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.sell-banner-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sell-banner-img-placeholder {
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sell-banner-img-placeholder svg {
+  width: 28px;
+  height: 28px;
+  stroke: rgba(255,255,255,0.4);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ============================
+   SECTION 8 — CURATED FOR CHARACTER / STATS
+   ============================ */
+.stats-section {
+  width: 100%;
+  background: var(--cream);
+  padding: 80px 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.curated-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(60px, 10vw, 120px);
+  color: var(--red);
+  opacity: 0.07;
+  white-space: nowrap;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.stats-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 64px;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--gray-text);
+  line-height: 1.5;
+  max-width: 160px;
+  margin: 0 auto;
+}
+
+/* ============================
+   SECTION 9 — CONTACT US
+   ============================ */
+.contact-section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+  background: var(--red);
+}
+
+.contact-img-side {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.contact-img-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.contact-img-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background: rgba(0,0,0,0.2);
+}
+
+.contact-form-side {
+  padding: 60px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-form-side h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--white);
+  margin-bottom: 28px;
+}
+
+.contact-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-fields input,
+.contact-fields textarea {
+  width: 100%;
+  background: var(--white);
+  border: none;
+  border-radius: 0;
+  padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--black);
+  outline: none;
+}
+
+.contact-fields textarea {
+  resize: none;
+}
+
+.btn-submit {
+  margin-top: 16px;
+  background: var(--white);
+  color: var(--red);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 11px 28px;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  float: right;
+  transition: opacity 0.15s;
+}
+
+.btn-submit:hover {
+  opacity: 0.88;
+}
+
+/* ============================
+   SECTION 10 — FOOTER
+   ============================ */
+
+/* Part A — Links row */
+.footer-top {
+  width: 100%;
+  background: var(--cream);
+  padding: 60px 80px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--black);
+  display: block;
+  margin-bottom: 0;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  align-items: center;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  color: var(--black);
+}
+
+.footer-social svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--black);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer-col h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--black);
+  margin-bottom: 14px;
+}
+
+.footer-col a {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--gray-text);
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  color: var(--black);
+}
+
+/* Part B — Display logo bar */
+.footer-brand-bar {
+  width: 100%;
+  background: var(--cream);
+  border-top: 1px solid var(--gray-light);
+  padding: 24px 40px 0 40px;
+  text-align: center;
+}
+
+.footer-brand-bar .brand-display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(64px, 12vw, 140px);
+  color: var(--black);
+  text-align: center;
+  line-height: 0.9;
+  display: block;
+}
+
+/* Part C — Copyright strip */
+.footer-copy {
+  width: 100%;
+  background: var(--cream);
+  padding: 16px 40px;
+  text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  color: var(--gray-text);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 900px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 20px;
+    flex-wrap: wrap;
+    height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .navbar-links {
+    display: none;
+  }
+
+  .hero {
+    height: 380px;
+  }
+
+  .hero-overlay {
+    width: 90%;
+    max-width: 340px;
+  }
+
+  .hero-overlay h1 {
+    font-size: 24px;
+  }
+
+  .new-in-section,
+  .designer-section,
+  .features-section,
+  .stats-section {
+    padding: 50px 24px;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
+
+  .designer-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .sell-banner {
+    grid-template-columns: 1fr;
+  }
+
+  .sell-banner-images {
+    height: 200px;
+  }
+
+  .stats-row {
+    gap: 48px;
+  }
+
+  .stat-number {
+    font-size: 48px;
+  }
+
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-img-side {
+    min-height: 220px;
+  }
+
+  .contact-form-side {
+    padding: 40px 24px;
+  }
+
+  .story-content {
+    padding: 40px 32px;
+    max-width: 100%;
+  }
+
+  .story-content h2 {
+    font-size: 26px;
+  }
+
+  .story-footer {
+    padding: 0 32px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    padding: 40px 24px;
+  }
+
+  .footer-brand-bar {
+    padding: 20px 20px 0 20px;
+  }
+}
