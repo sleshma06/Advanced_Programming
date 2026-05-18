@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +22,8 @@
      ======================== -->
 <nav class="navbar">
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Shop</a></li>
+        <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/pages/user/shop.jsp">Shop</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
@@ -57,7 +56,7 @@
     <div class="hero-overlay">
         <h1>Wear Stories,<br>Not just Threads.</h1>
         <p>Drift Into What's Yours</p>
-        <a href="${pageContext.request.contextPath}/shop" class="btn-primary">Shop Now</a>
+        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="btn-primary">Shop Now</a>
     </div>
 
     <div class="hero-badge">PRELOVED PIECES.<br>NEW ENERGY</div>
@@ -79,36 +78,40 @@
     <h2 class="section-heading">New-In fresh drops</h2>
 
     <div class="filter-tabs">
-        <!-- MODEL: categories expected as List<Category> categories -->
-        <c:forEach var="cat" items="${categories}">
-            <span class="filter-tab ${cat.id == currentCategoryId ? 'active' : ''}">${cat.name}</span>
-        </c:forEach>
+        <span class="filter-tab active">All</span>
+        <span class="filter-tab">Tops</span>
+        <span class="filter-tab">Skirts</span>
+        <span class="filter-tab">Outerwear</span>
     </div>
 
     <div class="products-grid">
-        <!-- MODEL: products list expected as List<Product> productsList -->
-        <c:forEach var="product" items="${productsList}">
-            <div class="product-card">
-                <c:if test="${product.newIn}">
-                    <span class="product-badge">New In</span>
-                </c:if>
-                <span class="product-wishlist">
-                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                </span>
-                <img class="product-card-img" src="${pageContext.request.contextPath}/images/${product.image}" alt="${product.name}">
-                <div class="product-name"><c:out value="${product.name}"/></div>
-                <div class="product-rating">
-                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <span>${product.rating} (${product.reviewCount})</span>
-                </div>
-                <span class="product-price">Rs. <c:out value="${product.price}"/></span>
-                <a href="${pageContext.request.contextPath}/cart/add?id=${product.id}" class="btn-add-cart">ADD NOW</a>
-            </div>
-        </c:forEach>
+        <div class="product-card">
+            <span class="product-badge">New In</span>
+            <img class="product-card-img" src="${pageContext.request.contextPath}/images/c4.jfif" alt="Brown skirt">
+            <div class="product-name">Brown Skirt</div>
+            <span class="product-price">Rs. 450</span>
+            <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="btn-add-cart">ADD NOW</a>
+        </div>
+
+        <div class="product-card">
+            <span class="product-badge">New In</span>
+            <img class="product-card-img" src="${pageContext.request.contextPath}/images/c3.jfif" alt="Short jean skirt">
+            <div class="product-name">Short Jean Skirt</div>
+            <span class="product-price">Rs. 290</span>
+            <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="btn-add-cart">ADD NOW</a>
+        </div>
+
+        <div class="product-card">
+            <span class="product-badge">New In</span>
+            <img class="product-card-img" src="${pageContext.request.contextPath}/images/denim.jpg" alt="Denim jacket">
+            <div class="product-name">Vintage Denim Jacket</div>
+            <span class="product-price">Rs. 780</span>
+            <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="btn-add-cart">ADD NOW</a>
+        </div>
     </div>
 
     <div class="view-more-link">
-        <a href="${pageContext.request.contextPath}/shop">FOR BETTER FINDS &rarr;</a>
+        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp">FOR BETTER FINDS &rarr;</a>
     </div>
 </section>
 
@@ -118,13 +121,20 @@
 <section class="designer-section">
     <h2 class="section-heading">Some Of Our Designer Finds</h2>
     <div class="designer-grid">
-        <!-- MODEL: designerProducts expected as List<Product> designerProducts -->
-        <c:forEach var="dProduct" items="${designerProducts}">
-            <a href="${pageContext.request.contextPath}/product?id=${dProduct.id}" class="designer-card">
-                <img src="${pageContext.request.contextPath}/images/${dProduct.image}" alt="${dProduct.name}">
-                <div class="designer-card-label"><c:out value="${dProduct.displayName}"/></div>
-            </a>
-        </c:forEach>
+        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="designer-card">
+            <img src="${pageContext.request.contextPath}/images/PradaCoat.jpg" alt="Prada coat">
+            <div class="designer-card-label">Prada Coat</div>
+        </a>
+
+        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="designer-card">
+            <img src="${pageContext.request.contextPath}/images/gucci.jpg" alt="Gucci bag">
+            <div class="designer-card-label">Gucci Find</div>
+        </a>
+
+        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="designer-card">
+            <img src="${pageContext.request.contextPath}/images/DiorEmb.jpg" alt="Dior embroidered piece">
+            <div class="designer-card-label">Dior Embroidery</div>
+        </a>
     </div>
 </section>
 
@@ -158,22 +168,22 @@
     <h2 class="section-heading">Where Sustainable Meets Style</h2>
     <div class="features-grid">
         <div class="feature-item">
-            <svg class="feature-icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <img class="feature-icon" src="${pageContext.request.contextPath}/images/comp.jpg" alt="Browse">
             <h4>Browse</h4>
             <p>Explore our curated collection of pre-loved fashion, filtered by style, era, and condition.</p>
         </div>
         <div class="feature-item">
-            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
+            <img class="feature-icon" src="${pageContext.request.contextPath}/images/shirt.png" alt="Pick your size">
             <h4>Pick Your Size</h4>
             <p>Choose from a wide variety — filter by size, condition, and category.</p>
         </div>
         <div class="feature-item">
-            <svg class="feature-icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <img class="feature-icon" src="${pageContext.request.contextPath}/images/lock.png" alt="Buy securely">
             <h4>Buy Securely</h4>
             <p>Safe, easy checkout with multiple payment options.</p>
         </div>
         <div class="feature-item">
-            <svg class="feature-icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <img class="feature-icon" src="${pageContext.request.contextPath}/images/love.png" alt="Wear and cherish">
             <h4>Wear And Cherish</h4>
             <p>Your next favourite piece arrives clean, verified, and ready.</p>
         </div>
