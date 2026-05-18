@@ -1,0 +1,346 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f7f3ee;
+    color: #151515;
+    font-family: Arial, sans-serif;
+}
+
+.bag-page {
+    min-height: 100vh;
+    padding: 54px 32px 56px;
+}
+
+.bag-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 470px;
+    gap: 44px;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.bag-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    border-bottom: 4px solid #1f1f1f;
+    padding-bottom: 18px;
+}
+
+.bag-heading h1,
+.summary-box h2,
+.sell-box h2 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 38px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.bag-heading span {
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.bag-items {
+    border-bottom: 2px solid #1f1f1f;
+}
+
+.bag-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr) auto;
+    gap: 22px;
+    padding: 24px 0;
+    border-bottom: 1px solid #bdb7b1;
+}
+
+.bag-item:last-child {
+    border-bottom: none;
+}
+
+.bag-item img {
+    width: 90px;
+    height: 118px;
+    object-fit: cover;
+}
+
+.item-details h2 {
+    margin: 8px 0 8px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.item-details p {
+    margin: 0 0 22px;
+    color: #555;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.item-details p span {
+    display: inline-block;
+    margin-left: 8px;
+    background: #eee8e2;
+    color: #151515;
+    border-radius: 2px;
+    padding: 4px 8px;
+    font-size: 10px;
+}
+
+.item-note {
+    color: #555;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.item-note strong {
+    color: #151515;
+}
+
+.item-price {
+    margin-top: 8px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    white-space: nowrap;
+}
+
+.remove-link {
+    position: absolute;
+    right: 0;
+    bottom: 22px;
+    border: none;
+    background: transparent;
+    color: #555;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.safety-box {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 18px;
+    border: 2px solid #424242;
+    margin-top: 28px;
+    padding: 28px 30px;
+}
+
+.safety-icon {
+    color: #d0021b;
+    font-weight: 900;
+}
+
+.safety-box h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.safety-box p {
+    margin: 0 0 14px;
+    color: #666;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.safety-box a {
+    color: #151515;
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.summary-box {
+    border: 2px solid #444444;
+    padding: 34px 30px 30px;
+}
+
+.summary-box h2 {
+    font-size: 28px;
+    border-bottom: 2px solid #444444;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    color: #555;
+    font-size: 12px;
+}
+
+.summary-row strong {
+    color: #151515;
+}
+
+.summary-box label {
+    display: block;
+    margin: 28px 0 10px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+}
+
+.promo-row {
+    display: grid;
+    grid-template-columns: 1fr 86px;
+    border: 1px solid #222222;
+    margin-bottom: 30px;
+}
+
+.promo-row input {
+    border: none;
+    min-height: 42px;
+    padding: 0 16px;
+    outline: none;
+}
+
+.promo-row button {
+    border: none;
+    background: #1d1d1d;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.total-row {
+    border-top: 2px solid #444444;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 26px;
+    margin-bottom: 30px;
+}
+
+.total-row span {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.total-row strong {
+    color: #d0021b;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 28px;
+}
+
+.checkout-button {
+    width: 100%;
+    min-height: 64px;
+    border: none;
+    background: #d0021b;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 34px;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.sell-box {
+    margin-top: 28px;
+    background: #d0021b;
+    color: #ffffff;
+    min-height: 235px;
+    padding: 42px 34px;
+    text-align: center;
+}
+
+.sell-icon {
+    font-size: 34px;
+    margin-bottom: 22px;
+}
+
+.sell-box h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.sell-box p {
+    max-width: 330px;
+    margin: 0 auto 26px;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+.sell-box a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 30px;
+    background: #ffffff;
+    color: #151515;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+@media (max-width: 950px) {
+    .bag-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .bag-side {
+        max-width: 520px;
+    }
+}
+
+@media (max-width: 620px) {
+    .bag-page {
+        padding: 36px 18px;
+    }
+
+    .bag-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .bag-item {
+        grid-template-columns: 76px 1fr;
+    }
+
+    .bag-item img {
+        width: 76px;
+        height: 100px;
+    }
+
+    .item-price {
+        grid-column: 2;
+        margin-top: 0;
+    }
+
+    .remove-link {
+        position: static;
+        grid-column: 2;
+        justify-self: start;
+        padding: 0;
+    }
+}

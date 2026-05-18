@@ -1,4 +1,4 @@
-package com.java_web_app.utils;
+package com.java_web_app.service;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class DBconfig
+ * Servlet implementation class RegisterService
  */
-@WebServlet("/DBconfig")
-public class DBconfig extends HttpServlet {
+@WebServlet("/RegisterService")
+public class RegisterService extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DBconfig() {
+    public RegisterService() {
         super();
         // TODO Auto-generated constructor stub
     }

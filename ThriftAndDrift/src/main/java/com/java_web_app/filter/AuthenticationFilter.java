@@ -1,41 +1,38 @@
 package com.java_web_app.filter;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.java_web_app.utils.SessionUtil;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 
-/**
- * Servlet implementation class AuthenticationFilter
- */
-@WebServlet("/AuthenticationFilter")
-public class AuthenticationFilter extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AuthenticationFilter() {
-        super();
-        // TODO Auto-generated constructor stub
+// Protects user-only pages — admin uses query string so needs no filter here
+@WebFilter(urlPatterns = {"/pages/user/*", "/ShopServlet", "/HomeServlet"})
+public class AuthenticationFilter extends HttpFilter implements Filter {
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletRequest  httpReq  = (HttpServletRequest)  request;
+        HttpServletResponse httpResp = (HttpServletResponse) response;
+        String path = httpReq.getRequestURI().substring(httpReq.getContextPath().length());
+
+        if (path.equals("/pages/user/login.jsp")
+                || path.equals("/pages/user/register.jsp")
+                || path.equals("/pages/user/registration.jsp")
+                || path.equals("/pages/user/wishlist.jsp")
+                || path.equals("/pages/user/bag.jsp")) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        if (SessionUtil.isLoggedIn(httpReq)) {
+            // Prevent back-button revealing protected pages after logout
+            httpResp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            chain.doFilter(request, response);
+        } else {
+            httpResp.sendRedirect(httpReq.getContextPath() + "/LoginServlet");
+        }
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
