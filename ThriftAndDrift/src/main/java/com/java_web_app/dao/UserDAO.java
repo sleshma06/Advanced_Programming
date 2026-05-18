@@ -20,7 +20,7 @@ public class UserDAO {
         }
     }
 
-    // Get user by email (used in login)
+    // Get user by email 
     public UserModel getUserByEmail(String email) throws SQLException {
         String sql = "SELECT * FROM users WHERE email = ?";
         try (Connection conn = DBConfig.getConnection();

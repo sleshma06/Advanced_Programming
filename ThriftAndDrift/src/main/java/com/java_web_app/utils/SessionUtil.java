@@ -8,7 +8,7 @@ public class SessionUtil {
 
    
 
-    // Store full user object in session — called after successful user login
+    // Store full user object in session called after successful user login
     public static void createUserSession(HttpServletRequest request, UserModel user, int seconds) {
         HttpSession session = request.getSession(true);
         session.setAttribute("user", user);
@@ -29,7 +29,7 @@ public class SessionUtil {
         return (session != null) ? session.getAttribute(key) : null;
     }
 
-    // Set any attribute in session (e.g. flash messages)
+    // Set any attribute in session 
     public static void setAttribute(HttpServletRequest request, String key, Object value, int seconds) {
         HttpSession session = request.getSession(true);
         session.setAttribute(key, value);
@@ -46,13 +46,13 @@ public class SessionUtil {
 
  
 
-    // Remove one specific attribute (e.g. clear a flash message after showing)
+    // Remove one specific attribute 
     public static void removeAttribute(HttpServletRequest request, String key) {
         HttpSession session = request.getSession(false);
         if (session != null) session.removeAttribute(key);
     }
 
-    // Destroy entire session — called on logout
+    // Destroy entire session  called on logout
     public static void invalidateSession(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) session.invalidate();
