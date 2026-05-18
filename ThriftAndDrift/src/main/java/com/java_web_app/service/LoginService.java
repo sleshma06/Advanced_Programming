@@ -1,41 +1,32 @@
 package com.java_web_app.service;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import com.java_web_app.dao.UserDAO;
+import com.java_web_app.model.UserModel;
+import com.java_web_app.utils.PasswordUtil;
 
-/**
- * Servlet implementation class LoginService
- */
-@WebServlet("/LoginService")
-public class LoginService extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginService() {
-        super();
-        // TODO Auto-generated constructor stub
+import java.sql.SQLException;
+
+public class LoginService {
+
+    private final UserDAO userDAO = new UserDAO();
+
+    // Returns "Success" or an error message string
+    public String authenticate(String email, String password) {
+        if (email == null || email.trim().isEmpty()) return "Email is required";
+        if (password == null || password.isEmpty())  return "Password is required";
+        try {
+            UserModel user = userDAO.getUserByEmail(email);
+            if (user == null) return "No account found with that email";
+            if (PasswordUtil.checkPassword(password, user.getPassword())) return "Success";
+            return "Incorrect password";
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Database error. Please try again.";
+        }
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
+    // Fetch user after successful authentication
+    public UserModel getUserByEmail(String email) throws SQLException {
+        return userDAO.getUserByEmail(email);
+    }
 }

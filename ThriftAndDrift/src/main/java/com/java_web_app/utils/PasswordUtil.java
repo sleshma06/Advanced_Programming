@@ -1,41 +1,18 @@
 package com.java_web_app.utils;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import org.mindrot.jbcrypt.BCrypt;
 
-/**
- * Servlet implementation class PasswordUtil
- */
-@WebServlet("/PasswordUtil")
-public class PasswordUtil extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PasswordUtil() {
-        super();
-        // TODO Auto-generated constructor stub
+public class PasswordUtil {
+
+    private static final int COST = 10;
+
+    // Call this when registering a user
+    public static String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt(COST));
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
+    // Call this when logging in — compares plain text against stored hash
+    public static boolean checkPassword(String plainPassword, String storedHash) {
+        return BCrypt.checkpw(plainPassword, storedHash);
+    }
 }

@@ -1,41 +1,44 @@
 package com.java_web_app.filter;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.java_web_app.utils.CookieUtil;
+import com.java_web_app.utils.SessionUtil;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.*;
 import java.io.IOException;
 
-/**
- * Servlet implementation class GuestFilter
- */
-@WebServlet("/GuestFilter")
-public class GuestFilter extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GuestFilter() {
-        super();
-        // TODO Auto-generated constructor stub
+// Stops already-logged-in users from visiting login/register
+@WebFilter(urlPatterns = {"/LoginServlet", "/RegisterServlet", "/login.jsp", "/register.jsp"})
+public class GuestFilter extends HttpFilter implements Filter {
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletRequest  httpReq  = (HttpServletRequest)  request;
+        HttpServletResponse httpResp = (HttpServletResponse) response;
+
+        // Check regular user logged in via session
+        boolean userLoggedIn = SessionUtil.isLoggedIn(httpReq);
+
+        // Check admin logged in via cookie
+        String adminId   = CookieUtil.getCookieValue(httpReq, "adminId");
+        boolean adminLoggedIn = (adminId != null && !adminId.trim().isEmpty());
+
+        if (userLoggedIn) {
+          
+            httpResp.sendRedirect(httpReq.getContextPath() + "/HomeServlet");
+
+        } else if (adminLoggedIn) {
+            
+            String adminName = CookieUtil.getCookieValue(httpReq, "adminName");
+            httpResp.sendRedirect(httpReq.getContextPath()
+                    + "/DashboardServlet?adminId=" + adminId
+                    + "&adminName=" + (adminName != null ? adminName : ""));
+
+        } else {
+            // Nobody logged in — let them through
+            chain.doFilter(request, response);
+        }
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }

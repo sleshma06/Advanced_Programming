@@ -1,41 +1,69 @@
 package com.java_web_app.dao;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import com.java_web_app.model.UserModel;
+import com.java_web_app.utils.DBConfig;
 
-/**
- * Servlet implementation class UserDAO
- */
-@WebServlet("/UserDAO")
-public class UserDAO extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserDAO() {
-        super();
-        // TODO Auto-generated constructor stub
+import java.sql.*;
+
+public class UserDAO {
+
+    // Insert new user
+    public boolean registerUser(UserModel user) throws SQLException {
+        String sql = "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)";
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setString(4, user.getRole() != null ? user.getRole() : "user");
+            return stmt.executeUpdate() > 0;
+        }
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    // Get user by email (used in login)
+    public UserModel getUserByEmail(String email) throws SQLException {
+        String sql = "SELECT * FROM users WHERE email = ?";
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) return mapRow(rs);
+        }
+        return null;
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    // Get user by id
+    public UserModel getUserById(int id) throws SQLException {
+        String sql = "SELECT * FROM users WHERE id = ?";
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) return mapRow(rs);
+        }
+        return null;
+    }
 
+    // Update user profile
+    public boolean updateUser(UserModel user) throws SQLException {
+        String sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getEmail());
+            stmt.setString(3, user.getPassword());
+            stmt.setInt(4, user.getId());
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
+    private UserModel mapRow(ResultSet rs) throws SQLException {
+        UserModel user = new UserModel();
+        user.setId(rs.getInt("id"));
+        user.setName(rs.getString("name"));
+        user.setEmail(rs.getString("email"));
+        user.setPassword(rs.getString("password"));
+        user.setRole(rs.getString("role"));
+        return user;
+    }
 }
