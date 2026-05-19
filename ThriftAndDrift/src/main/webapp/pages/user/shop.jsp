@@ -136,6 +136,24 @@
     </main>
 </div>
 
+<!-- ── NEWSLETTER BANNER ── -->
+<div class="newsletter-banner">
+    <div class="newsletter-text">
+    Not only sell, but share the memories<br>
+    behind your wardrobe.
+</div>
+    <div class="newsletter-form">
+        <form method="post" action="${pageContext.request.contextPath}/NewsletterServlet">
+            <div class="newsletter-input-wrap">
+                <span>&#9993;</span>
+                <input type="email" name="email" placeholder="Enter your email address" required>
+            </div>
+            <button type="submit" class="btn-subscribe">Subscribe to Newsletter</button>
+        </form>
+    </div>
+</div>
+
+<!-- ── FOOTER ── -->
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-brand">
@@ -144,6 +162,13 @@
             <p class="phone">+977 9810349297</p>
             <p>01 4335544</p>
             <a href="#" class="site-link">thrift&amp;drift.com</a>
+            <div class="footer-social">
+                <a href="https://www.instagram.com" target="_blank" title="Instagram"><img src="${pageContext.request.contextPath}/images/social.png" alt="Instagram"></a>
+				<a href="https://www.tiktok.com" target="_blank" title="TikTok"><img src="${pageContext.request.contextPath}/images/tik-tok.png" alt="TikTok"></a>
+				<a href="https://www.twitter.com" target="_blank" title="Twitter"><img src="${pageContext.request.contextPath}/images/twitter.png" alt="Twitter"></a>
+				<a href="https://www.whatsapp.com" target="_blank" title="WhatsApp"><img src="${pageContext.request.contextPath}/images/whatsapp (1).png" alt="WhatsApp"></a>
+				<a href="https://www.youtube.com" target="_blank" title="YouTube"><img src="${pageContext.request.contextPath}/images/youtube.png" alt="YouTube"></a>
+            </div>
         </div>
         <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="${pageContext.request.contextPath}/SellerServlet">Sell</a></li><li><a href="#">About Us</a></li><li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li></ul></div>
         <div class="footer-col"><h4>Services</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Shipping &amp; Returns</a></li></ul></div>
