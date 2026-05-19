@@ -9,6 +9,7 @@
 </head>
 <body>
 
+<!-- ── NAVBAR ── -->
 <nav class="navbar">
     <ul class="nav-links">
         <li><a href="#">Home</a></li>
@@ -57,6 +58,9 @@
     </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     STATS BAR
+════════════════════════════════════════════════════════════════════════════ -->
 <div class="stats-bar">
     <div class="stat-item">
         <span class="stat-num">12K+</span>
@@ -76,6 +80,9 @@
     </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     OUR STORY
+════════════════════════════════════════════════════════════════════════════ -->
 <section class="section section-white">
     <div class="two-col">
         <div class="story-text">
