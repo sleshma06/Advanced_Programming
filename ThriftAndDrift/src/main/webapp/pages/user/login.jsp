@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login - ThriftAndDrift</title>
@@ -31,31 +30,31 @@
         </c:if>
 
         <form action="${pageContext.request.contextPath}/LoginServlet" method="post">
-
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required />
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
 
             <div class="form-group remember-row">
                 <label class="checkbox-label">
-                    <input type="checkbox" name="remember" /> Remember me
+                    <input type="checkbox" name="remember"> Remember me
                 </label>
             </div>
 
             <div class="form-group">
                 <button type="submit" class="btn-login">Login</button>
             </div>
-
         </form>
 
         <div class="register-link">
-            <p>Don't have an account? <a href="${pageContext.request.contextPath}/pages/user/register.jsp">Register here</a></p>
+            <p>Don't have an account?
+                <a href="${pageContext.request.contextPath}/pages/user/registration.jsp">Register here</a>
+            </p>
         </div>
 
     </div>

@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
                     + "&adminName=" + (adminName != null ? adminName : ""));
             return;
         }
-        request.getRequestDispatcher("/login.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/user/login.jsp").forward(request, response);
     }
 
     @Override
@@ -72,12 +72,12 @@ public class LoginServlet extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
                 request.setAttribute("error", "Something went wrong. Please try again.");
-                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                request.getRequestDispatcher("/pages/user/login.jsp").forward(request, response);
             }
         } else {
             request.setAttribute("error", status);
             request.setAttribute("typedEmail", email);
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/pages/user/login.jsp").forward(request, response);
         }
     }
 }

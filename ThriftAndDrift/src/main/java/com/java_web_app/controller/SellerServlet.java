@@ -7,21 +7,20 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/register")
-public class RegistrationController extends HttpServlet {
+@WebServlet("/SellerServlet")
+public class SellerServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public RegistrationController() {
-        super();
-    }
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.getWriter().append("Served at: ").append(request.getContextPath());
+        request.getRequestDispatcher("/seller.jsp").forward(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        request.setAttribute("successMessage", "Your item listing is ready to be reviewed.");
+        request.getRequestDispatcher("/seller.jsp").forward(request, response);
     }
 }

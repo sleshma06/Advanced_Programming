@@ -1,0 +1,109 @@
+/* --- Global Footer Styles --- */
+.footer {
+  background: #fff;
+  padding: 48px 40px 0;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 0.8fr;
+  gap: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #eee;
+}
+
+.footer-brand p {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 14px;
+  color: #1a1a1a;
+}
+
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  font-size: 13px;
+  color: #555;
+  text-decoration: none;
+}
+
+.footer-col ul li a:hover { color: #8b1a1a; }
+
+.site-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #8b1a1a;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-social img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-logos {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-logo-box {
+  width: 64px;
+  height: 44px;
+  border: 1px solid #e5dfd7;
+  border-radius: 6px;
+  background: #f7f3ee;
+}
+
+.footer-brand-name {
+  color: #8b1a1a;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  padding: 24px 0 8px;
+  text-align: center;
+}
+
+.footer-copy {
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+  padding: 12px 0 20px;
+  border-top: 1px solid #eee;
+}
+
+/* Responsive Footer */
+@media (max-width: 640px) {
+  .footer-top { grid-template-columns: 1fr; gap: 24px; }
+}

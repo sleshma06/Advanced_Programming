@@ -8,7 +8,13 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 
 // Stops already-logged-in users from visiting login/register
-@WebFilter(urlPatterns = {"/LoginServlet", "/RegisterServlet", "/login.jsp", "/register.jsp"})
+@WebFilter(urlPatterns = {
+        "/LoginServlet",
+        "/register",
+        "/pages/user/login.jsp",
+        "/pages/user/register.jsp",
+        "/pages/user/registration.jsp"
+})
 public class GuestFilter extends HttpFilter implements Filter {
     private static final long serialVersionUID = 1L;
 

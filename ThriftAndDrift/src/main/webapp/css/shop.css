@@ -1,6 +1,8 @@
-* {
+*:not(nav):not(nav *) {
     margin: 0;
     padding: 0;
+}
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -10,90 +12,7 @@ body {
     color: #1a1a1a;
 }
 
-/* ── NAVBAR ── */
-.navbar {
-    background-color: #f0ebe3;
-    padding: 16px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
 
-.nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #1a1a1a;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-}
-
-.nav-links a:hover {
-    color: #8b1a1a;
-    border-bottom: 2px solid #8b1a1a;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-.nav-icon {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #1a1a1a;
-    padding: 6px;
-    text-decoration: none;
-    border-radius: 50%;
-    transition: background 0.2s, color 0.2s;
-}
-
-.nav-icon img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-}
-
-.nav-icon:hover {
-    background: #e8e0d8;
-    color: #8b1a1a;
-}
-
-.btn-seller {
-    background-color: #8b1a1a;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-    letter-spacing: 0.4px;
-    transition: background 0.2s, transform 0.15s;
-}
-
-.btn-seller:hover {
-    background-color: #6e1414;
-    transform: translateY(-1px);
-}
 
 /* ── PAGE TITLE ── */
 .page-title {
@@ -159,18 +78,21 @@ body {
     margin-bottom: 8px;
 }
 
-.filter-item {
+a.filter-item {
+    text-decoration: none;
+    color: inherit;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 5px 0;
     font-size: 12px;
     color: #444;
-    cursor: pointer;
 }
 
-.filter-item:hover {
+a.filter-item:hover,
+a.filter-item.filter-active {
     color: #8b1a1a;
+    font-weight: 700;
 }
 
 /* Price Slider */
@@ -506,6 +428,7 @@ body {
     transform: translateY(-2px);
 }
 
+
 /* ── CATEGORY BLOCKS ── */
 .category-block {
     margin-bottom: 48px;
@@ -661,6 +584,7 @@ body {
     padding: 12px 0 20px;
     border-top: 1px solid #eee;
 }
+
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {

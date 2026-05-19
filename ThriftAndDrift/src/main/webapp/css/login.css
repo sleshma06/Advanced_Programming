@@ -89,7 +89,7 @@ body {
 
 .form-group input[type="email"]:focus,
 .form-group input[type="password"]:focus {
-    border-color: #2c5f2e;
+    border-color: #800000;
 }
 
 .remember-row {
@@ -120,7 +120,7 @@ body {
 }
 
 .btn-login:hover {
-    background-color: #ff0000;
+    background-color: #6e1414;
 }
 
 .register-link {
