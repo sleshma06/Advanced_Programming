@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account | THRIFT&DRIFT</title>
+    <title>Create Account </title>
      <link rel="stylesheet" href="${pageContext.request.contextPath}/css/registration.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nunito:wght@900&family=Barlow+Condensed:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="registration-container">
         <div class="card-wrapper">
-            <!-- Left Side: Register Form -->
+        
             <div class="form-panel">
                 <div class="form-content">
                     <a href="index.html" class="back-home">
@@ -48,9 +48,10 @@
             
             <!-- Right Side: Decorative Image -->
             <div class="image-panel">
-                <!-- Pointing to the generated asset path -->
+                
                  <img src="${pageContext.request.contextPath}/images/registration.jpg" alt="bg">
         </div>
+    </div>
     </div>
 </body>
 </html>

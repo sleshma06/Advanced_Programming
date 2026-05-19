@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +16,9 @@
 <!-- ── NAVBAR ── -->
 <nav class="navbar">
     <ul class="nav-links">
-        <li><a href="pages/index.jsp">Home</a></li>
-        <li><a href="pages/shop.jsp">Shop</a></li>
-        <li><a href="pages/about.jsp">About</a></li>
+        <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/pages/user/shop.jsp">Shop</a></li>
+        <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 
@@ -517,7 +517,7 @@
     behind your wardrobe.
 </div>
     <div class="newsletter-form">
-        <form method="post" action="newsletter">
+        <form method="post" action="${pageContext.request.contextPath}/WishlistServlet">
             <div class="newsletter-input-wrap">
                 <span>&#9993;</span>
                 <input type="email" name="email" placeholder="Enter your email address" required>
@@ -535,7 +535,7 @@
             <p>Kamalpokhari, Dhobidhara</p>
             <p class="phone">+977 9810349297</p>
             <p>01 4335544</p>
-            <a href="pages/index.jsp" class="site-link">thrift&amp;drift.com</a>
+            <a href="${pageContext.request.contextPath}/HomeServlet" class="site-link">thrift&amp;drift.com</a>
             <div class="footer-social">
                 <a href="https://www.instagram.com" target="_blank" title="Instagram"><img src="${pageContext.request.contextPath}/images/social.png" alt="Instagram"></a>
 				<a href="https://www.tiktok.com" target="_blank" title="TikTok"><img src="${pageContext.request.contextPath}/images/tik-tok.png" alt="TikTok"></a>

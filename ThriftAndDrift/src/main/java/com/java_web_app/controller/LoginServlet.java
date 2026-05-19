@@ -53,7 +53,7 @@ public class LoginServlet extends HttpServlet {
                         .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
                 if ("admin".equals(user.getRole())) {
-                    // ADMIN: query string + non-sensitive cookies only
+                    // ADMIN: query string and non-sensitive cookies only
                     CookieUtil.addCookie(response, "last_login", loginTime, 3600);
                     CookieUtil.addCookie(response, "adminId",    String.valueOf(user.getId()), 3600);
                     CookieUtil.addCookie(response, "adminName",  user.getName(), 3600);
@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
                             + "/DashboardServlet?adminId=" + user.getId()
                             + "&adminName=" + user.getName());
                 } else {
-                    // USER: session for sensitive info + cookie for last login only
+                    // USER: session for sensitive info and cookie for last login only
                     SessionUtil.createUserSession(request, user, 3600);
                     CookieUtil.addCookie(response, "last_login", loginTime, 3600);
 
