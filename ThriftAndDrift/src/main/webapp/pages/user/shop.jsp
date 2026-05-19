@@ -535,7 +535,7 @@
             <p>Kamalpokhari, Dhobidhara</p>
             <p class="phone">+977 9810349297</p>
             <p>01 4335544</p>
-            <a href="${pageContext.request.contextPath}/HomeServlet" class="site-link">thrift&amp;drift.com</a>
+            <a href="#" class="site-link">thrift&amp;drift.com</a>
             <div class="footer-social">
                 <a href="https://www.instagram.com" target="_blank" title="Instagram"><img src="${pageContext.request.contextPath}/images/social.png" alt="Instagram"></a>
 				<a href="https://www.tiktok.com" target="_blank" title="TikTok"><img src="${pageContext.request.contextPath}/images/tik-tok.png" alt="TikTok"></a>

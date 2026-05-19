@@ -66,4 +66,11 @@ public class UserDAO {
         user.setRole(rs.getString("role"));
         return user;
     }
-}
+
+	public UserModel getUserByEmailAndPassword(String trim, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	}
