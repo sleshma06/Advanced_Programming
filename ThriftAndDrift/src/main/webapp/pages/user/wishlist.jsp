@@ -23,7 +23,7 @@
         <a href="#" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
         <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Wishlist"></a>
         <a href="${pageContext.request.contextPath}/BagServlet" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
-        <a href="#" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="Account"></a>
+        <a href="${pageContext.request.contextPath}/ProfileServlet" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="Account"></a>
         <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-seller">Be a Seller</a>
     </div>
 </nav>
@@ -58,7 +58,7 @@
                 <strong>Rs. 2,499</strong>
             </div>
             <p class="item-meta">W32 L30 · Bottoms</p>
-            <button class="add-button" type="button">Add to Bag</button>
+            <button class="add-button" type="button">Add to Cart</button>
             <button class="remove-button" type="button">♧ Remove</button>
         </article>
 
@@ -73,7 +73,7 @@
                 <strong>Rs. 1,299</strong>
             </div>
             <p class="item-meta">One · Tops</p>
-            <button class="add-button" type="button">Add to Bag</button>
+            <button class="add-button" type="button">Add to Cart</button>
             <button class="remove-button" type="button">♧ Remove</button>
         </article>
 
@@ -103,7 +103,7 @@
                 <strong>Rs. 4,500</strong>
             </div>
             <p class="item-meta">UK 8 · Shoes</p>
-            <button class="add-button" type="button">Add to Bag</button>
+            <button class="add-button" type="button">Add to Cart</button>
             <button class="remove-button" type="button">♧ Remove</button>
         </article>
 
@@ -133,7 +133,7 @@
                 <strong>Rs. 899</strong>
             </div>
             <p class="item-meta">M · Bottoms</p>
-            <button class="add-button" type="button">Add to Bag</button>
+            <button class="add-button" type="button">Add to Cart</button>
             <button class="remove-button" type="button">♧ Remove</button>
         </article>
     </section>

@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f7f3ee; color: #151515; font-family: Arial, sans-serif; }
+.profile-page { max-width: 1200px; margin: 0 auto; padding: 56px 28px; display: grid; grid-template-columns: 280px 1fr; gap: 32px; }
+.profile-menu, .panel { background: #fff; border: 1px solid #ddd; padding: 28px; }
+.profile-menu h1 { font-family: Georgia, 'Times New Roman', serif; text-transform: uppercase; }
+.profile-menu a { display: block; color: #151515; font-weight: 900; margin-top: 18px; text-decoration: none; }
+.profile-content { display: grid; gap: 22px; }
+.panel h2 { margin: 0 0 18px; font-family: Georgia, 'Times New Roman', serif; text-transform: uppercase; }
+.panel p { display: flex; justify-content: space-between; border-bottom: 1px solid #eee; padding: 12px 0; margin: 0; }
+.panel span { background: #f4efea; color: #d0021b; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 900; }
+.payout-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.payout-grid strong { background: #f4efea; padding: 22px; font-size: 28px; }
+.payout-grid small { display: block; color: #666; font-size: 12px; margin-top: 8px; }
+.profile-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.profile-form input { min-height: 44px; border: 1px solid #ddd; padding: 0 14px; }
+.profile-form button { min-height: 48px; border: none; background: #d0021b; color: #fff; font-weight: 900; text-transform: uppercase; }
+@media (max-width: 800px) { .profile-page, .profile-form, .payout-grid { grid-template-columns: 1fr; } }

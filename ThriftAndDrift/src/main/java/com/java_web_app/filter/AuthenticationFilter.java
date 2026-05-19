@@ -22,7 +22,9 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
                 || path.equals("/pages/user/register.jsp")
                 || path.equals("/pages/user/registration.jsp")
                 || path.equals("/pages/user/wishlist.jsp")
-                || path.equals("/pages/user/bag.jsp")) {
+                || path.equals("/pages/user/bag.jsp")
+                || path.equals("/pages/user/checkout.jsp")
+                || path.equals("/pages/user/profile.jsp")) {
             chain.doFilter(request, response);
             return;
         }

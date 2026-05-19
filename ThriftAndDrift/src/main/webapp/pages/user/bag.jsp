@@ -23,7 +23,7 @@
         <a href="#" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
         <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Wishlist"></a>
         <a href="${pageContext.request.contextPath}/BagServlet" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
-        <a href="#" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="Account"></a>
+        <a href="${pageContext.request.contextPath}/ProfileServlet" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="Account"></a>
         <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-seller">Be a Seller</a>
     </div>
 </nav>
@@ -42,8 +42,8 @@
                     <div class="item-details">
                         <h2>Vintage Levi's 501 Original</h2>
                         <p>W32 L30 <span>Good</span></p>
-                        <div class="item-note">Seller: <strong>@vintage_finds</strong></div>
-                        <div class="item-note">Meetup: <strong>North Campus</strong></div>
+                        <div class="item-note">Sold by: <strong>Thrift&amp;Drift Store</strong></div>
+                        <div class="item-note">Fulfillment: <strong>Delivery or In-store Pickup</strong></div>
                     </div>
                     <strong class="item-price">Rs. 2,499</strong>
                     <button type="button" class="remove-link">Remove</button>
@@ -54,8 +54,8 @@
                     <div class="item-details">
                         <h2>Y2K Leather Shoulder Bag</h2>
                         <p>One Size <span>Fair</span></p>
-                        <div class="item-note">Seller: <strong>@thrift_queen</strong></div>
-                        <div class="item-note">Meetup: <strong>South Block</strong></div>
+                        <div class="item-note">Sold by: <strong>Thrift&amp;Drift Store</strong></div>
+                        <div class="item-note">Fulfillment: <strong>Delivery or In-store Pickup</strong></div>
                     </div>
                     <strong class="item-price">Rs. 1,899</strong>
                     <button type="button" class="remove-link">Remove</button>
@@ -63,11 +63,11 @@
             </div>
 
             <div class="safety-box">
-                <div class="safety-icon">S</div>
+                <div class="safety-icon">T</div>
                 <div>
-                    <h3>Meetup Safety First</h3>
-                    <p>Always meet in public campus areas during daylight hours. Do not share personal banking details over WhatsApp.</p>
-                    <a href="#">Contact Support on WhatsApp</a>
+                    <h3>Choose Fulfillment</h3>
+                    <p>Select delivery to your address or free in-store pickup from the Thrift&amp;Drift store at checkout.</p>
+                    <a href="#">View store pickup address</a>
                 </div>
             </div>
         </div>
@@ -97,10 +97,10 @@
                     <strong>Rs. 4,448</strong>
                 </div>
 
-                <button type="button" class="checkout-button">
+                <a href="${pageContext.request.contextPath}/CheckoutServlet" class="checkout-button">
                     <span>Checkout</span>
                     <span>&rarr;</span>
-                </button>
+                </a>
             </div>
 
             <div class="sell-box">
