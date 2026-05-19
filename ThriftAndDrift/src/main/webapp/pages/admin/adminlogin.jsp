@@ -16,7 +16,7 @@
 
         <div class="brand">THRIFT&amp;DRIFT</div>
 
-        <h2>Admin Login</h2>
+        <h2>Admin Log in</h2>
         <p class="subtitle">Restricted access. Admins only.</p>
 
         <c:if test="${not empty error}">
