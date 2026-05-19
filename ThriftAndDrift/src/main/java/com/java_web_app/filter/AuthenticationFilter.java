@@ -6,8 +6,8 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 
-// Protects user-only pages — admin uses query string so needs no filter here
-@WebFilter(urlPatterns = {"/pages/user/*", "/ShopServlet", "/HomeServlet"})
+
+@WebFilter(urlPatterns = { "/dashboard", "/shop", "/students", "/logout" })
 public class AuthenticationFilter extends HttpFilter implements Filter {
     private static final long serialVersionUID = 1L;
 
