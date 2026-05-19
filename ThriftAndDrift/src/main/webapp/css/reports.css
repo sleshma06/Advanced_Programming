@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* --- Design Tokens --- */
+:root {
+    --brand-red:         #9B1C1C;
+    --brand-red-hover:   #7B1414;
+
+    --sidebar-bg:        #FAF6F3;
+    --sidebar-border:    #EDE5DF;
+    --sidebar-active:    #f0e0e0;
+
+    --page-bg:           #F3EDE8;
+    --content-bg:        #FDFAF8;
+    --card-bg:           #FFFFFF;
+    --border-color:      #E8DDD6;
+
+    --text-primary:      #1E1E1E;
+    --text-secondary:    #6B5E57;
+    --text-muted:        #9C8E88;
+    --text-white:        #FFFFFF;
+
+    /* Chart palette */
+    --chart-red:         #9B1C1C;
+    --chart-tan:         #D9CEC9;
+    --chart-mid:         #C4B5AE;
+    --chart-light:       #E8DDD6;
+    --chart-area-fill:   rgba(155, 28, 28, 0.10);
+
+    --radius-sm:         6px;
+    --radius-md:         10px;
+    --radius-lg:         14px;
+    --sidebar-w:         180px;
+    --topbar-h:          60px;
+
+    --shadow-card:       0 1px 4px rgba(0,0,0,0.07), 0 2px 12px rgba(0,0,0,0.04);
+
+    --font-display:      'Playfair Display', Georgia, serif;
+    --font-body:         'DM Sans', sans-serif;
+}
+
+/* --- Reset --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+    height: 100%;
+    font-family: var(--font-body);
+    font-size: 14px;
+    background: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+
+/* ===================================================
+   SHELL
+   =================================================== */
+.admin-shell {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ===================================================
+   SIDEBAR
+   =================================================== */
+.sidebar {
+    width: var(--sidebar-w);
+    min-width: var(--sidebar-w);
+    background: var(--sidebar-bg);
+    border-right: 1.5px solid var(--sidebar-border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-logo {
+    padding: 22px 20px 18px;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--brand-red);
+    border-bottom: 1px solid var(--sidebar-border);
+}
+
+.sidebar-nav {
+    padding: 14px 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-nav a:hover {
+    background: var(--sidebar-active);
+    color: var(--brand-red);
+}
+
+.sidebar-nav a.active {
+    background: var(--sidebar-active);
+    color: var(--brand-red);
+    font-weight: 600;
+}
+
+.sidebar-nav a svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+.sidebar-nav a.active svg,
+.sidebar-nav a:hover svg { opacity: 1; }
+
+.sidebar-user {
+    padding: 14px 16px;
+    border-top: 1px solid var(--sidebar-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sidebar-user-avatar svg {
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+}
+
+.sidebar-user-info { display: flex; flex-direction: column; }
+.sidebar-user-name { font-size: 0.8rem; font-weight: 600; color: var(--text-primary); }
+.sidebar-user-role { font-size: 0.7rem; color: var(--text-muted); }
+
+/* ===================================================
+   MAIN AREA
+   =================================================== */
+.main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--content-bg);
+}
+
+/* --- Topbar --- */
+.topbar {
+    height: var(--topbar-h);
+    min-height: var(--topbar-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    border-bottom: 1.5px solid var(--border-color);
+    background: var(--card-bg);
+}
+
+.topbar-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.topbar-search { position: relative; }
+
+.topbar-search input {
+    padding: 7px 14px 7px 34px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--sidebar-bg);
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    width: 200px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.topbar-search input:focus { border-color: var(--brand-red); }
+
+.topbar-search svg {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.topbar-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sidebar-bg);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-secondary);
+    position: relative;
+    transition: background 0.15s;
+    cursor: pointer;
+}
+
+.topbar-icon-btn:hover { background: var(--sidebar-active); }
+.topbar-icon-btn svg { width: 16px; height: 16px; }
+
+/* --- Page Body --- */
+.page-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 28px 32px;
+}
+
+/* ===================================================
+   KPI STAT CARDS
+   =================================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    box-shadow: var(--shadow-card);
+}
+
+.stat-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    font-family: var(--font-body);
+}
+
+/* When the value text is longer (e.g. category name) */
+.stat-value.big-text {
+    font-size: 1.2rem;
+    line-height: 1.3;
+}
+
+.stat-delta {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Coloured delta indicators */
+.delta-up    { color: #2E7D32; font-weight: 700; }
+.delta-down  { color: var(--brand-red); font-weight: 700; }
+.delta-trend { color: #2E7D32; font-weight: 600; }
+
+/* ===================================================
+   CHART CARDS — shared wrapper
+   =================================================== */
+.chart-row {
+    display: grid;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.chart-row.one-col { grid-template-columns: 1fr; }
+.chart-row.two-col { grid-template-columns: 1fr 1fr; }
+
+.chart-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 22px 24px;
+    box-shadow: var(--shadow-card);
+}
+
+/* Chart card header */
+.chart-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.chart-card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.chart-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Pill filter button in chart header */
+.chart-filter-btn {
+    padding: 5px 13px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.77rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--card-bg);
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: border-color 0.15s, color 0.15s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.chart-filter-btn:hover {
+    border-color: var(--brand-red);
+    color: var(--brand-red);
+}
+
+/* Icon button (three-dot menu) */
+.chart-icon-btn {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.13s;
+    font-family: var(--font-body);
+}
+
+.chart-icon-btn:hover { background: var(--sidebar-bg); }
+.chart-icon-btn svg { width: 14px; height: 14px; }
+
+/* ===================================================
+   BAR CHART — Items Listed vs Sold
+   =================================================== */
+.bar-chart-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    height: 180px;
+    padding-bottom: 28px;
+    position: relative;
+}
+
+/* Each monthly group */
+.bar-group {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    flex: 1;
+    position: relative;
+}
+
+/* Individual bar */
+.bar {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+    min-height: 6px;
+    transition: opacity 0.2s;
+    cursor: default;
+}
+
+.bar:hover { opacity: 0.78; }
+
+.bar.listed { background: var(--chart-red); }
+.bar.sold   { background: var(--chart-tan); }
+
+/* Month label below each group */
+.bar-month-label {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+/* Legend below the chart */
+.chart-legend {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 30px;
+    justify-content: flex-end;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.legend-dot.listed { background: var(--chart-red); }
+.legend-dot.sold   { background: var(--chart-tan); }
+
+/* ===================================================
+   DONUT CHART — Top Categories
+   =================================================== */
+.donut-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* SVG container with centred overlay label */
+.donut-svg-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    flex-shrink: 0;
+}
+
+/* The donut ring segments */
+.donut-ring {
+    fill: none;
+    stroke-width: 28;
+}
+
+/* Centre percentage label */
+.donut-center-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.donut-center-pct {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.donut-center-name {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+/* 2-column legend grid */
+.donut-legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 20px;
+    width: 100%;
+}
+
+.donut-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+
+.donut-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* ===================================================
+   LINE CHART — New User Registrations
+   =================================================== */
+.line-chart-wrap {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* The SVG stretches to fill the card width */
+.line-chart-wrap svg {
+    width: 100%;
+    height: 160px;
+    overflow: visible;
+    display: block;
+}
+
+/* Gradient fill area under the line */
+.line-area {
+    fill: var(--chart-area-fill);
+}
+
+/* The line stroke */
+.line-path {
+    fill: none;
+    stroke: var(--chart-red);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Data-point dots */
+.line-dot {
+    fill: var(--chart-red);
+    stroke: #fff;
+    stroke-width: 2;
+}
+
+/* Day labels beneath the chart */
+.line-x-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    padding: 0 2px;
+}
+
+.line-x-label {
+    font-size: 0.71rem;
+    color: var(--text-muted);
+    text-align: center;
+    flex: 1;
+}
+
+/* ===================================================
+   SCROLLBAR
+   =================================================== */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
