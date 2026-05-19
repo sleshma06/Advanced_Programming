@@ -11,7 +11,26 @@ public class SessionUtil {
     // Store full user object in session called after successful user login
     public static void createUserSession(HttpServletRequest request, UserModel user, int seconds) {
         HttpSession session = request.getSession(true);
+        session.removeAttribute("admin");
+        session.removeAttribute("loggedInUser");
         session.setAttribute("user", user);
+        session.setAttribute("userId", user.getId());
+        session.setAttribute("userName", user.getName());
+        session.setAttribute("userRole", user.getRole());
+        session.setAttribute("isAdmin", false);
+        session.setMaxInactiveInterval(seconds);
+    }
+
+    // Store admin details in session after successful admin login
+    public static void createAdminSession(HttpServletRequest request, UserModel admin, int seconds) {
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("user");
+        session.setAttribute("admin", admin);
+        session.setAttribute("loggedInUser", admin);
+        session.setAttribute("userId", admin.getId());
+        session.setAttribute("userName", admin.getName());
+        session.setAttribute("userRole", admin.getRole());
+        session.setAttribute("isAdmin", true);
         session.setMaxInactiveInterval(seconds);
     }
 
@@ -42,6 +61,12 @@ public class SessionUtil {
     public static boolean isLoggedIn(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         return session != null && session.getAttribute("user") != null;
+    }
+
+    // Check if an admin is logged in
+    public static boolean isAdminLoggedIn(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        return session != null && Boolean.TRUE.equals(session.getAttribute("isAdmin"));
     }
 
  

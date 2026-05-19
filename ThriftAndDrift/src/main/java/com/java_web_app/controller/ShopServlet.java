@@ -1,24 +1,32 @@
 package com.java_web_app.controller;
 
-import com.java_web_app.utils.SessionUtil;
+import com.java_web_app.dao.ProductDAO;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet("/ShopServlet")
 public class ShopServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private ProductDAO productDAO;
+
+    @Override
+    public void init() {
+        productDAO = new ProductDAO();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (!SessionUtil.isLoggedIn(request)) {
-            response.sendRedirect(request.getContextPath() + "/LoginServlet");
-            return;
+        try {
+            request.setAttribute("products", productDAO.getListedProducts());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Could not load products from database.");
         }
-        // TODO: fetch products from DB and pass to JSP
         request.getRequestDispatcher("/pages/user/shop.jsp").forward(request, response);
     }
 

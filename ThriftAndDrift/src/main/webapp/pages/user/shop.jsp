@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
 
 <nav class="navbar">
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
@@ -64,74 +65,32 @@
         <div class="product-area-header">
             <h2>Store Picks</h2>
             <div class="product-meta">
-                <span>Showing 1-4 of 4 products &nbsp;&nbsp; Sort by: <strong>Newest First &#8964;</strong></span>
+                <span>Showing approved store products &nbsp;&nbsp; Sort by: <strong>Newest First &#8964;</strong></span>
             </div>
         </div>
 
         <div class="product-grid">
-            <div class="product-card">
-                <div class="product-img-wrap">
-                    <span class="badge-new">Good</span>
-                    <img src="${pageContext.request.contextPath}/images/c4.jfif" alt="Brown skirt">
-                    <a class="wishlist-btn" href="${pageContext.request.contextPath}/WishlistServlet" title="Add to Wishlist">&#9734;</a>
-                </div>
-                <div class="product-info">
-                    <p class="product-name">Brown Skirt</p>
-                    <p class="product-meta-line">Sold by Thrift&amp;Drift Store</p>
-                    <div class="product-bottom">
-                        <span class="product-price">Rs 450</span>
-                        <a href="${pageContext.request.contextPath}/BagServlet" class="btn-add-bag">Add to Cart</a>
+            <c:forEach var="product" items="${products}">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <span class="badge-new">${product.condition}</span>
+                        <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
+                        <a class="wishlist-btn" href="${pageContext.request.contextPath}/WishlistServlet" title="Add to Wishlist">&#9734;</a>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">${product.name}</p>
+                        <p class="product-meta-line">Sold by Thrift&amp;Drift Store | ${product.size}</p>
+                        <div class="product-bottom">
+                            <span class="product-price">Rs ${product.price}</span>
+                            <a href="${pageContext.request.contextPath}/BagServlet" class="btn-add-bag">Add to Cart</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
 
-            <div class="product-card">
-                <div class="product-img-wrap">
-                    <span class="badge-new">Like New</span>
-                    <img src="${pageContext.request.contextPath}/images/c3.jfif" alt="Short jean skirt">
-                    <a class="wishlist-btn" href="${pageContext.request.contextPath}/WishlistServlet" title="Add to Wishlist">&#9734;</a>
-                </div>
-                <div class="product-info">
-                    <p class="product-name">Short Jean Skirt</p>
-                    <p class="product-meta-line">Sold by Thrift&amp;Drift Store</p>
-                    <div class="product-bottom">
-                        <span class="product-price">Rs 290</span>
-                        <a href="${pageContext.request.contextPath}/BagServlet" class="btn-add-bag">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img-wrap">
-                    <span class="badge-new">Good</span>
-                    <img src="${pageContext.request.contextPath}/images/denim.jpg" alt="Denim jacket">
-                    <a class="wishlist-btn" href="${pageContext.request.contextPath}/WishlistServlet" title="Add to Wishlist">&#9734;</a>
-                </div>
-                <div class="product-info">
-                    <p class="product-name">Vintage Denim Jacket</p>
-                    <p class="product-meta-line">Sold by Thrift&amp;Drift Store</p>
-                    <div class="product-bottom">
-                        <span class="product-price">Rs 780</span>
-                        <a href="${pageContext.request.contextPath}/BagServlet" class="btn-add-bag">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-img-wrap">
-                    <span class="badge-new">Like New</span>
-                    <img src="${pageContext.request.contextPath}/images/polkadot.jpg" alt="Floral skirt">
-                    <a class="wishlist-btn" href="${pageContext.request.contextPath}/WishlistServlet" title="Add to Wishlist">&#9734;</a>
-                </div>
-                <div class="product-info">
-                    <p class="product-name">Floral Midi Skirt</p>
-                    <p class="product-meta-line">Sold by Thrift&amp;Drift Store</p>
-                    <div class="product-bottom">
-                        <span class="product-price">Rs 899</span>
-                        <a href="${pageContext.request.contextPath}/BagServlet" class="btn-add-bag">Add to Cart</a>
-                    </div>
-                </div>
-            </div>
+            <c:if test="${empty products}">
+                <p>No approved products are listed yet.</p>
+            </c:if>
         </div>
     </main>
 </div>

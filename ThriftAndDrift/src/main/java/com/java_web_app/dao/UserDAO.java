@@ -2,6 +2,7 @@ package com.java_web_app.dao;
 
 import com.java_web_app.model.UserModel;
 import com.java_web_app.utils.DBConfig;
+import com.java_web_app.utils.PasswordUtil;
 
 import java.sql.*;
 
@@ -34,7 +35,7 @@ public class UserDAO {
 
     // Get user by id
     public UserModel getUserById(int id) throws SQLException {
-        String sql = "SELECT * FROM users WHERE id = ?";
+        String sql = "SELECT * FROM users WHERE user_id = ?";
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -46,7 +47,7 @@ public class UserDAO {
 
     // Update user profile
     public boolean updateUser(UserModel user) throws SQLException {
-        String sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
+        String sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE user_id = ?";
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, user.getName());
@@ -59,7 +60,7 @@ public class UserDAO {
 
     private UserModel mapRow(ResultSet rs) throws SQLException {
         UserModel user = new UserModel();
-        user.setId(rs.getInt("id"));
+        user.setId(rs.getInt("user_id"));
         user.setName(rs.getString("name"));
         user.setEmail(rs.getString("email"));
         user.setPassword(rs.getString("password"));
@@ -67,10 +68,12 @@ public class UserDAO {
         return user;
     }
 
-	public UserModel getUserByEmailAndPassword(String trim, String password) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	}
+    // Used by admin login: find user by email, then compare plain password with hashed password
+    public UserModel getUserByEmailAndPassword(String email, String password) throws SQLException {
+        UserModel user = getUserByEmail(email);
+        if (user != null && PasswordUtil.checkPassword(password, user.getPassword())) {
+            return user;
+        }
+        return null;
+    }
+}

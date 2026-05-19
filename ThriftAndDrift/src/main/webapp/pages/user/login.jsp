@@ -34,7 +34,7 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email"
                            placeholder="you@example.com"
-                           value="${not empty email ? email : ''}" required>
+                           value="${not empty typedEmail ? typedEmail : email}" required>
                 </div>
 
                 <div class="form-group">
@@ -57,7 +57,7 @@
             </form>
 
             <div class="bottom-links">
-                <p>Dont have an account? <a href="${pageContext.request.contextPath}/pages/user/register.jsp">Create one</a></p>
+                <p>Dont have an account? <a href="${pageContext.request.contextPath}/register">Create one</a></p>
                 <a href="${pageContext.request.contextPath}/AdminLoginServlet" class="admin-link">Login as admin</a>
             </div>
         </div>

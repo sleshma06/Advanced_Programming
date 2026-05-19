@@ -14,7 +14,7 @@
 
 <nav class="navbar">
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
@@ -42,6 +42,9 @@
     <section class="seller-card">
         <c:if test="${not empty successMessage}">
             <div class="seller-success">${successMessage}</div>
+        </c:if>
+        <c:if test="${not empty errorMessage}">
+            <div class="seller-error">${errorMessage}</div>
         </c:if>
 
         <form class="seller-form" action="${pageContext.request.contextPath}/SellerServlet" method="post" enctype="multipart/form-data">

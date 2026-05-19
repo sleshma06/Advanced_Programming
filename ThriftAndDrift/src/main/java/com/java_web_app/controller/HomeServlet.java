@@ -1,7 +1,6 @@
 package com.java_web_app.controller;
 
 import com.java_web_app.utils.SessionUtil;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -18,6 +17,7 @@ public class HomeServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/LoginServlet");
             return;
         }
+
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

@@ -22,7 +22,7 @@
      ======================== -->
 <nav class="navbar">
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/pages/user/shop.jsp">Shop</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
