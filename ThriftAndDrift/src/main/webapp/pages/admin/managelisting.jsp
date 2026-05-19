@@ -7,18 +7,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Listings — Thrift &amp; Drift</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/managelistings.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/managelisting.css">
 </head>
 <body>
 
 <div class="admin-shell">
 
-    <!-- ===================== SIDEBAR ===================== -->
+
     <aside class="sidebar">
         <div class="sidebar-logo">Thrift &amp; Drift</div>
 
         <nav class="sidebar-nav">
-            <a href="${pageContext.request.contextPath}/admin/dashboard">
+            <a href="${pageContext.request.contextPath}/pages/admin/dashboard">
                 <!-- Dashboard icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
@@ -35,7 +35,7 @@
                 Dashboard
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/managelistings" class="active">
+            <a href="${pageContext.request.contextPath}/pages/admin/managelistings" class="active">
                 <!-- List icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
@@ -48,7 +48,7 @@
                 Manage Listings
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/manageusers">
+            <a href="${pageContext.request.contextPath}/pages/admin/manageusers">
                 <!-- Users icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
@@ -60,7 +60,7 @@
                 Manage Users
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/reports">
+            <a href="${pageContext.request.contextPath}/pages/admin/reports">
                 <!-- Analytics icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
@@ -95,7 +95,6 @@
         </div>
     </aside>
 
-    <!-- ===================== MAIN AREA ===================== -->
     <div class="main-area">
 
         <!-- Top Bar -->
@@ -168,7 +167,7 @@
 
                 <div class="toolbar-spacer"></div>
 
-                <a href="${pageContext.request.contextPath}/admin/listings/new" class="btn-primary">
+                <a href="${pageContext.request.contextPath}/pages/admin/listings/new" class="btn-primary">
                     <!-- Plus icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                          stroke-width="2.5" stroke="currentColor">
@@ -194,7 +193,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%-- Static rows — replace <c:forEach items="${listings}" var="listing"> when dynamic --%>
+                       
 
                         <tr>
                             <td><span class="item-id">ITM-9021</span></td>
@@ -206,7 +205,7 @@
                             <td>Oct 12, 2026</td>
                             <td>
                                 <div class="action-icons">
-                                    <a href="${pageContext.request.contextPath}/admin/listings/view/9021"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/view/9021"
                                        class="action-btn" title="View listing">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -219,7 +218,7 @@
                                                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/edit/9021"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/edit/9021"
                                        class="action-btn" title="Edit listing">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -230,7 +229,7 @@
                                                      0L19.5 7.125"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/delete/9021"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/delete/9021"
                                        class="action-btn delete" title="Delete listing"
                                        onclick="return confirm('Delete this listing?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -259,7 +258,7 @@
                             <td>Oct 12, 2026</td>
                             <td>
                                 <div class="action-icons">
-                                    <a href="${pageContext.request.contextPath}/admin/listings/view/9022"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/view/9022"
                                        class="action-btn" title="View">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -272,7 +271,7 @@
                                                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/edit/9022"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/edit/9022"
                                        class="action-btn" title="Edit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -282,7 +281,7 @@
                                                      18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.Request.contextPath}/admin/listings/delete/9022"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/delete/9022"
                                        class="action-btn delete" title="Delete"
                                        onclick="return confirm('Delete this listing?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -312,7 +311,7 @@
                             <td>Oct 11, 2026</td>
                             <td>
                                 <div class="action-icons">
-                                    <a href="${pageContext.request.contextPath}/admin/listings/view/9023"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/view/9023"
                                        class="action-btn" title="View">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -325,7 +324,7 @@
                                                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/edit/9023"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/edit/9023"
                                        class="action-btn" title="Edit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -335,7 +334,7 @@
                                                      18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/delete/9023"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/delete/9023"
                                        class="action-btn delete" title="Delete"
                                        onclick="return confirm('Delete this listing?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -365,7 +364,7 @@
                             <td>Oct 10, 2026</td>
                             <td>
                                 <div class="action-icons">
-                                    <a href="${pageContext.request.contextPath}/admin/listings/view/9024"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/view/9024"
                                        class="action-btn" title="View">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -378,7 +377,7 @@
                                                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/edit/9024"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/edit/9024"
                                        class="action-btn" title="Edit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -388,7 +387,7 @@
                                                      18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/delete/9024"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/delete/9024"
                                        class="action-btn delete" title="Delete"
                                        onclick="return confirm('Delete this listing?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -418,7 +417,7 @@
                             <td>Oct 09, 2026</td>
                             <td>
                                 <div class="action-icons">
-                                    <a href="${pageContext.request.contextPath}/admin/listings/view/9025"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/view/9025"
                                        class="action-btn" title="View">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -431,7 +430,7 @@
                                                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/edit/9025"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/edit/9025"
                                        class="action-btn" title="Edit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -441,7 +440,7 @@
                                                      18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/delete/9025"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/delete/9025"
                                        class="action-btn delete" title="Delete"
                                        onclick="return confirm('Delete this listing?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -471,7 +470,7 @@
                             <td>Oct 08, 2026</td>
                             <td>
                                 <div class="action-icons">
-                                    <a href="${pageContext.request.contextPath}/admin/listings/view/9026"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/view/9026"
                                        class="action-btn" title="View">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -484,7 +483,7 @@
                                                   d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/edit/9026"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/edit/9026"
                                        class="action-btn" title="Edit">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                              stroke-width="1.8" stroke="currentColor">
@@ -494,7 +493,7 @@
                                                      18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/admin/listings/delete/9026"
+                                    <a href="${pageContext.request.contextPath}/pages/admin/listings/delete/9026"
                                        class="action-btn delete" title="Delete"
                                        onclick="return confirm('Delete this listing?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -514,14 +513,14 @@
                             </td>
                         </tr>
 
-                        <%-- End static rows — swap with <c:forEach> for dynamic content --%>
+                     
                     </tbody>
                 </table>
 
                 <!-- Pagination -->
                 <div class="pagination-row">
-                    <%-- Replace with dynamic total count via EL: ${totalEntries} --%>
-                    <span class="pagination-info">Showing 1 to 6 of 12,450 entries</span>
+                   
+                    <span class="pagination-info">Showing 1 to 6 of 100 entries</span>
                     <div class="pagination-controls">
                         <button class="page-btn prev-next" type="button" aria-label="Previous page">Previous</button>
                         <button class="page-btn active" type="button" aria-current="page">1</button>
@@ -533,8 +532,8 @@
             </div>
 
         </main>
-    </div><!-- /.main-area -->
-</div><!-- /.admin-shell -->
+    </div>
+</div>
 
 </body>
 </html>

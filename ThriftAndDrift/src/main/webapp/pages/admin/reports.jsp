@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reports &amp; Analytics — Thrift &amp; Drift</title>
+    <title>Reports &amp; Analytics</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/reports.css">
     <style>
         /* ---- Reports-only extras ---- */
@@ -49,7 +49,7 @@
         <div class="sidebar-logo">Thrift &amp; Drift</div>
 
         <nav class="sidebar-nav">
-            <a href="${pageContext.request.contextPath}/admin/dashboard">
+            <a href="${pageContext.request.contextPath}/pages/admin/dashboard">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -65,7 +65,7 @@
                 Dashboard
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/managelistings">
+            <a href="${pageContext.request.contextPath}/pages/admin/managelisting">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -77,7 +77,7 @@
                 Manage Listings
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/manageusers">
+            <a href="${pageContext.request.contextPath}/pages/admin/manageusers">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -87,7 +87,7 @@
                 Manage Users
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/reports" class="active">
+            <a href="${pageContext.request.contextPath}/pages/admin/reports" class="active">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -146,7 +146,7 @@
                                  01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255
                                  24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/>
                     </svg>
-                    <%-- Dot hidden on reports page — add class notif-dot if needed --%>
+                
                 </button>
                 <button class="topbar-icon-btn" type="button" aria-label="Profile">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -169,7 +169,7 @@
                 <!-- Total Revenue -->
                 <div class="stat-card">
                     <div class="stat-label">Total Revenue</div>
-                    <%-- Replace value with EL: ${stats.totalRevenue} --%>
+                
                     <div class="stat-value">Rs. 16,558,500</div>
                     <div class="stat-delta">
                         <span class="delta-up">+12%</span> vs last month
@@ -179,7 +179,7 @@
                 <!-- Most Popular Category -->
                 <div class="stat-card">
                     <div class="stat-label">Most Popular Category</div>
-                    <%-- Replace with EL: ${stats.topCategory} --%>
+               
                     <div class="stat-value big-text">Vintage Outerwear</div>
                     <div class="stat-delta">
                         <span class="delta-trend">Trending</span> vs last month
@@ -189,7 +189,7 @@
                 <!-- Avg. Selling Price -->
                 <div class="stat-card">
                     <div class="stat-label">Avg. Selling Price</div>
-                    <%-- Replace with EL: ${stats.avgSellingPrice} --%>
+                
                     <div class="stat-value">Rs. 6,450</div>
                     <div class="stat-delta">
                         <span class="delta-down">-2%</span> vs last month
@@ -199,7 +199,7 @@
                 <!-- Return Rate -->
                 <div class="stat-card">
                     <div class="stat-label">Return Rate</div>
-                    <%-- Replace with EL: ${stats.returnRate} --%>
+                  
                     <div class="stat-value">2.4%</div>
                     <div class="stat-delta">
                         <span class="delta-down">-0.5%</span> vs last month
@@ -207,7 +207,7 @@
                 </div>
 
             </div>
-            <%-- End KPI cards — when dynamic, wrap in <c:if test="${not empty stats}"> --%>
+          
 
 
             <!-- ===== BAR CHART: Items Listed vs Sold ===== -->
@@ -216,9 +216,9 @@
                     <div class="chart-card-header">
                         <span class="chart-card-title">Items Listed vs Sold</span>
                         <div class="chart-card-actions">
-                            <%-- Replace with dynamic range selector --%>
+
                             <button class="chart-filter-btn" type="button">Last 6 Months</button>
-                            <a href="${pageContext.request.contextPath}/admin/reports/export?type=listed-sold"
+                            <a href="${pageContext.request.contextPath}/pages/admin/reports/export?type=listed-sold"
                                class="chart-filter-btn">Export</a>
                         </div>
                     </div>
@@ -298,7 +298,7 @@
             </div>
 
 
-            <!-- ===== BOTTOM ROW: Donut + Line Chart ===== -->
+          
             <div class="chart-row two-col">
 
                 <!-- Donut: Top Categories -->
@@ -330,32 +330,32 @@
                         <div class="donut-svg-wrap">
                             <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg"
                                  aria-label="Category breakdown donut chart">
-                                <!-- Track -->
+                             
                                 <circle class="donut-ring"
                                         cx="80" cy="80" r="54"
                                         stroke="#EDE5DF"/>
-                                <!-- Outerwear 42% -->
+                            
                                 <circle class="donut-ring"
                                         cx="80" cy="80" r="54"
                                         stroke="#9B1C1C"
                                         stroke-dasharray="142.5 339.3"
                                         stroke-dashoffset="0"
                                         transform="rotate(-90 80 80)"/>
-                                <!-- Bottoms 35% -->
+
                                 <circle class="donut-ring"
                                         cx="80" cy="80" r="54"
                                         stroke="#D9CEC9"
                                         stroke-dasharray="118.8 339.3"
                                         stroke-dashoffset="-142.5"
                                         transform="rotate(-90 80 80)"/>
-                                <!-- Tops 15% -->
+                       
                                 <circle class="donut-ring"
                                         cx="80" cy="80" r="54"
                                         stroke="#C4B5AE"
                                         stroke-dasharray="50.9 339.3"
                                         stroke-dashoffset="-261.3"
                                         transform="rotate(-90 80 80)"/>
-                                <!-- Accessories 8% — remainder -->
+                           
                                 <circle class="donut-ring"
                                         cx="80" cy="80" r="54"
                                         stroke="#E8DDD6"
@@ -364,7 +364,7 @@
                                         transform="rotate(-90 80 80)"/>
                             </svg>
                             <div class="donut-center-label">
-                                <%-- Replace with EL: ${topCategory.percentage}% --%>
+                             
                                 <div class="donut-center-pct">42%</div>
                                 <div class="donut-center-name">Outerwear</div>
                             </div>
@@ -391,7 +391,7 @@
                     </div>
                 </div>
 
-                <!-- Line Chart: New User Registrations -->
+              
                 <div class="chart-card">
                     <div class="chart-card-header">
                         <span class="chart-card-title">New User Registrations</span>
@@ -420,13 +420,13 @@
                     <div class="line-chart-wrap">
                         <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg"
                              aria-label="New user registrations line chart">
-                            <!-- Filled area under the line -->
+                           
                             <path class="line-area"
                                   d="M10,88 L76,70 L143,106 L210,58 L277,40 L344,16 L390,64 L390,130 L10,130 Z"/>
-                            <!-- Line itself -->
+                           
                             <path class="line-path"
                                   d="M10,88 L76,70 L143,106 L210,58 L277,40 L344,16 L390,64"/>
-                            <!-- Data point dots -->
+
                             <circle class="line-dot" cx="10"  cy="88"  r="4"/>
                             <circle class="line-dot" cx="76"  cy="70"  r="4"/>
                             <circle class="line-dot" cx="143" cy="106" r="4"/>
@@ -448,11 +448,11 @@
                 </div>
 
             </div>
-            <%-- End bottom row --%>
+
 
         </main>
-    </div><!-- /.main-area -->
-</div><!-- /.admin-shell -->
+    </div>
+</div>
 
 </body>
 </html>

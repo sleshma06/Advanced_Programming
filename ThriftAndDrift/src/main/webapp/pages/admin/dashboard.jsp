@@ -4,16 +4,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard — Thrift &amp; Drift</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admindashboard.css">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
 </head>
 <body>
 
 <div class="admin-shell">
 
-    <!-- ══════════════════════════════════════════════════════
-         SIDEBAR
-    ═══════════════════════════════════════════════════════ -->
     <aside class="sidebar">
 
         <!-- Logo -->
@@ -86,9 +83,6 @@
 
     </aside>
 
-    <!-- ══════════════════════════════════════════════════════
-         MAIN CONTENT
-    ═══════════════════════════════════════════════════════ -->
     <div class="main-content">
 
         <!-- Top Bar -->
@@ -187,7 +181,7 @@
                 </div>
 
             </div>
-            <!-- ── END STAT CARDS ── -->
+        
 
             <!-- ── BOTTOM ROW ── -->
             <div class="bottom-row">
@@ -321,18 +315,17 @@
                     </div>
 
                 </div>
-                <!-- End Activity Card -->
+             
 
             </div>
-            <!-- ── END BOTTOM ROW ── -->
+      
 
         </main>
 
     </div>
-    <!-- End Main Content -->
-
+  
 </div>
-<!-- End Admin Shell -->
+
 
 </body>
 </html>

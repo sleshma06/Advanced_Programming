@@ -18,7 +18,7 @@
         <div class="sidebar-logo">Thrift &amp; Drift</div>
 
         <nav class="sidebar-nav">
-            <a href="${pageContext.request.contextPath}/admin/dashboard">
+            <a href="${pageContext.request.contextPath}/pages/admin/dashboard">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -34,7 +34,7 @@
                 Dashboard
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/managelistings">
+            <a href="${pageContext.request.contextPath}/pages/admin/managelisting">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -46,7 +46,7 @@
                 Manage Listings
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/manageusers" class="active">
+            <a href="${pageContext.request.contextPath}/pages/admin/manageusers" class="active">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -56,7 +56,7 @@
                 Manage Users
             </a>
 
-            <a href="${pageContext.request.contextPath}/admin/reports">
+            <a href="${pageContext.request.contextPath}/pages/admin/reports">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke-width="1.8" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -162,8 +162,6 @@
                 </a>
             </div>
 
-            <!-- Bulk Action Bar — shown when rows are selected -->
-            <%-- Replace condition with: ${not empty selectedUsers} or JS-driven visibility --%>
             <div class="bulk-bar" id="bulkBar">
                 <div class="bulk-bar-icon" id="bulkDeselect" title="Deselect all"
                      onclick="deselectAll()">&#8722;</div>
@@ -206,7 +204,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <%-- Static rows — replace with <c:forEach items="${users}" var="user"> when dynamic --%>
+                     
 
                         <tr>
                             <td class="col-check">
@@ -522,14 +520,14 @@
                             </td>
                         </tr>
 
-                        <%-- End static rows --%>
+                      
                     </tbody>
                 </table>
 
                 <!-- Pagination -->
                 <div class="pagination-row">
-                    <%-- Replace with dynamic: Showing ${startEntry} to ${endEntry} of ${totalUsers} users --%>
-                    <span class="pagination-info">Showing 1 to 6 of 8,901 users</span>
+                   
+                    <span class="pagination-info">Showing 1 to 6 of 100 users</span>
                     <div class="pagination-controls">
                         <button class="page-btn prev-next" type="button" aria-label="Previous page">Previous</button>
                         <button class="page-btn active" type="button" aria-current="page">1</button>
@@ -543,8 +541,8 @@
             </div>
 
         </main>
-    </div><!-- /.main-area -->
-</div><!-- /.admin-shell -->
+    </div>
+</div>
 
 <script>
     /* -------------------------------------------------------
