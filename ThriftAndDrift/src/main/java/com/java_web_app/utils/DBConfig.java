@@ -8,7 +8,7 @@ public class DBConfig {
 
     private static final String DB_URL  = "jdbc:mysql://localhost:3306/thriftanddrift";
     private static final String DB_USER = "root";
-    private static final String DB_PASS = "yourpassword";
+    private static final String DB_PASS = "";
 
     public static Connection getConnection() throws SQLException {
         try {

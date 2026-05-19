@@ -517,7 +517,7 @@
     behind your wardrobe.
 </div>
     <div class="newsletter-form">
-        <form method="post" action="${pageContext.request.contextPath}/WishlistServlet">
+        <form method="post" action="${pageContext.request.contextPath}/NewsletterServlet">
             <div class="newsletter-input-wrap">
                 <span>&#9993;</span>
                 <input type="email" name="email" placeholder="Enter your email address" required>

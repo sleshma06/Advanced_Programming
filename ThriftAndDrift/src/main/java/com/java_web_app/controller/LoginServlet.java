@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
                     + "&adminName=" + (adminName != null ? adminName : ""));
             return;
         }
-        request.getRequestDispatcher("/pages/user/login.jsp").forward(request, response);
+        request.getRequestDispatcher("webapp/pages/user/login.jsp").forward(request, response);
     }
 
     @Override
