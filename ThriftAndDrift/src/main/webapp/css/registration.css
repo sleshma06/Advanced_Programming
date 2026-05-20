@@ -72,6 +72,17 @@ body {
     letter-spacing: -0.5px;
 }
 
+.error-message {
+    background: #fde8e8;
+    border: 1px solid #f4b4b4;
+    border-radius: 8px;
+    color: #9b1010;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+}
+
 /* Home link */
 .back-home {
     display: inline-flex;

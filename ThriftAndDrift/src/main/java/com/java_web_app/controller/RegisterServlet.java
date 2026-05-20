@@ -15,7 +15,9 @@ import java.sql.SQLException;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private UserDAO userDAO;
+
+    private UserDAO userDAO = new UserDAO();
+
 
     @Override
     public void init() {
@@ -39,23 +41,20 @@ public class RegisterServlet extends HttpServlet {
         request.setAttribute("email", email);
         request.setAttribute("username", username);
 
+
         if (isBlank(email) || isBlank(username) || isBlank(password) || isBlank(confirmPassword)) {
             request.setAttribute("error", "Please fill in all fields.");
             doGet(request, response);
             return;
         }
 
-        if (!password.equals(confirmPassword)) {
-            request.setAttribute("error", "Passwords do not match.");
-            doGet(request, response);
-            return;
-        }
 
         if (password.length() < 6) {
             request.setAttribute("error", "Password must be at least 6 characters.");
             doGet(request, response);
             return;
         }
+
 
         try {
             if (userDAO.getUserByEmail(email.trim()) != null) {
@@ -65,21 +64,29 @@ public class RegisterServlet extends HttpServlet {
             }
 
             UserModel user = new UserModel();
+
             user.setName(username.trim());
             user.setEmail(email.trim());
+
             user.setPassword(PasswordUtil.hashPassword(password));
             user.setRole("user");
 
             if (userDAO.registerUser(user)) {
-                request.setAttribute("success", "Account created successfully. Please log in.");
-                request.getRequestDispatcher("/pages/user/login.jsp").forward(request, response);
+
+                response.sendRedirect(request.getContextPath() + "/LoginServlet?registered=true");
             } else {
-                request.setAttribute("error", "Registration failed. Please try again.");
+                request.setAttribute("error", "Could not create account. Please try again.");
+
+                request.setAttribute("success", "Account created successfully. Please log in.");
+         
                 doGet(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
+
+
             request.setAttribute("error", "Database error: " + e.getMessage());
+
             doGet(request, response);
         }
     }

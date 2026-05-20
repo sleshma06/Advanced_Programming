@@ -36,10 +36,14 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpServletResponse httpResp = (HttpServletResponse) response;
 
+
+       
+
         if (SessionUtil.isLoggedIn(httpReq) || SessionUtil.isAdminLoggedIn(httpReq)) {
             httpResp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             httpResp.setHeader("Pragma", "no-cache");
             httpResp.setDateHeader("Expires", 0);
+
             chain.doFilter(request, response);
             return;
         }

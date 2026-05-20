@@ -96,8 +96,13 @@
                 </div>
 
                 <div class="field-group">
+
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="price" placeholder="Rs 0.00">
+
                     <label for="price">Your Estimated Price</label>
                     <input type="text" id="price" name="price" placeholder="Rs.  0.00">
+
                 </div>
 
                 <div class="field-group">

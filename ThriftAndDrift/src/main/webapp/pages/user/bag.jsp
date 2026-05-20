@@ -48,7 +48,7 @@
                         <div class="item-note">Sold by: <strong>Thrift&amp;Drift Store</strong></div>
                         <div class="item-note">Fulfillment: <strong>Delivery or In-store Pickup</strong></div>
                     </div>
-                    <strong class="item-price">Rs. 2,499</strong>
+                    <strong class="item-price">Rs 2,499</strong>
                     <button type="button" class="remove-link">Remove</button>
                 </article>
 
@@ -60,7 +60,7 @@
                         <div class="item-note">Sold by: <strong>Thrift&amp;Drift Store</strong></div>
                         <div class="item-note">Fulfillment: <strong>Delivery or In-store Pickup</strong></div>
                     </div>
-                    <strong class="item-price">Rs. 1,899</strong>
+                    <strong class="item-price">Rs 1,899</strong>
                     <button type="button" class="remove-link">Remove</button>
                 </article>
             </div>
@@ -81,12 +81,12 @@
 
                 <div class="summary-row">
                     <span>Subtotal</span>
-                    <strong>Rs. 4,398</strong>
+                    <strong>Rs 4,398</strong>
                 </div>
 
                 <div class="summary-row">
                     <span>Platform Fee</span>
-                    <strong>Rs. 50</strong>
+                    <strong>Rs 50</strong>
                 </div>
 
                 <label for="promoCode">Promo Code</label>
@@ -97,7 +97,7 @@
 
                 <div class="total-row">
                     <span>Total</span>
-                    <strong>Rs. 4,448</strong>
+                    <strong>Rs 4,448</strong>
                 </div>
 
                 <a href="${pageContext.request.contextPath}/CheckoutServlet" class="checkout-button">

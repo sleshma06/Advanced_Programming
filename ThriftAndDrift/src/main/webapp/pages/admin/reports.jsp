@@ -34,6 +34,50 @@
                 <p class="error-message">${error}</p>
             </c:if>
 
+
+            <!-- ===== KPI STAT CARDS ===== -->
+            <div class="stats-grid">
+
+                <!-- Total Revenue -->
+                <div class="stat-card">
+                    <div class="stat-label">Total Revenue</div>
+                
+                    <div class="stat-value">Rs 16,558,500</div>
+                    <div class="stat-delta">
+                        <span class="delta-up">+12%</span> vs last month
+                    </div>
+                </div>
+
+                <!-- Most Popular Category -->
+                <div class="stat-card">
+                    <div class="stat-label">Most Popular Category</div>
+               
+                    <div class="stat-value big-text">Vintage Outerwear</div>
+                    <div class="stat-delta">
+                        <span class="delta-trend">Trending</span> vs last month
+                    </div>
+                </div>
+
+                <!-- Avg. Selling Price -->
+                <div class="stat-card">
+                    <div class="stat-label">Avg. Selling Price</div>
+                
+                    <div class="stat-value">Rs 6,450</div>
+                    <div class="stat-delta">
+                        <span class="delta-down">-2%</span> vs last month
+                    </div>
+                </div>
+
+                <!-- Return Rate -->
+                <div class="stat-card">
+                    <div class="stat-label">Return Rate</div>
+                  
+                    <div class="stat-value">2.4%</div>
+                    <div class="stat-delta">
+                        <span class="delta-down">-0.5%</span> vs last month
+                    </div>
+                </div>
+
             <div class="table-card">
                 <table class="data-table">
                     <thead>
@@ -72,6 +116,7 @@
                             </td>
                         </tr>
                     </c:forEach>
+
 
                     <c:if test="${empty orders}">
                         <tr>

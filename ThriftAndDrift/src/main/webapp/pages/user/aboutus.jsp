@@ -196,7 +196,7 @@
                 <span class="tl-dot"></span>
                 <p class="tl-year">2019</p>
                 <h3 class="tl-title">The Flea Market Epiphany</h3>
-                <p class="tl-text">Aria sells 40 pieces of her wardrobe at a local flea market and makes Rs.&nbsp;18,000 in a single afternoon. The idea for Thrift&amp;Drift is born on the drive home.</p>
+                <p class="tl-text">Aria sells 40 pieces of her wardrobe at a local flea market and makes Rs&nbsp;18,000 in a single afternoon. The idea for Thrift&amp;Drift is born on the drive home.</p>
             </div>
             <div class="tl-item">
                 <span class="tl-dot"></span>
@@ -336,7 +336,7 @@
         <h2 class="section-title">Ready to start<br>your drift?</h2>
     </div>
     <div class="cta-btns">
-        <a href="shop.html?filter=new" class="btn-dark">Shop New Arrivals</a>
+        <a href="${pageContext.request.contextPath}/ShopServlet#shop-products" class="btn-dark">Shop New Arrivals</a>
         <a href="sell.html"            class="btn-outline">Sell With Us</a>
     </div>
 </section>

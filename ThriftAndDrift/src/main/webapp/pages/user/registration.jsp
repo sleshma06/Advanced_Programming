@@ -15,12 +15,19 @@
         
             <div class="form-panel">
                 <div class="form-content">
+
                     <a href="${pageContext.request.contextPath}/HomeServlet" class="back-home">
+
                         <span>&#8592;</span> Go back to home page
                     </a>
                     
                     <h1 class="page-title">Create account</h1>
+
+                    <c:if test="${not empty error}">
+                        <div class="error-message">${error}</div>
+                    </c:if>
                     
+
                     <c:if test="${not empty error}">
                         <div class="error-message">${error}</div>
                     </c:if>
@@ -32,6 +39,7 @@
                         
                         <div class="input-group">
                             <input type="text" name="username" placeholder="Username" value="${username}" required>
+
                         </div>
                         
                         <div class="input-group">
@@ -47,7 +55,7 @@
                 </div>
                 
                 <div class="logo-container">
-                    <span class="logo-text">THRIFT&DRIFT</span>
+                    <span class="logo-text">THRIFT&amp;DRIFT</span>
                 </div>
             </div>
             
