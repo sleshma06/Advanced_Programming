@@ -14,4 +14,7 @@ body { margin: 0; background: #f7f3ee; color: #151515; font-family: Arial, sans-
 .profile-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .profile-form input { min-height: 44px; border: 1px solid #ddd; padding: 0 14px; }
 .profile-form button { min-height: 48px; border: none; background: #d0021b; color: #fff; font-weight: 900; text-transform: uppercase; }
+.profile-message { grid-column: 1 / -1; padding: 10px 12px !important; margin: 0 0 14px !important; border-bottom: 0 !important; }
+.profile-message.success { background: #edf7ed; color: #1f6b2a; }
+.profile-message.error { background: #fff0f0; color: #b00020; }
 @media (max-width: 800px) { .profile-page, .profile-form, .payout-grid { grid-template-columns: 1fr; } }

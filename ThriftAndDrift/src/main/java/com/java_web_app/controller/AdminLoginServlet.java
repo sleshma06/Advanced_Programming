@@ -54,7 +54,7 @@ public class AdminLoginServlet extends HttpServlet {
             user = userDAO.getUserByEmailAndPassword(email.trim(), password);
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("error", "Database error. Please try again.");
+            request.setAttribute("error", "Database error: " + e.getMessage());
             request.setAttribute("email", email);
             request.getRequestDispatcher("/pages/admin/adminlogin.jsp").forward(request, response);
             return;

@@ -146,6 +146,7 @@
                         </a>
                         <form method="post" action="${pageContext.request.contextPath}/WishlistServlet">
                             <input type="hidden" name="productId" value="${product.id}">
+                            <input type="hidden" name="returnUrl" value="${currentShopUrl}">
                             <button type="submit" class="wishlist-btn" title="Add to Wishlist">&#9734;</button>
                         </form>
                     </div>

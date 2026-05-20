@@ -9,6 +9,7 @@ public class ProductModel {
     private double price;
     private String status;
     private String imageUrl;
+    private String description;
 
     public int getId() {
         return id;
@@ -72,5 +73,13 @@ public class ProductModel {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

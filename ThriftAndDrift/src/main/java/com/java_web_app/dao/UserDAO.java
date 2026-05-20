@@ -47,13 +47,14 @@ public class UserDAO {
 
     // Update user profile
     public boolean updateUser(UserModel user) throws SQLException {
-        String sql = "UPDATE users SET name = ?, email = ?, password = ? WHERE user_id = ?";
+        String sql = "UPDATE users SET name = ?, email = ?, password = ?, role = ? WHERE user_id = ?";
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getPassword());
-            stmt.setInt(4, user.getId());
+            stmt.setString(4, user.getRole());
+            stmt.setInt(5, user.getId());
             return stmt.executeUpdate() > 0;
         }
     }

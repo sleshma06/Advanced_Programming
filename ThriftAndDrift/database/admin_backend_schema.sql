@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS seller_submissions (
 
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
     name VARCHAR(150) NOT NULL,
     category VARCHAR(100),
     item_condition VARCHAR(50),
@@ -41,6 +42,14 @@ CREATE TABLE IF NOT EXISTS orders (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS wishlist (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_user_product (user_id, product_id)
+);
+
 CREATE TABLE IF NOT EXISTS admin_actions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     admin_id INT NOT NULL,
@@ -51,6 +60,7 @@ CREATE TABLE IF NOT EXISTS admin_actions (
 );
 
 -- If your tables already existed, run these only if a column is missing.
+-- ALTER TABLE products ADD COLUMN user_id INT NOT NULL;
 -- ALTER TABLE products ADD COLUMN item_condition VARCHAR(50);
 -- ALTER TABLE products ADD COLUMN image_url VARCHAR(255);
 -- ALTER TABLE products ADD COLUMN submission_id INT;

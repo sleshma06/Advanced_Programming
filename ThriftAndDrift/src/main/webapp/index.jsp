@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,11 +24,11 @@
 <nav class="navbar">
     <ul class="nav-links">
 
-    
+    <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
+ 
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
 
-        <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
- 
+        
 
         <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
         <li><a href="#">Contact</a></li>
@@ -93,29 +94,21 @@
     </div>
 
     <div class="products-grid">
-        <div class="product-card">
-            <span class="product-badge">New In</span>
-            <img class="product-card-img" src="${pageContext.request.contextPath}/images/c4.jfif" alt="Brown skirt">
-            <div class="product-name">Brown Skirt</div>
-            <span class="product-price">Rs 450</span>
-            <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-add-cart">ADD NOW</a>
-        </div>
+        <c:forEach var="product" items="${newInProducts}">
+            <div class="product-card">
+                <span class="product-badge">New In</span>
+                <a href="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}">
+                    <img class="product-card-img" src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
+                </a>
+                <div class="product-name">${product.name}</div>
+                <span class="product-price">Rs ${product.price}</span>
+                <a href="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}" class="btn-add-cart">VIEW NOW</a>
+            </div>
+        </c:forEach>
 
-        <div class="product-card">
-            <span class="product-badge">New In</span>
-            <img class="product-card-img" src="${pageContext.request.contextPath}/images/c3.jfif" alt="Short jean skirt">
-            <div class="product-name">Short Jean Skirt</div>
-            <span class="product-price">Rs 290</span>
-            <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-add-cart">ADD NOW</a>
-        </div>
-
-        <div class="product-card">
-            <span class="product-badge">New In</span>
-            <img class="product-card-img" src="${pageContext.request.contextPath}/images/denim.jpg" alt="Denim jacket">
-            <div class="product-name">Vintage Denim Jacket</div>
-            <span class="product-price">Rs 780</span>
-            <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-add-cart">ADD NOW</a>
-        </div>
+        <c:if test="${empty newInProducts}">
+            <p>No new products are listed yet.</p>
+        </c:if>
     </div>
 
     <div class="view-more-link">

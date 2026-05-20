@@ -62,7 +62,9 @@ public class ProductDetailServlet extends HttpServlet {
         details.put("condition", product.getCondition());
         details.put("size", product.getSize());
         details.put("rating", catalogProduct != null ? catalogProduct.get("rating") : "Store inspected");
-        details.put("description", catalogProduct != null
+        details.put("description", product.getDescription() != null && !product.getDescription().isBlank()
+                ? product.getDescription()
+                : catalogProduct != null
                 ? catalogProduct.get("description")
                 : "A listed Thrift&Drift item inspected by the store and ready for a second life.");
         return details;

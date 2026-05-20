@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import java.sql.SQLException;
 
@@ -47,20 +46,10 @@ public class ShopServlet extends HttpServlet {
         if (minPrice > maxPrice) {
             int tmp = minPrice; minPrice = maxPrice; maxPrice = tmp;
         }
-        final int selectedMinPrice = minPrice;
-        final int selectedMaxPrice = maxPrice;
-
         try {
             List<ProductModel> allProducts = productDAO.getListedProducts();
-            List<ProductModel> filteredProducts = allProducts.stream()
-                .filter(p -> matches(category, p.getCategory()))
-                .filter(p -> matches(size, p.getSize()))
-                .filter(p -> matches(condition, p.getCondition()))
-                .filter(p -> p.getPrice() >= selectedMinPrice && p.getPrice() <= selectedMaxPrice)
-                .filter(p -> query == null || query.isBlank()
-                        || p.getName().toLowerCase().contains(query.toLowerCase())
-                        || (p.getCategory() != null && p.getCategory().toLowerCase().contains(query.toLowerCase())))
-                .collect(Collectors.toList());
+            List<ProductModel> filteredProducts = productDAO.searchListedProducts(
+                    category, size, condition, minPrice, maxPrice, query);
 
             request.setAttribute("products", filteredProducts);
             request.setAttribute("categories", categories(allProducts));
@@ -82,6 +71,7 @@ public class ShopServlet extends HttpServlet {
         request.setAttribute("selMinPrice", minPrice);
         request.setAttribute("selMaxPrice", maxPrice);
         request.setAttribute("searchQuery", query);
+        request.setAttribute("currentShopUrl", currentUrl(request));
 
         request.getRequestDispatcher("/pages/user/shop.jsp").forward(request, response);
     }
@@ -99,9 +89,13 @@ public class ShopServlet extends HttpServlet {
         catch (NumberFormatException e) { return fallback; }
     }
 
-    private boolean matches(String selectedValue, String productValue) {
-        return selectedValue == null || selectedValue.isBlank()
-                || (productValue != null && productValue.equalsIgnoreCase(selectedValue));
+    private String currentUrl(HttpServletRequest request) {
+        String url = request.getContextPath() + "/ShopServlet";
+        String query = request.getQueryString();
+        if (query != null && !query.isBlank()) {
+            url += "?" + query;
+        }
+        return url;
     }
 
     private List<Map<String, String>> categories(List<ProductModel> products) {
