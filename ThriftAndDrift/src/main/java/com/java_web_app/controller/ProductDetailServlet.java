@@ -52,7 +52,7 @@ public class ProductDetailServlet extends HttpServlet {
 
     private Map<String, String> detailProduct(ProductModel product) {
         Map<String, String> details = new LinkedHashMap<>();
-        Map<String, String> catalogProduct = ProductCatalog.findByName(product.getName());
+        Map<String, String> catalogProduct = ProductCatalogServlet.findByName(product.getName());
 
         details.put("id", String.valueOf(product.getId()));
         details.put("name", product.getName());

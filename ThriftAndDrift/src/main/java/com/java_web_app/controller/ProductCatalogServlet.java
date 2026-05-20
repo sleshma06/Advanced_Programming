@@ -5,8 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-final class ProductCatalog {
-    private ProductCatalog() {
+final class ProductCatalogServlet {
+    private ProductCatalogServlet() {
     }
 
     static List<Map<String, String>> products() {
