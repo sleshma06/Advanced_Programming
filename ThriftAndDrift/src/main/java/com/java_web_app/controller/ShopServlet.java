@@ -41,7 +41,7 @@ public class ShopServlet extends HttpServlet {
         final String maxP      = request.getParameter("maxPrice");
         final String query     = request.getParameter("q");
 
-        int minPrice = parsePrice(minP, 99);
+        int minPrice = parsePrice(minP, 0);
         int maxPrice = parsePrice(maxP, 10000);
         if (minPrice > maxPrice) {
             int tmp = minPrice; minPrice = maxPrice; maxPrice = tmp;

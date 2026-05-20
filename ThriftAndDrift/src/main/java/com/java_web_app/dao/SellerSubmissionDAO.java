@@ -12,8 +12,8 @@ public class SellerSubmissionDAO {
     public boolean addSubmission(SellerSubmissionModel submission) throws SQLException {
         String sql = "INSERT INTO seller_submissions "
                 + "(user_id, item_name, category, item_condition, size, estimated_price, "
-                + "dropoff_date, dropoff_time_slot, payout_info, status) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                + "dropoff_date, dropoff_time_slot, payout_info, image, status) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -26,7 +26,8 @@ public class SellerSubmissionDAO {
             stmt.setString(7, emptyToNull(submission.getDropoffDate()));
             stmt.setString(8, submission.getDropoffTimeSlot());
             stmt.setString(9, submission.getPayoutInfo());
-            stmt.setString(10, "Submitted");
+            stmt.setString(10, emptyToNull(submission.getImageUrl()));
+            stmt.setString(11, "Submitted");
             return stmt.executeUpdate() > 0;
         }
     }
