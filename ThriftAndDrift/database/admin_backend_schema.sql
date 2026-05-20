@@ -61,6 +61,12 @@ CREATE TABLE IF NOT EXISTS admin_actions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- If your tables already existed, run these only if a column is missing.
 -- ALTER TABLE products CHANGE id product_id INT AUTO_INCREMENT;
 -- ALTER TABLE products ADD COLUMN user_id INT NOT NULL;

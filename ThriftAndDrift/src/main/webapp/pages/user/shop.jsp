@@ -178,7 +178,7 @@
     </main>
 </div>
 
-<section class="newsletter-banner">
+<section class="newsletter-banner" id="newsletter">
 
     <div class="newsletter-text">
         <span>
