@@ -120,19 +120,7 @@
                 </label>
             </c:forEach>
 
-            <div class="filter-item"><span>Tops</span><span>&#8250;</span></div>
-            <div class="filter-item"><span>Skirts</span><span>&#8250;</span></div>
-            <div class="filter-item"><span>Outerwear</span><span>&#8250;</span></div>
-            <div class="filter-item"><span>Pants</span><span>&#8250;</span></div>
-        </div>
-
-        <div class="filter-section">
-            <div class="filter-section-title"><span>Condition</span><span>&#8743;</span></div>
-            <div class="filter-item"><span>Like New</span><span>&#8250;</span></div>
-            <div class="filter-item"><span>Good</span><span>&#8250;</span></div>
-            <div class="filter-item"><span>Fair</span><span>&#8250;</span></div>
-
-        </div>
+        
 
         <div class="filter-section">
             <div class="filter-section-title"><span>Style</span></div>
