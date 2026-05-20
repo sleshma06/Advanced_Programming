@@ -37,7 +37,13 @@ public class ProductDetailServlet extends HttpServlet {
         try {
             ProductModel product = productDAO.getListedProductById(productId);
             if (product == null) {
-                response.sendRedirect(request.getContextPath() + "/ShopServlet");
+                Map<String, String> catalogProduct = ProductCatalogServlet.findById(String.valueOf(productId));
+                if (catalogProduct == null) {
+                    response.sendRedirect(request.getContextPath() + "/ShopServlet");
+                    return;
+                }
+                request.setAttribute("product", detailProduct(catalogProduct));
+                request.getRequestDispatcher("/pages/user/productdetail.jsp").forward(request, response);
                 return;
             }
 
@@ -45,7 +51,12 @@ public class ProductDetailServlet extends HttpServlet {
             request.getRequestDispatcher("/pages/user/productdetail.jsp").forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("error", "Could not load product details.");
+            Map<String, String> catalogProduct = ProductCatalogServlet.findById(String.valueOf(productId));
+            if (catalogProduct != null) {
+                request.setAttribute("product", detailProduct(catalogProduct));
+            } else {
+                request.setAttribute("error", "Could not load product details.");
+            }
             request.getRequestDispatcher("/pages/user/productdetail.jsp").forward(request, response);
         }
     }
@@ -67,6 +78,20 @@ public class ProductDetailServlet extends HttpServlet {
                 : catalogProduct != null
                 ? catalogProduct.get("description")
                 : "A listed Thrift&Drift item inspected by the store and ready for a second life.");
+        return details;
+    }
+
+    private Map<String, String> detailProduct(Map<String, String> product) {
+        Map<String, String> details = new LinkedHashMap<>();
+        details.put("id", product.get("id"));
+        details.put("name", product.get("name"));
+        details.put("category", product.get("category"));
+        details.put("price", product.get("price"));
+        details.put("imageUrl", "images/" + product.get("image"));
+        details.put("condition", product.get("condition"));
+        details.put("size", product.get("size"));
+        details.put("rating", product.get("rating"));
+        details.put("description", product.get("description"));
         return details;
     }
 

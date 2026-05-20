@@ -101,8 +101,8 @@ public class AdminDAO {
         }
 
         String insertProduct = "INSERT INTO products "
-                + "(user_id, name, price, size, category, description, condition_rating, image, status) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'available')";
+                + "(user_id, name, price, size, category, description, condition_rating, image, status, submission_id) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'available', ?)";
         String updateSubmission = "UPDATE seller_submissions SET status = 'Listed' WHERE id = ?";
 
         try (Connection conn = DBConfig.getConnection()) {
@@ -119,6 +119,7 @@ public class AdminDAO {
                 productStmt.setString(6, "Listed from seller submission #" + submission.getId());
                 productStmt.setInt(7, conditionToRating(submission.getCondition()));
                 productStmt.setString(8, "images/c1.jfif");
+                productStmt.setInt(9, submission.getId());
                 productStmt.executeUpdate();
 
                 submissionStmt.setInt(1, id);

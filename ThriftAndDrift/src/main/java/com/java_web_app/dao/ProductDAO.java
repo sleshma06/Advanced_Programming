@@ -14,7 +14,7 @@ public class ProductDAO {
 
     public List<ProductModel> getListedProducts() throws SQLException {
         List<ProductModel> products = new ArrayList<>();
-        String sql = "SELECT * FROM products WHERE status = 'available' ORDER BY product_id DESC";
+        String sql = "SELECT * FROM products WHERE status IN ('available', 'Listed') ORDER BY product_id DESC";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -31,7 +31,7 @@ public class ProductDAO {
             int minPrice, int maxPrice, String keyword) throws SQLException {
         List<ProductModel> products = new ArrayList<>();
         String sql = "SELECT * FROM products "
-                + "WHERE status = 'available' "
+                + "WHERE status IN ('available', 'Listed') "
                 + "AND (? IS NULL OR category = ?) "
                 + "AND (? IS NULL OR size = ?) "
                 + "AND (? IS NULL OR condition_rating = ?) "
@@ -74,7 +74,7 @@ public class ProductDAO {
     }
 
     public ProductModel getListedProductById(int id) throws SQLException {
-        String sql = "SELECT * FROM products WHERE product_id = ? AND status = 'available'";
+        String sql = "SELECT * FROM products WHERE product_id = ? AND status IN ('available', 'Listed')";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

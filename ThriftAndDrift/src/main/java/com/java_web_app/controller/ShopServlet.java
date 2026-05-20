@@ -50,16 +50,22 @@ public class ShopServlet extends HttpServlet {
             List<ProductModel> allProducts = productDAO.getListedProducts();
             List<ProductModel> filteredProducts = productDAO.searchListedProducts(
                     category, size, condition, minPrice, maxPrice, query);
+            if (allProducts.isEmpty()) {
+                allProducts = catalogProducts();
+                filteredProducts = filterProducts(allProducts, category, size, condition, minPrice, maxPrice, query);
+            }
 
             request.setAttribute("products", filteredProducts);
             request.setAttribute("categories", categories(allProducts));
             request.setAttribute("productCount", filteredProducts.size());
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("error", "Could not load products from database.");
-            request.setAttribute("products", List.of());
-            request.setAttribute("categories", List.of());
-            request.setAttribute("productCount", 0);
+            List<ProductModel> allProducts = catalogProducts();
+            List<ProductModel> filteredProducts = filterProducts(allProducts, category, size, condition,
+                    minPrice, maxPrice, query);
+            request.setAttribute("products", filteredProducts);
+            request.setAttribute("categories", categories(allProducts));
+            request.setAttribute("productCount", filteredProducts.size());
         }
 
         request.setAttribute("sizes", List.of("S", "M", "L", "XL"));
@@ -96,6 +102,71 @@ public class ShopServlet extends HttpServlet {
             url += "?" + query;
         }
         return url;
+    }
+
+    private List<ProductModel> catalogProducts() {
+        List<ProductModel> products = new ArrayList<>();
+        for (Map<String, String> catalogProduct : ProductCatalogServlet.products()) {
+            ProductModel product = new ProductModel();
+            product.setId(Integer.parseInt(catalogProduct.get("id")));
+            product.setName(catalogProduct.get("name"));
+            product.setCategory(catalogProduct.get("category"));
+            product.setCondition(catalogProduct.get("condition"));
+            product.setSize(catalogProduct.get("size"));
+            product.setPrice(Double.parseDouble(catalogProduct.get("price")));
+            product.setStatus("available");
+            product.setImageUrl("images/" + catalogProduct.get("image"));
+            product.setDescription(catalogProduct.get("description"));
+            products.add(product);
+        }
+        return products;
+    }
+
+    private List<ProductModel> filterProducts(List<ProductModel> products, String category, String size,
+            String condition, int minPrice, int maxPrice, String query) {
+        String cleanCategory = emptyToNull(category);
+        String cleanSize = emptyToNull(size);
+        String cleanCondition = emptyToNull(condition);
+        String cleanQuery = emptyToNull(query);
+        List<ProductModel> filteredProducts = new ArrayList<>();
+
+        for (ProductModel product : products) {
+            if (cleanCategory != null && !cleanCategory.equals(product.getCategory())) {
+                continue;
+            }
+            if (cleanSize != null && !cleanSize.equals(product.getSize())) {
+                continue;
+            }
+            if (cleanCondition != null && !cleanCondition.equalsIgnoreCase(product.getCondition())) {
+                continue;
+            }
+            if (product.getPrice() < minPrice || product.getPrice() > maxPrice) {
+                continue;
+            }
+            if (cleanQuery != null && !matchesSearch(product, cleanQuery)) {
+                continue;
+            }
+            filteredProducts.add(product);
+        }
+        return filteredProducts;
+    }
+
+    private boolean matchesSearch(ProductModel product, String query) {
+        String lowerQuery = query.toLowerCase();
+        return contains(product.getName(), lowerQuery)
+                || contains(product.getCategory(), lowerQuery)
+                || contains(product.getDescription(), lowerQuery);
+    }
+
+    private boolean contains(String value, String query) {
+        return value != null && value.toLowerCase().contains(query);
+    }
+
+    private String emptyToNull(String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return null;
+        }
+        return value.trim();
     }
 
     private List<Map<String, String>> categories(List<ProductModel> products) {
