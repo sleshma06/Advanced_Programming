@@ -105,6 +105,7 @@
                 <li><a href="#">FAQ</a></li>
                 <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">Terms &amp; Conditions</a></li>
+                <li><a href="#">Shipping &amp; Returns</a></li>
             </ul>
         </div>
     </div>
