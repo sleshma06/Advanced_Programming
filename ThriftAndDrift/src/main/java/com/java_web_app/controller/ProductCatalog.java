@@ -124,6 +124,19 @@ final class ProductCatalog {
         return null;
     }
 
+    static Map<String, String> findByName(String name) {
+        if (name == null) {
+            return null;
+        }
+
+        for (Map<String, String> product : products()) {
+            if (name.equalsIgnoreCase(product.get("name"))) {
+                return product;
+            }
+        }
+        return null;
+    }
+
     private static Map<String, String> product(String id, String name, String category, String price, String image,
             String badge, String size, String condition, String rating, String description) {
         Map<String, String> product = new LinkedHashMap<>();

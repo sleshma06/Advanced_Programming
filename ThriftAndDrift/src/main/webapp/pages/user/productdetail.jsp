@@ -33,8 +33,8 @@
     <a class="back-link" href="${pageContext.request.contextPath}/ShopServlet">&larr; Back to shop</a>
     <section class="detail-card">
         <div class="detail-image">
-            <span class="product-badge">${product.badge}</span>
-            <img src="${pageContext.request.contextPath}/images/${product.image}" alt="${product.name}">
+            <span class="condition-chip">${product.condition}</span>
+            <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
         </div>
 
         <div class="detail-info">
