@@ -53,6 +53,7 @@ a {
     padding: 18px;
     position: sticky;
     top: 90px;
+    overflow: visible;
 }
 
 .filter-form {
@@ -209,9 +210,12 @@ a {
     font-size: 12px;
     font-weight: 700;
     justify-content: center;
-    margin-top: 12px;
+   
     min-height: 42px;
     text-decoration: none;
+     margin-top: 12px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 .btn-apply:hover {

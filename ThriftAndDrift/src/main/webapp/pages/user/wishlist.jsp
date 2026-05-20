@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +16,16 @@
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/pages/user/aboutus.jsp">About</a></li>
+        <li><a href="#footer">Contact</a></li>
     </ul>
 
     <div class="nav-right">
         <form class="nav-search" action="${pageContext.request.contextPath}/ShopServlet" method="get">
             <input class="nav-search-input" type="search" name="q" placeholder="Search products">
-            <button class="nav-search-button" type="submit" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></button>
+            <button class="nav-search-button" type="submit" title="Search">
+                <img src="${pageContext.request.contextPath}/images/search.png" alt="Search">
+            </button>
         </form>
         <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Wishlist"></a>
         <a href="${pageContext.request.contextPath}/BagServlet" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
@@ -32,117 +35,90 @@
 </nav>
 
 <main class="wishlist-page">
-    <div class="wishlist-alert">
-        <span>○</span>
-        <p>Heads up! Some items in your wishlist have recently sold.</p>
-    </div>
+    <c:if test="${not empty error}">
+        <div class="wishlist-alert">
+            <span>!</span>
+            <p>${error}</p>
+        </div>
+    </c:if>
+
+    <c:if test="${param.added eq 'true'}">
+        <div class="wishlist-alert">
+            <span>*</span>
+            <p>Item added to your wishlist.</p>
+        </div>
+    </c:if>
+
+    <c:if test="${param.exists eq 'true'}">
+        <div class="wishlist-alert">
+            <span>*</span>
+            <p>This item is already in your wishlist.</p>
+        </div>
+    </c:if>
+
+    <c:if test="${param.removed eq 'true'}">
+        <div class="wishlist-alert">
+            <span>*</span>
+            <p>Item removed from your wishlist.</p>
+        </div>
+    </c:if>
 
     <section class="wishlist-header">
         <div>
             <h1>Your Wishlist</h1>
-            <p>6 items saved</p>
+            <p>${wishlistCount} items saved</p>
         </div>
 
-        <button class="filter-button" type="button">
-            <span>☷</span>
-            Filter
-        </button>
+        <a class="filter-button" href="${pageContext.request.contextPath}/ShopServlet">
+            Browse Shop
+        </a>
     </section>
 
     <section class="wishlist-grid">
-        <article class="wishlist-card">
-            <div class="image-wrap">
-                <span class="status-pill">Good</span>
-                <button class="heart-button" type="button">☆</button>
-                <img src="${pageContext.request.contextPath}/images/denim.jpg" alt="Vintage Levi's 501 Original">
-            </div>
-            <div class="item-row">
-                <h2>Vintage Levi's 501 Original</h2>
-                <strong>Rs 2,499</strong>
-            </div>
-            <p class="item-meta">W32 L30 · Bottoms</p>
-            <button class="add-button" type="button">Add to Cart</button>
-            <button class="remove-button" type="button">♧ Remove</button>
-        </article>
+        <c:choose>
+            <c:when test="${empty wishlistProducts}">
+                <p>Your wishlist is empty. Browse the shop and save items you like.</p>
+            </c:when>
+            <c:otherwise>
+                <c:forEach var="product" items="${wishlistProducts}">
+                    <article class="wishlist-card">
+                        <div class="image-wrap">
+                            <span class="status-pill">${product.condition}</span>
+                            <form method="post" action="${pageContext.request.contextPath}/WishlistServlet">
+                                <input type="hidden" name="action" value="remove">
+                                <input type="hidden" name="productId" value="${product.id}">
+                                <button class="heart-button" type="submit" title="Remove from wishlist">&#9734;</button>
+                            </form>
+                            <img src="${pageContext.request.contextPath}/images/${product.image}" alt="${product.name}">
+                        </div>
 
-        <article class="wishlist-card">
-            <div class="image-wrap">
-                <span class="status-pill">Like New</span>
-                <button class="heart-button" type="button">☆</button>
-                <img src="${pageContext.request.contextPath}/images/c2.jfif" alt="Oversized college sweatshirt">
-            </div>
-            <div class="item-row">
-                <h2>Oversized Graphic College Sweatshirt</h2>
-                <strong>Rs 1,299</strong>
-            </div>
-            <p class="item-meta">One · Tops</p>
-            <button class="add-button" type="button">Add to Cart</button>
-            <button class="remove-button" type="button">♧ Remove</button>
-        </article>
+                        <div class="item-row">
+                            <h2>${product.name}</h2>
+                            <strong>Rs ${product.price}</strong>
+                        </div>
 
-        <article class="wishlist-card sold-card">
-            <div class="image-wrap">
-                <span class="status-pill sold-pill">Sold</span>
-                <button class="heart-button" type="button">☆</button>
-                <img src="${pageContext.request.contextPath}/images/gucci.jpg" alt="Leather shoulder bag">
-            </div>
-            <div class="item-row">
-                <h2>Y2K Leather Shoulder Bag</h2>
-                <strong><span>Rs 1,899</span></strong>
-            </div>
-            <p class="item-meta">One Size · Accessories</p>
-            <button class="add-button unavailable" type="button">Unavailable</button>
-            <button class="remove-button" type="button">♧ Remove</button>
-        </article>
+                        <p class="item-meta">${product.size} &middot; ${product.category}</p>
 
-        <article class="wishlist-card">
-            <div class="image-wrap">
-                <span class="status-pill">Good</span>
-                <button class="heart-button" type="button">☆</button>
-                <img src="${pageContext.request.contextPath}/images/c1.jfif" alt="Black boots">
-            </div>
-            <div class="item-row">
-                <h2>Doc Martens 1460 Boots</h2>
-                <strong>Rs 4,500</strong>
-            </div>
-            <p class="item-meta">UK 8 · Shoes</p>
-            <button class="add-button" type="button">Add to Cart</button>
-            <button class="remove-button" type="button">♧ Remove</button>
-        </article>
+                        <form method="post" action="${pageContext.request.contextPath}/BagServlet">
+                            <input type="hidden" name="productId" value="${product.id}">
+                            <input type="hidden" name="productName" value="${product.name}">
+                            <input type="hidden" name="productPrice" value="${product.price}">
+                            <button class="add-button" type="submit">Add to Cart</button>
+                        </form>
 
-        <article class="wishlist-card sold-card">
-            <div class="image-wrap">
-                <span class="status-pill sold-pill">Sold</span>
-                <button class="heart-button" type="button">☆</button>
-                <img src="${pageContext.request.contextPath}/images/PradaCoat.jpg" alt="Detroit jacket">
-            </div>
-            <div class="item-row">
-                <h2>Carhartt Detroit Jacket</h2>
-                <strong><span>Rs 5,999</span></strong>
-            </div>
-            <p class="item-meta">L · Outerwear</p>
-            <button class="add-button unavailable" type="button">Unavailable</button>
-            <button class="remove-button" type="button">♧ Remove</button>
-        </article>
-
-        <article class="wishlist-card">
-            <div class="image-wrap">
-                <span class="status-pill">Like New</span>
-                <button class="heart-button" type="button">☆</button>
-                <img src="${pageContext.request.contextPath}/images/polkadot.jpg" alt="Floral midi skirt">
-            </div>
-            <div class="item-row">
-                <h2>90s Floral Midi Skirt</h2>
-                <strong>Rs 899</strong>
-            </div>
-            <p class="item-meta">M · Bottoms</p>
-            <button class="add-button" type="button">Add to Cart</button>
-            <button class="remove-button" type="button">♧ Remove</button>
-        </article>
+                        <form method="post" action="${pageContext.request.contextPath}/WishlistServlet">
+                            <input type="hidden" name="action" value="remove">
+                            <input type="hidden" name="productId" value="${product.id}">
+                            <button class="remove-button" type="submit">Remove</button>
+                        </form>
+                    </article>
+                </c:forEach>
+            </c:otherwise>
+        </c:choose>
     </section>
 </main>
 
-<footer class="footer">
+<footer class="footer" id="footer">
     <div class="footer-top">
         <div class="footer-brand">
             <p>Islington College</p>
@@ -163,10 +139,10 @@
             <h4>Quick Links</h4>
             <ul>
                 <li><a href="${pageContext.request.contextPath}/SellerServlet">Sell</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Collections</a></li>
+                <li><a href="${pageContext.request.contextPath}/pages/user/aboutus.jsp">About Us</a></li>
+                <li><a href="${pageContext.request.contextPath}/ShopServlet">Collections</a></li>
                 <li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#footer">Contact</a></li>
             </ul>
         </div>
 
@@ -178,13 +154,6 @@
                 <li><a href="#">Terms &amp; Conditions</a></li>
                 <li><a href="#">Shipping &amp; Returns</a></li>
             </ul>
-        </div>
-
-        <div class="footer-col">
-            <div class="footer-logos">
-                <div class="footer-logo-box"></div>
-                <div class="footer-logo-box"></div>
-            </div>
         </div>
     </div>
 

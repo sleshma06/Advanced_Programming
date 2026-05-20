@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +15,8 @@
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/pages/user/aboutus.jsp">About</a></li>
+        <li><a href="#profile">Contact</a></li>
     </ul>
     <div class="nav-right">
         <form class="nav-search" action="${pageContext.request.contextPath}/ShopServlet" method="get">
@@ -61,13 +62,20 @@
 
         <div class="panel" id="profile">
             <h2>Edit Profile</h2>
-            <form class="profile-form">
-                <input type="file" name="photo">
-                <input type="text" name="name" placeholder="Full name">
-                <input type="email" name="email" placeholder="Email">
-                <input type="tel" name="phone" placeholder="Phone">
-                <input type="text" name="location" placeholder="Location">
-                <button type="button">Save Profile</button>
+
+            <c:if test="${not empty success}">
+                <p class="profile-message success">${success}</p>
+            </c:if>
+            <c:if test="${not empty error}">
+                <p class="profile-message error">${error}</p>
+            </c:if>
+
+            <form class="profile-form" method="post" action="${pageContext.request.contextPath}/ProfileServlet">
+                <input type="text" name="name" placeholder="Full name" value="${profileUser.name}" required>
+                <input type="email" name="email" placeholder="Email" value="${profileUser.email}" required>
+                <input type="password" name="newPassword" placeholder="New password optional">
+                <input type="password" name="confirmPassword" placeholder="Confirm new password">
+                <button type="submit">Save Profile</button>
             </form>
         </div>
     </section>
