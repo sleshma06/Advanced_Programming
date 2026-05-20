@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConfig {
 
-    private static final String DB_URL  = "jdbc:mysql://localhost:3306/thriftanddrift?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    private static final String DB_URL  = "jdbc:mysql://localhost:3307/thriftanddrift?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "";
 

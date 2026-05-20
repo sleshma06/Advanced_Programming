@@ -32,11 +32,11 @@ public class ProductDAO {
         product.setId(rs.getInt("id"));
         product.setName(rs.getString("name"));
         product.setCategory(rs.getString("category"));
-        product.setCondition(rs.getString("item_condition"));
+        product.setCondition("Inspected");
         product.setSize(rs.getString("size"));
         product.setPrice(rs.getDouble("price"));
         product.setStatus(rs.getString("status"));
-        product.setImageUrl(rs.getString("image_url"));
+        product.setImageUrl("images/c1.jfif");
         return product;
     }
 }
