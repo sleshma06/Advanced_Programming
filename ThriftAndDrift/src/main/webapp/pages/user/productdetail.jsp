@@ -71,6 +71,7 @@
                 </form>
                 <form method="post" action="${pageContext.request.contextPath}/WishlistServlet">
                     <input type="hidden" name="productId" value="${product.id}">
+                    <input type="hidden" name="returnUrl" value="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}">
                     <button type="submit" class="btn-detail-secondary">Add to Wishlist</button>
                 </form>
             </div>

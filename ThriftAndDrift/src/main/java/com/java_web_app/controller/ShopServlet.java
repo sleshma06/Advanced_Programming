@@ -71,6 +71,7 @@ public class ShopServlet extends HttpServlet {
         request.setAttribute("selMinPrice", minPrice);
         request.setAttribute("selMaxPrice", maxPrice);
         request.setAttribute("searchQuery", query);
+        request.setAttribute("currentShopUrl", currentUrl(request));
 
         request.getRequestDispatcher("/pages/user/shop.jsp").forward(request, response);
     }
@@ -86,6 +87,15 @@ public class ShopServlet extends HttpServlet {
         if (value == null || value.isBlank()) return fallback;
         try { return Integer.parseInt(value); }
         catch (NumberFormatException e) { return fallback; }
+    }
+
+    private String currentUrl(HttpServletRequest request) {
+        String url = request.getContextPath() + "/ShopServlet";
+        String query = request.getQueryString();
+        if (query != null && !query.isBlank()) {
+            url += "?" + query;
+        }
+        return url;
     }
 
     private List<Map<String, String>> categories(List<ProductModel> products) {

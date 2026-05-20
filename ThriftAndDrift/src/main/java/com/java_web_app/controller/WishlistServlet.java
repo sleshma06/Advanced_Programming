@@ -87,9 +87,9 @@ public class WishlistServlet extends HttpServlet {
             } else {
                 boolean added = wishlistDAO.addItem(user.getId(), productId);
                 if (added) {
-                    response.sendRedirect(request.getContextPath() + "/WishlistServlet?added=true");
+                    response.sendRedirect(getReturnUrl(request, "wishlistAdded=true"));
                 } else {
-                    response.sendRedirect(request.getContextPath() + "/WishlistServlet?exists=true");
+                    response.sendRedirect(getReturnUrl(request, "wishlistExists=true"));
                 }
             }
         } catch (SQLException e) {
@@ -105,5 +105,18 @@ public class WishlistServlet extends HttpServlet {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    private String getReturnUrl(HttpServletRequest request, String message) {
+        String returnUrl = request.getParameter("returnUrl");
+        if (returnUrl == null || returnUrl.trim().isEmpty()) {
+            returnUrl = request.getHeader("referer");
+        }
+        if (returnUrl == null || returnUrl.trim().isEmpty()) {
+            return request.getContextPath() + "/WishlistServlet?" + message;
+        }
+
+        String separator = returnUrl.contains("?") ? "&" : "?";
+        return returnUrl + separator + message;
     }
 }
