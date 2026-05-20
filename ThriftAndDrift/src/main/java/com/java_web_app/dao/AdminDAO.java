@@ -101,8 +101,8 @@ public class AdminDAO {
         }
 
         String insertProduct = "INSERT INTO products "
-                + "(name, category, size, price, status) "
-                + "VALUES (?, ?, ?, ?, 'Listed')";
+                + "(user_id, name, price, size, category, description, condition_rating, image, status) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'available')";
         String updateSubmission = "UPDATE seller_submissions SET status = 'Listed' WHERE id = ?";
 
         try (Connection conn = DBConfig.getConnection()) {
@@ -111,10 +111,14 @@ public class AdminDAO {
             try (PreparedStatement productStmt = conn.prepareStatement(insertProduct);
                  PreparedStatement submissionStmt = conn.prepareStatement(updateSubmission)) {
 
-                productStmt.setString(1, submission.getItemName());
-                productStmt.setString(2, submission.getCategory());
-                productStmt.setString(3, submission.getSize());
-                productStmt.setDouble(4, submission.getFinalPrice());
+                productStmt.setInt(1, submission.getUserId());
+                productStmt.setString(2, submission.getItemName());
+                productStmt.setDouble(3, submission.getFinalPrice());
+                productStmt.setString(4, submission.getSize());
+                productStmt.setString(5, submission.getCategory());
+                productStmt.setString(6, "Listed from seller submission #" + submission.getId());
+                productStmt.setInt(7, conditionToRating(submission.getCondition()));
+                productStmt.setString(8, "images/c1.jfif");
                 productStmt.executeUpdate();
 
                 submissionStmt.setInt(1, id);
@@ -221,5 +225,15 @@ public class AdminDAO {
         submission.setAdminNote(rs.getString("admin_note"));
         submission.setCreatedAt(rs.getString("created_at"));
         return submission;
+    }
+
+    private int conditionToRating(String condition) {
+        if ("Like New".equalsIgnoreCase(condition)) {
+            return 5;
+        }
+        if ("Good".equalsIgnoreCase(condition)) {
+            return 4;
+        }
+        return 3;
     }
 }

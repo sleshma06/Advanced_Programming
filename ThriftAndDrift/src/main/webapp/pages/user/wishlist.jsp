@@ -89,7 +89,7 @@
                                 <input type="hidden" name="productId" value="${product.id}">
                                 <button class="heart-button" type="submit" title="Remove from wishlist">&#9734;</button>
                             </form>
-                            <img src="${pageContext.request.contextPath}/images/${product.image}" alt="${product.name}">
+                            <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
                         </div>
 
                         <div class="item-row">

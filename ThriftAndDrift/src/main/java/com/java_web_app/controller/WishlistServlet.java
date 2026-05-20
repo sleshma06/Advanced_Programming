@@ -1,6 +1,8 @@
 package com.java_web_app.controller;
 
 import com.java_web_app.dao.WishlistDAO;
+import com.java_web_app.dao.ProductDAO;
+import com.java_web_app.model.ProductModel;
 import com.java_web_app.model.UserModel;
 import com.java_web_app.utils.SessionUtil;
 
@@ -13,16 +15,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @WebServlet("/WishlistServlet")
 public class WishlistServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private WishlistDAO wishlistDAO;
+    private ProductDAO productDAO;
 
     @Override
     public void init() {
         wishlistDAO = new WishlistDAO();
+        productDAO = new ProductDAO();
     }
 
     @Override
@@ -35,9 +38,9 @@ public class WishlistServlet extends HttpServlet {
         }
 
         try {
-            List<Map<String, String>> wishlistProducts = new ArrayList<>();
+            List<ProductModel> wishlistProducts = new ArrayList<>();
             for (int productId : wishlistDAO.getProductIdsByUser(user.getId())) {
-                Map<String, String> product = ProductCatalog.findById(String.valueOf(productId));
+                ProductModel product = productDAO.getListedProductById(productId);
                 if (product != null) {
                     wishlistProducts.add(product);
                 }
@@ -63,7 +66,13 @@ public class WishlistServlet extends HttpServlet {
         }
 
         int productId = getInt(request.getParameter("productId"));
-        if (productId <= 0 || ProductCatalog.findById(String.valueOf(productId)) == null) {
+        try {
+            if (productId <= 0 || productDAO.getListedProductById(productId) == null) {
+                request.setAttribute("error", "Product could not be found.");
+                doGet(request, response);
+                return;
+            }
+        } catch (SQLException e) {
             request.setAttribute("error", "Product could not be found.");
             doGet(request, response);
             return;
