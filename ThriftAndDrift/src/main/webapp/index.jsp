@@ -23,7 +23,7 @@
 <nav class="navbar">
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-        <li><a href="${pageContext.request.contextPath}/pages/user/shop.jsp">Shop</a></li>
+        <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
@@ -56,7 +56,7 @@
     <div class="hero-overlay">
         <h1>Wear Stories,<br>Not just Threads.</h1>
         <p>Drift Into What's Yours</p>
-        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="btn-primary">Shop Now</a>
+        <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-primary">Shop Now</a>
     </div>
 
     <div class="hero-badge">PRELOVED PIECES.<br>NEW ENERGY</div>
@@ -89,29 +89,29 @@
             <span class="product-badge">New In</span>
             <img class="product-card-img" src="${pageContext.request.contextPath}/images/c4.jfif" alt="Brown skirt">
             <div class="product-name">Brown Skirt</div>
-            <span class="product-price">Rs. 450</span>
-            <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="btn-add-cart">ADD NOW</a>
+            <span class="product-price">Rs 450</span>
+            <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-add-cart">ADD NOW</a>
         </div>
 
         <div class="product-card">
             <span class="product-badge">New In</span>
             <img class="product-card-img" src="${pageContext.request.contextPath}/images/c3.jfif" alt="Short jean skirt">
             <div class="product-name">Short Jean Skirt</div>
-            <span class="product-price">Rs. 290</span>
-            <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="btn-add-cart">ADD NOW</a>
+            <span class="product-price">Rs 290</span>
+            <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-add-cart">ADD NOW</a>
         </div>
 
         <div class="product-card">
             <span class="product-badge">New In</span>
             <img class="product-card-img" src="${pageContext.request.contextPath}/images/denim.jpg" alt="Denim jacket">
             <div class="product-name">Vintage Denim Jacket</div>
-            <span class="product-price">Rs. 780</span>
-            <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="btn-add-cart">ADD NOW</a>
+            <span class="product-price">Rs 780</span>
+            <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-add-cart">ADD NOW</a>
         </div>
     </div>
 
     <div class="view-more-link">
-        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp">FOR BETTER FINDS &rarr;</a>
+        <a href="${pageContext.request.contextPath}/ShopServlet">FOR BETTER FINDS &rarr;</a>
     </div>
 </section>
 
@@ -121,17 +121,17 @@
 <section class="designer-section">
     <h2 class="section-heading">Some Of Our Designer Finds</h2>
     <div class="designer-grid">
-        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="designer-card">
+        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
             <img src="${pageContext.request.contextPath}/images/PradaCoat.jpg" alt="Prada coat">
             <div class="designer-card-label">Prada Coat</div>
         </a>
 
-        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="designer-card">
+        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
             <img src="${pageContext.request.contextPath}/images/gucci.jpg" alt="Gucci bag">
             <div class="designer-card-label">Gucci Find</div>
         </a>
 
-        <a href="${pageContext.request.contextPath}/pages/user/shop.jsp" class="designer-card">
+        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
             <img src="${pageContext.request.contextPath}/images/DiorEmb.jpg" alt="Dior embroidered piece">
             <div class="designer-card-label">Dior Embroidery</div>
         </a>

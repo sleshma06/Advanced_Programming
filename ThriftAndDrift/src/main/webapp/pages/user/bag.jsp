@@ -45,7 +45,7 @@
                         <div class="item-note">Seller: <strong>@vintage_finds</strong></div>
                         <div class="item-note">Meetup: <strong>North Campus</strong></div>
                     </div>
-                    <strong class="item-price">Rs. 2,499</strong>
+                    <strong class="item-price">Rs 2,499</strong>
                     <button type="button" class="remove-link">Remove</button>
                 </article>
 
@@ -57,7 +57,7 @@
                         <div class="item-note">Seller: <strong>@thrift_queen</strong></div>
                         <div class="item-note">Meetup: <strong>South Block</strong></div>
                     </div>
-                    <strong class="item-price">Rs. 1,899</strong>
+                    <strong class="item-price">Rs 1,899</strong>
                     <button type="button" class="remove-link">Remove</button>
                 </article>
             </div>
@@ -78,12 +78,12 @@
 
                 <div class="summary-row">
                     <span>Subtotal</span>
-                    <strong>Rs. 4,398</strong>
+                    <strong>Rs 4,398</strong>
                 </div>
 
                 <div class="summary-row">
                     <span>Platform Fee</span>
-                    <strong>Rs. 50</strong>
+                    <strong>Rs 50</strong>
                 </div>
 
                 <label for="promoCode">Promo Code</label>
@@ -94,7 +94,7 @@
 
                 <div class="total-row">
                     <span>Total</span>
-                    <strong>Rs. 4,448</strong>
+                    <strong>Rs 4,448</strong>
                 </div>
 
                 <button type="button" class="checkout-button">

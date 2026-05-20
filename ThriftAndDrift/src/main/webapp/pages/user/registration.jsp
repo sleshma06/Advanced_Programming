@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,19 +15,23 @@
         
             <div class="form-panel">
                 <div class="form-content">
-                    <a href="index.html" class="back-home">
+                    <a href="${pageContext.request.contextPath}/index.jsp" class="back-home">
                         <span>&#8592;</span> Go back to home page
                     </a>
                     
                     <h1 class="page-title">Create account</h1>
+
+                    <c:if test="${not empty error}">
+                        <div class="error-message">${error}</div>
+                    </c:if>
                     
-                    <form action="register" method="post" class="registration-form">
+                    <form action="${pageContext.request.contextPath}/register" method="post" class="registration-form">
                         <div class="input-group">
-                            <input type="email" name="email" placeholder="Email address" required>
+                            <input type="email" name="email" placeholder="Email address" value="${param.email}" required>
                         </div>
                         
                         <div class="input-group">
-                            <input type="text" name="username" placeholder="Username" required>
+                            <input type="text" name="username" placeholder="Username" value="${param.username}" required>
                         </div>
                         
                         <div class="input-group">

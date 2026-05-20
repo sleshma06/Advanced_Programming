@@ -19,7 +19,6 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
         String path = httpReq.getRequestURI().substring(httpReq.getContextPath().length());
 
         if (path.equals("/pages/user/login.jsp")
-                || path.equals("/pages/user/register.jsp")
                 || path.equals("/pages/user/registration.jsp")
                 || path.equals("/pages/user/wishlist.jsp")
                 || path.equals("/pages/user/bag.jsp")) {

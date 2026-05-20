@@ -57,7 +57,7 @@
             </form>
 
             <div class="bottom-links">
-                <p>Dont have an account? <a href="${pageContext.request.contextPath}/pages/user/register.jsp">Create one</a></p>
+                <p>Dont have an account? <a href="${pageContext.request.contextPath}/pages/user/registration.jsp">Create one</a></p>
                 <a href="${pageContext.request.contextPath}/AdminLoginServlet" class="admin-link">Login as admin</a>
             </div>
         </div>

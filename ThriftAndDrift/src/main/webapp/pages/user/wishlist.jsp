@@ -55,7 +55,7 @@
             </div>
             <div class="item-row">
                 <h2>Vintage Levi's 501 Original</h2>
-                <strong>Rs. 2,499</strong>
+                <strong>Rs 2,499</strong>
             </div>
             <p class="item-meta">W32 L30 · Bottoms</p>
             <button class="add-button" type="button">Add to Bag</button>
@@ -70,7 +70,7 @@
             </div>
             <div class="item-row">
                 <h2>Oversized Graphic College Sweatshirt</h2>
-                <strong>Rs. 1,299</strong>
+                <strong>Rs 1,299</strong>
             </div>
             <p class="item-meta">One · Tops</p>
             <button class="add-button" type="button">Add to Bag</button>
@@ -85,7 +85,7 @@
             </div>
             <div class="item-row">
                 <h2>Y2K Leather Shoulder Bag</h2>
-                <strong><span>Rs. 1,899</span></strong>
+                <strong><span>Rs 1,899</span></strong>
             </div>
             <p class="item-meta">One Size · Accessories</p>
             <button class="add-button unavailable" type="button">Unavailable</button>
@@ -100,7 +100,7 @@
             </div>
             <div class="item-row">
                 <h2>Doc Martens 1460 Boots</h2>
-                <strong>Rs. 4,500</strong>
+                <strong>Rs 4,500</strong>
             </div>
             <p class="item-meta">UK 8 · Shoes</p>
             <button class="add-button" type="button">Add to Bag</button>
@@ -115,7 +115,7 @@
             </div>
             <div class="item-row">
                 <h2>Carhartt Detroit Jacket</h2>
-                <strong><span>Rs. 5,999</span></strong>
+                <strong><span>Rs 5,999</span></strong>
             </div>
             <p class="item-meta">L · Outerwear</p>
             <button class="add-button unavailable" type="button">Unavailable</button>
@@ -130,7 +130,7 @@
             </div>
             <div class="item-row">
                 <h2>90s Floral Midi Skirt</h2>
-                <strong>Rs. 899</strong>
+                <strong>Rs 899</strong>
             </div>
             <p class="item-meta">M · Bottoms</p>
             <button class="add-button" type="button">Add to Bag</button>

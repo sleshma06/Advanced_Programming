@@ -170,7 +170,7 @@
                 <div class="stat-card">
                     <div class="stat-label">Total Revenue</div>
                 
-                    <div class="stat-value">Rs. 16,558,500</div>
+                    <div class="stat-value">Rs 16,558,500</div>
                     <div class="stat-delta">
                         <span class="delta-up">+12%</span> vs last month
                     </div>
@@ -190,7 +190,7 @@
                 <div class="stat-card">
                     <div class="stat-label">Avg. Selling Price</div>
                 
-                    <div class="stat-value">Rs. 6,450</div>
+                    <div class="stat-value">Rs 6,450</div>
                     <div class="stat-delta">
                         <span class="delta-down">-2%</span> vs last month
                     </div>

@@ -12,7 +12,6 @@ import java.io.IOException;
         "/LoginServlet",
         "/register",
         "/pages/user/login.jsp",
-        "/pages/user/register.jsp",
         "/pages/user/registration.jsp"
 })
 public class GuestFilter extends HttpFilter implements Filter {
