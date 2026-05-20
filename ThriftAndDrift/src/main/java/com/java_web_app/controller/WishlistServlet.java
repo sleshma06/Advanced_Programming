@@ -31,7 +31,7 @@ public class WishlistServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserModel user = SessionUtil.getUser(request);
+        UserModel user = getLoggedInUser(request);
         if (user == null) {
             response.sendRedirect(request.getContextPath() + "/LoginServlet");
             return;
@@ -59,7 +59,7 @@ public class WishlistServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserModel user = SessionUtil.getUser(request);
+        UserModel user = getLoggedInUser(request);
         if (user == null) {
             response.sendRedirect(request.getContextPath() + "/LoginServlet");
             return;
@@ -105,6 +105,19 @@ public class WishlistServlet extends HttpServlet {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    private UserModel getLoggedInUser(HttpServletRequest request) {
+        UserModel user = SessionUtil.getUser(request);
+        if (user != null) {
+            return user;
+        }
+
+        Object loggedInUser = SessionUtil.getAttribute(request, "loggedInUser");
+        if (loggedInUser instanceof UserModel) {
+            return (UserModel) loggedInUser;
+        }
+        return null;
     }
 
     private String getReturnUrl(HttpServletRequest request, String message) {

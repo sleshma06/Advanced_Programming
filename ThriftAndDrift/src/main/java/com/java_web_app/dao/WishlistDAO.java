@@ -37,7 +37,7 @@ public class WishlistDAO {
 
     public List<Integer> getProductIdsByUser(int userId) throws SQLException {
         List<Integer> productIds = new ArrayList<>();
-        String sql = "SELECT product_id FROM wishlist WHERE user_id = ? ORDER BY created_at DESC";
+        String sql = "SELECT product_id FROM wishlist WHERE user_id = ? ORDER BY product_id DESC";
 
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -53,7 +53,7 @@ public class WishlistDAO {
     }
 
     private boolean isItemInWishlist(int userId, int productId) throws SQLException {
-        String sql = "SELECT id FROM wishlist WHERE user_id = ? AND product_id = ?";
+        String sql = "SELECT product_id FROM wishlist WHERE user_id = ? AND product_id = ?";
         try (Connection conn = DBConfig.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, userId);

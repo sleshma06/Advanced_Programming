@@ -1,7 +1,6 @@
 package com.java_web_app.controller;
 
 import com.java_web_app.dao.ProductDAO;
-import com.java_web_app.model.ProductModel;
 import com.java_web_app.utils.SessionUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,13 +28,13 @@ public class HomeServlet extends HttpServlet {
         }
 
         try {
-            List<ProductModel> products = productDAO.getListedProducts();
-            int end = Math.min(products.size(), 3);
-            request.setAttribute("newInProducts", products.subList(0, end));
+            request.setAttribute("newInProducts", productDAO.getLatestProducts(3));
+            request.setAttribute("designerProducts", productDAO.getDesignerProducts(3));
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("homeError", "Could not load new products.");
             request.setAttribute("newInProducts", List.of());
+            request.setAttribute("designerProducts", List.of());
         }
 
         request.getRequestDispatcher("/index.jsp").forward(request, response);

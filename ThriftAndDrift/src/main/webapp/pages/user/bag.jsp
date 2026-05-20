@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,35 +35,64 @@
 <main class="bag-page">
     <section class="bag-layout">
         <div class="bag-main">
+            <c:if test="${not empty error}">
+                <div class="safety-box">
+                    <div class="safety-icon">!</div>
+                    <div><p>${error}</p></div>
+                </div>
+            </c:if>
+
+            <c:if test="${param.added eq 'true'}">
+                <div class="safety-box">
+                    <div class="safety-icon">+</div>
+                    <div><p>Item added to your bag.</p></div>
+                </div>
+            </c:if>
+
+            <c:if test="${param.exists eq 'true'}">
+                <div class="safety-box">
+                    <div class="safety-icon">i</div>
+                    <div><p>This item is already in your bag.</p></div>
+                </div>
+            </c:if>
+
+            <c:if test="${param.removed eq 'true'}">
+                <div class="safety-box">
+                    <div class="safety-icon">-</div>
+                    <div><p>Item removed from your bag.</p></div>
+                </div>
+            </c:if>
+
             <div class="bag-heading">
                 <h1>Your Bag</h1>
-                <span>2 Items</span>
+                <span>${cartCount} Items</span>
             </div>
 
             <div class="bag-items">
-                <article class="bag-item">
-                    <img src="${pageContext.request.contextPath}/images/denim.jpg" alt="Vintage Levi's 501 Original">
-                    <div class="item-details">
-                        <h2>Vintage Levi's 501 Original</h2>
-                        <p>W32 L30 <span>Good</span></p>
-                        <div class="item-note">Sold by: <strong>Thrift&amp;Drift Store</strong></div>
-                        <div class="item-note">Fulfillment: <strong>Delivery or In-store Pickup</strong></div>
-                    </div>
-                    <strong class="item-price">Rs 2,499</strong>
-                    <button type="button" class="remove-link">Remove</button>
-                </article>
-
-                <article class="bag-item">
-                    <img src="${pageContext.request.contextPath}/images/gucci.jpg" alt="Y2K leather shoulder bag">
-                    <div class="item-details">
-                        <h2>Y2K Leather Shoulder Bag</h2>
-                        <p>One Size <span>Fair</span></p>
-                        <div class="item-note">Sold by: <strong>Thrift&amp;Drift Store</strong></div>
-                        <div class="item-note">Fulfillment: <strong>Delivery or In-store Pickup</strong></div>
-                    </div>
-                    <strong class="item-price">Rs 1,899</strong>
-                    <button type="button" class="remove-link">Remove</button>
-                </article>
+                <c:choose>
+                    <c:when test="${empty cartProducts}">
+                        <p>Your bag is empty. Add products from the shop.</p>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="product" items="${cartProducts}">
+                            <article class="bag-item">
+                                <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
+                                <div class="item-details">
+                                    <h2>${product.name}</h2>
+                                    <p>${product.size} <span>${product.condition}</span></p>
+                                    <div class="item-note">Sold by: <strong>Thrift&amp;Drift Store</strong></div>
+                                    <div class="item-note">Fulfillment: <strong>Delivery or In-store Pickup</strong></div>
+                                </div>
+                                <strong class="item-price">Rs ${product.price}</strong>
+                                <form method="post" action="${pageContext.request.contextPath}/BagServlet">
+                                    <input type="hidden" name="action" value="remove">
+                                    <input type="hidden" name="productId" value="${product.id}">
+                                    <button type="submit" class="remove-link">Remove</button>
+                                </form>
+                            </article>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
             </div>
 
             <div class="safety-box">
@@ -81,12 +111,12 @@
 
                 <div class="summary-row">
                     <span>Subtotal</span>
-                    <strong>Rs 4,398</strong>
+                    <strong>Rs ${subtotal}</strong>
                 </div>
 
                 <div class="summary-row">
                     <span>Platform Fee</span>
-                    <strong>Rs 50</strong>
+                    <strong>Rs ${platformFee}</strong>
                 </div>
 
                 <label for="promoCode">Promo Code</label>
@@ -97,7 +127,7 @@
 
                 <div class="total-row">
                     <span>Total</span>
-                    <strong>Rs 4,448</strong>
+                    <strong>Rs ${total}</strong>
                 </div>
 
                 <a href="${pageContext.request.contextPath}/CheckoutServlet" class="checkout-button">

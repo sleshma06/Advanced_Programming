@@ -122,20 +122,16 @@
 <section class="designer-section">
     <h2 class="section-heading">Some Of Our Designer Finds</h2>
     <div class="designer-grid">
-        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
-            <img src="${pageContext.request.contextPath}/images/PradaCoat.jpg" alt="Prada coat">
-            <div class="designer-card-label">Prada Coat</div>
-        </a>
+        <c:forEach var="product" items="${designerProducts}">
+            <a href="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}" class="designer-card">
+                <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
+                <div class="designer-card-label">${product.name}</div>
+            </a>
+        </c:forEach>
 
-        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
-            <img src="${pageContext.request.contextPath}/images/gucci.jpg" alt="Gucci bag">
-            <div class="designer-card-label">Gucci Find</div>
-        </a>
-
-        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
-            <img src="${pageContext.request.contextPath}/images/DiorEmb.jpg" alt="Dior embroidered piece">
-            <div class="designer-card-label">Dior Embroidery</div>
-        </a>
+        <c:if test="${empty designerProducts}">
+            <p>No designer products are listed yet.</p>
+        </c:if>
     </div>
 </section>
 

@@ -88,6 +88,56 @@ public class ProductDAO {
         return null;
     }
 
+    public List<ProductModel> getLatestProducts(int limit) throws SQLException {
+        List<ProductModel> products = new ArrayList<>();
+        String sql = "SELECT * FROM products WHERE status IN ('available', 'Listed') ORDER BY product_id DESC LIMIT ?";
+
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, limit);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    products.add(mapProduct(rs));
+                }
+            }
+        }
+        return products;
+    }
+
+    public List<ProductModel> getDesignerProducts(int limit) throws SQLException {
+        List<ProductModel> products = new ArrayList<>();
+        String sql = "SELECT * FROM products "
+                + "WHERE status IN ('available', 'Listed') "
+                + "AND (name LIKE ? OR description LIKE ? OR name LIKE ? OR description LIKE ? "
+                + "OR name LIKE ? OR description LIKE ? OR name LIKE ? OR description LIKE ?) "
+                + "ORDER BY product_id DESC LIMIT ?";
+
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%Prada%");
+            stmt.setString(2, "%Prada%");
+            stmt.setString(3, "%Gucci%");
+            stmt.setString(4, "%Gucci%");
+            stmt.setString(5, "%Dior%");
+            stmt.setString(6, "%Dior%");
+            stmt.setString(7, "%Designer%");
+            stmt.setString(8, "%Designer%");
+            stmt.setInt(9, limit);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    products.add(mapProduct(rs));
+                }
+            }
+        }
+
+        if (products.isEmpty()) {
+            return getLatestProducts(limit);
+        }
+        return products;
+    }
+
     private ProductModel mapProduct(ResultSet rs) throws SQLException {
         ProductModel product = new ProductModel();
         product.setId(rs.getInt("product_id"));
