@@ -21,11 +21,19 @@ public class NewsletterServlet extends HttpServlet {
 
         String email = request.getParameter("email");
 
-        if (email != null && !email.isBlank()) {
+        if (email != null && !email.isBlank()) 
+        {
+        	email = email.trim();
             // TODO: save email to DB later
-            request.setAttribute("newsletterSuccess", true);
+        	request.setAttribute(
+        		    "newsletterSuccess",
+        		    "Subscribed successfully!"
+        		);
         } else {
-            request.setAttribute("newsletterError", true);
+        	request.setAttribute(
+                    "newsletterError",
+                    "Please enter a valid email address."
+            );
         }
 
         request.getRequestDispatcher("/pages/user/shop.jsp").forward(request, response);

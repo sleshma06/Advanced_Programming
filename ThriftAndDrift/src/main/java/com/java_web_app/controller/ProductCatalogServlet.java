@@ -17,62 +17,62 @@ final class ProductCatalogServlet {
         products.add(product("2", "Short Jean Skirt", "Skirts", "290", "c3.jfif", "New-in", "M", "Good", "4/5",
                 "A casual denim mini skirt with a clean waistline and easy everyday styling for warm days."));
         
-        products.add(product("3", "Denim Midi Skirt", "Skirts", "300", "c4.jfif", "New-in", "M", "Good", "4/5",
+        products.add(product("3", "Denim Midi Skirt", "Skirts", "300", "denimidi.jpg", "New-in", "M", "Good", "4/5",
                 "A versatile midi skirt with a structured denim look that pairs well with fitted tees and oversized shirts."));
         
-        products.add(product("4", "Flared Cotton Skirt", "Skirts", "456", "c2.jfif", "Vintage", "S", "Good", "4/5",
+        products.add(product("4", "Flared Cotton Skirt", "Skirts", "456", "flared.jpg", "Vintage", "S", "Good", "4/5",
                 "A soft flared skirt with comfortable movement and a simple shape for relaxed daily outfits."));
         
-        products.add(product("5", "Wrinkled Satin Skirt", "Skirts", "500", "c1.jfif", "Vintage", "L", "Like New", "5/5",
+        products.add(product("5", "Wrinkled Satin Skirt", "Skirts", "500", "wrinkle.jpg", "Vintage", "L", "Like New", "5/5",
                 "A satin skirt with a subtle textured finish, made for dressier evenings while staying comfortable."));
 
         
-        products.add(product("6", "Lace Crochet Top", "Tops", "340", "shirt.png", "Vintage", "S", "Like New", "5/5",
+        products.add(product("6", "Lace Crochet Top", "Tops", "340", "lace.jpg", "Vintage", "S", "Like New", "5/5",
                 "A delicate crochet-inspired top that works beautifully with denim, skirts, or layered styling."));
         
-        products.add(product("7", "Striped Peasant Blouse", "Tops", "270", "allison-christine-wV7UfVeI84w-unsplash.jpg", "New-in", "M", "Fair", "3/5",
+        products.add(product("7", "Striped Peasant Blouse", "Tops", "270", "strip.webp", "New-in", "M", "Fair", "3/5",
                 "A relaxed blouse with a breezy silhouette for casual days and soft layered looks."));
         
-        products.add(product("8", "Puff Sleeve Corset Top", "Tops", "490", "DiorEmb.jpg", "Designer", "M", "Good", "4/5",
+        products.add(product("8", "Puff Sleeve Corset Top", "Tops", "490", "corset.jpg", "Designer", "M", "Good", "4/5",
                 "A statement top with puff sleeves and a shaped bodice, ideal for party styling or elevated casual wear."));
         
-        products.add(product("9", "Embroidered Boho Top", "Tops", "415", "gucci.jpg", "Designer", "L", "Like New", "5/5",
+        products.add(product("9", "Embroidered Boho Top", "Tops", "415", "boho.webp", "Designer", "L", "Like New", "5/5",
                 "A detailed boho-style top with embroidery accents and a premium thrifted feel."));
 
         
-        products.add(product("10", "Camel Wool Trench Coat", "Outerwear", "1850", "PradaCoat.jpg", "Designer", "L", "Good", "4/5",
+        products.add(product("10", "Camel Wool Trench Coat", "Outerwear", "1850", "camel.jpeg", "Designer", "L", "Good", "4/5",
                 "A polished camel trench coat with a warm tone and timeless shape for cooler days."));
         
         products.add(product("11", "Denim Oversized Jacket", "Outerwear", "990", "denim.jpg", "New-in", "XL", "Like New", "5/5",
                 "An oversized denim jacket with easy layering room and a dependable streetwear feel."));
         
-        products.add(product("12", "Corduroy Blazer", "Outerwear", "1200", "clothesCloset.jpg", "Vintage", "M", "Fair", "3/5",
+        products.add(product("12", "Corduroy Blazer", "Outerwear", "1200", "blazer.jpg", "Vintage", "M", "Fair", "3/5",
                 "A textured blazer with character, great for semi-formal outfits and vintage-inspired layering."));
         
-        products.add(product("13", "Knit Cardigan Coat", "Outerwear", "760", "hanger.jpg", "Vintage", "L", "Good", "4/5",
-                "A cozy cardigan coat with soft structure, made for transitional weather and relaxed outfits."));
+        products.add(product("13", "Knit Cardigan", "Outerwear", "760", "c1.jfif", "Vintage", "L", "Good", "4/5",
+                "A cozy cardigan with soft structure, made for transitional weather and relaxed outfits."));
 
         
-        products.add(product("14", "Straight-leg Cotton Pants", "Pants", "620", "comp.jpg", "New-in", "M", "Good", "4/5",
+        products.add(product("14", "Straight-leg Cotton Pants", "Pants", "620", "cotton.webp", "New-in", "M", "Good", "4/5",
                 "Comfortable straight-leg pants with a neat everyday fit and easy neutral styling."));
         
-        products.add(product("15", "Wide-leg Linen Pants", "Pants", "700", "registration.jpg", "Vintage", "L", "Like New", "5/5",
+        products.add(product("15", "Wide-leg Linen Pants", "Pants", "700", "wide.jpg", "Vintage", "L", "Like New", "5/5",
                 "Airy wide-leg pants for a clean, relaxed silhouette that works from errands to coffee dates."));
         
-        products.add(product("16", "Black Tailored Pants", "Pants", "840", "ourStory.jpg", "Designer", "M", "Good", "4/5",
+        products.add(product("16", "Black Tailored Pants", "Pants", "840", "tailored.webp", "Designer", "M", "Good", "4/5",
                 "A smart pair of tailored black pants for office looks, presentations, and evening styling."));
 
         
-        products.add(product("17", "Ditsy Floral Sundress", "Dresses", "680", "ContactUs.jpg", "Vintage", "S", "Like New", "5/5",
+        products.add(product("17", "Ditsy Floral Sundress", "Dresses", "680", "floral.jpg", "Vintage", "S", "Like New", "5/5",
                 "A sweet floral sundress with a light shape and easy charm for sunny days."));
         
-        products.add(product("18", "Slip Satin Maxi Dress", "Dresses", "890", "PradaCoat.jpg", "New-in", "M", "Good", "4/5",
+        products.add(product("18", "Slip Satin Maxi Dress", "Dresses", "890", "satin.webp", "New-in", "M", "Good", "4/5",
                 "A smooth satin maxi dress with a simple drape, suited for dinners and minimal occasion styling."));
         
-        products.add(product("19", "Smocked Prairie Dress", "Dresses", "750", "polkadot.jpg", "Vintage", "L", "Like New", "5/5",
+        products.add(product("19", "Smocked Prairie Dress", "Dresses", "750", "parir.webp", "Vintage", "L", "Like New", "5/5",
                 "A prairie-style dress with soft smocking details and a romantic thrifted look."));
         
-        products.add(product("20", "Classic Black Midi Dress", "Dresses", "950", "DiorEmb.jpg", "Designer", "M", "Good", "4/5",
+        products.add(product("20", "Classic Black Midi Dress", "Dresses", "950", "classic.jpg", "Designer", "M", "Good", "4/5",
                 "A clean black midi dress that can be styled up or down for reliable wardrobe mileage."));
         
         return products;

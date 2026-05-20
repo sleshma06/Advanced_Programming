@@ -40,9 +40,9 @@ html {
 }
 
 body {
-    font-family: var(--font-sans);
-    background: var(--cream);
-    color: var(--black);
+    font-family: 'DM Sans', Arial, sans-serif;
+    background: #f1ece6;
+    color: #24211f;
     line-height: 1.6;
 }
 
@@ -62,13 +62,13 @@ ul {
 
 /* ─── Typography Helpers ───────────────────────────────────────────────────── */
 .eyebrow {
-    font-family: var(--font-sans);
+    font-family: inter, arial, sans-serif;
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--red);
     margin-bottom: 12px;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .eyebrow-red {
@@ -76,7 +76,7 @@ ul {
 }
 
 .section-title {
-    font-family: var(--font-impact);
+    font-family: inter, arial, sans-serif;
     font-size: 44px;
     line-height: 1.05;
     color: var(--black);
@@ -85,18 +85,18 @@ ul {
 }
 
 .section-title-light {
-    color: var(--cream);
+    color: cream;
 }
 
 .section-body {
     font-size: 15px;
     line-height: 1.9;
-    color: var(--gray-2);
+    color: gray-2;
     max-width: 580px;
 }
 
 .accent {
-    color: var(--red);
+    color: #800000;
 }
 
 .section-header-center {
@@ -117,9 +117,9 @@ ul {
     color: var(--white);
     border: none;
     padding: 9px 20px;
-    font-family: var(--font-sans);
+    font-family: inter, arial, sans-serif;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     cursor: pointer;
@@ -139,7 +139,7 @@ ul {
     padding: 14px 30px;
     font-family: var(--font-sans);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 2px;
     text-transform: uppercase;
     cursor: pointer;
@@ -158,7 +158,7 @@ ul {
     padding: 14px 30px;
     font-family: var(--font-sans);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 2px;
     text-transform: uppercase;
     cursor: pointer;
@@ -187,99 +187,13 @@ ul {
     align-items: center;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   NAVBAR (from shop.css)
-═══════════════════════════════════════════════════════════════════════════ */
-.navbar {
-    background-color: #f0ebe3;
-    padding: 16px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
-
-.nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #1a1a1a;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-}
-
-.nav-links a:hover {
-    color: #8b1a1a;
-    border-bottom: 2px solid #8b1a1a;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-.nav-icon {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #1a1a1a;
-    padding: 6px;
-    text-decoration: none;
-    border-radius: 50%;
-    transition: background 0.2s, color 0.2s;
-}
-
-.nav-icon img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-}
-
-.nav-icon:hover {
-    background: #e8e0d8;
-    color: #8b1a1a;
-}
-
-.btn-seller {
-    background-color: #8b1a1a;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    text-decoration: none;
-    letter-spacing: 0.4px;
-    transition: background 0.2s, transform 0.15s;
-}
-
-.btn-seller:hover {
-    background-color: #6e1414;
-    transform: translateY(-1px);
-}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════════════════════════════════════ */
 .hero {
-    background: var(--black);
-    color: var(--cream);
+    background: var(--cream);
+    color: var(--black);
     padding: 96px 64px;
     display: flex;
     align-items: center;
@@ -290,14 +204,7 @@ ul {
 }
 
 .hero::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 42%;
-    height: 100%;
-    background: #2a1a1a;
-    z-index: 0;
+    display: none;
 }
 
 .hero-text {
@@ -307,101 +214,40 @@ ul {
 }
 
 .hero-text .eyebrow {
-    color: #e87070;
+    color: #800000;
 }
 
 .hero-title {
-    font-family: var(--font-impact);
+    font-family: inter, sans-serif;
     font-size: 68px;
     line-height: 1.0;
     letter-spacing: 1px;
-    color: var(--cream);
+    color: cream;
     margin-bottom: 28px;
 }
 
 .hero-body {
     font-size: 15px;
     line-height: 1.85;
-    color: var(--gray-7);
+    color: var(--gray-2);
     max-width: 440px;
 }
 
 .hero-image-area {
-    flex: 0 0 340px;
+    flex: 0 0 42%;
     position: relative;
     z-index: 1;
+    align-self: stretch;
+    min-height: 360px;
+    overflow: hidden;
 }
 
-.hero-img-box {
-    width: 340px;
-    min-height: 380px;
-    background: #2d2010;
-    border: 1px solid #3a2a18;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 32px;
+.hero-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.hero-img-svg {
-    width: 160px;
-    height: 180px;
-}
-
-.hero-img-caption {
-    font-family: var(--font-sans);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gray-5);
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   STATS BAR
-═══════════════════════════════════════════════════════════════════════════ */
-.stats-bar {
-    background: var(--red);
-    display: flex;
-}
-
-.stat-item {
-    flex: 1;
-    padding: 30px 20px;
-    text-align: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-.stat-item:last-child {
-    border-right: none;
-}
-
-.stat-num {
-    font-family: var(--font-impact);
-    font-size: 38px;
-    color: var(--white);
-    letter-spacing: 1px;
-    line-height: 1;
-}
-
-.stat-label {
-    font-family: var(--font-sans);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 500;
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   STORY SECTION
-═══════════════════════════════════════════════════════════════════════════ */
 .story-text {
     display: flex;
     flex-direction: column;
@@ -435,7 +281,7 @@ ul {
    QUOTE
 ═══════════════════════════════════════════════════════════════════════════ */
 .quote-section {
-    background: var(--red);
+    background: #800000;
     padding: 76px 80px;
     text-align: center;
 }
@@ -468,9 +314,6 @@ ul {
     margin-top: 28px;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   VALUES
-═══════════════════════════════════════════════════════════════════════════ */
 .values-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -480,7 +323,7 @@ ul {
 .value-card {
     background: var(--white);
     padding: 44px 36px;
-    border-left: 3px solid var(--red);
+    border-left: 3px solid #800000;
     transition: box-shadow var(--transition);
 }
 
@@ -523,7 +366,7 @@ ul {
 
 .timeline {
     padding-left: 36px;
-    border-left: 2px solid var(--red);
+    border-left: 2px solid #800000;
 }
 
 .timeline-offset {
@@ -539,7 +382,7 @@ ul {
     display: block;
     width: 12px;
     height: 12px;
-    background: var(--red);
+    background: #800000;
     position: absolute;
     left: -43px;
     top: 5px;
@@ -550,16 +393,16 @@ ul {
     font-family: var(--font-sans);
     font-size: 11px;
     letter-spacing: 2.5px;
-    color: var(--red);
+    color: white;
     text-transform: uppercase;
     margin-bottom: 7px;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .tl-title {
-    font-family: var(--font-impact);
+    font-family: sans-serif;
     font-size: 20px;
-    color: var(--cream);
+    color: #800000;
     text-transform: uppercase;
     margin-bottom: 10px;
     letter-spacing: 0.3px;
@@ -570,14 +413,11 @@ ul {
 .tl-text {
     font-size: 13px;
     line-height: 1.85;
-    color: var(--gray-6);
+    color: white;
     font-family: var(--font-sans);
     max-width: 460px;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   IMPACT
-═══════════════════════════════════════════════════════════════════════════ */
 .impact-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -588,7 +428,7 @@ ul {
 .impact-card {
     background: var(--cream);
     padding: 48px 44px;
-    border-top: 3px solid var(--red);
+    border-top: 3px solid #800000;
     transition: background var(--transition);
 }
 
@@ -597,9 +437,9 @@ ul {
 }
 
 .impact-num {
-    font-family: var(--font-impact);
+    font-family: sans-serif;
     font-size: 58px;
-    color: var(--red);
+    color: #800000;
     line-height: 1;
     letter-spacing: 1px;
 }
@@ -609,14 +449,11 @@ ul {
     font-size: 12px;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: var(--gray-3);
+    color: cream;
     margin-top: 12px;
     line-height: 1.7;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   TEAM
-═══════════════════════════════════════════════════════════════════════════ */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -674,7 +511,7 @@ ul {
     font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--red);
+    color: #800000;
     margin-bottom: 12px;
     font-weight: 600;
 }
@@ -686,9 +523,7 @@ ul {
     font-family: var(--font-sans);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   CTA
-═══════════════════════════════════════════════════════════════════════════ */
+
 .cta-section {
     background: var(--cream);
     padding: 80px 64px;
@@ -710,104 +545,6 @@ ul {
     flex-shrink: 0;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════════
-   FOOTER (from shop.css)
-═══════════════════════════════════════════════════════════════════════════ */
-.footer {
-    background: #fff;
-    padding: 48px 40px 0;
-}
-
-.footer-top {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid #eee;
-}
-
-.footer-brand p {
-    font-size: 13px;
-    color: #555;
-    margin-bottom: 4px;
-    line-height: 1.6;
-}
-
-.footer-brand .phone {
-    margin-top: 12px;
-    font-size: 13px;
-    color: #555;
-}
-
-.footer-brand .site-link {
-    display: block;
-    margin-top: 10px;
-    font-size: 12px;
-    color: #8b1a1a;
-    text-decoration: underline;
-}
-
-.footer-social {
-    display: flex;
-    gap: 12px;
-    margin-top: 14px;
-}
-
-.footer-social a {
-    font-size: 18px;
-    color: #1a1a1a;
-    text-decoration: none;
-}
-
-.footer-social a img {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    display: block;
-}
-
-.footer-col h4 {
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    color: #1a1a1a;
-}
-
-.footer-col ul {
-    list-style: none;
-}
-
-.footer-col ul li {
-    margin-bottom: 10px;
-}
-
-.footer-col ul li a {
-    font-size: 13px;
-    color: #555;
-    text-decoration: none;
-}
-
-.footer-col ul li a:hover {
-    color: #8b1a1a;
-}
-
-.footer-brand-name {
-    font-size: 72px;
-    font-weight: 900;
-    color: #1a1a1a;
-    letter-spacing: -1px;
-    text-align: center;
-    padding: 20px 0 8px;
-    text-transform: uppercase;
-}
-
-.footer-copy {
-    text-align: center;
-    font-size: 12px;
-    color: #888;
-    padding: 12px 0 20px;
-    border-top: 1px solid #eee;
-}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RESPONSIVE — Tablet (max 1024px)
@@ -849,9 +586,6 @@ ul {
     .cta-btns        { flex-direction: column; width: 100%; }
     .btn-dark,
     .btn-outline     { text-align: center; }
-
-    .stats-bar       { flex-wrap: wrap; }
-    .stat-item       { flex: 1 1 50%; border-bottom: 1px solid rgba(255,255,255,0.2); }
 
     .nav-links       { display: none; }
     .quote-section   { padding: 56px 28px; }

@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,800;1,400;1,800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nav.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/about.css">
 </head>
 <body>
@@ -22,8 +24,13 @@
     </ul>
 
     <div class="nav-right">
-        <a href="${pageContext.request.contextPath}/ShopServlet" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
-        <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Star"></a>
+        <form class="nav-search" action="${pageContext.request.contextPath}/ShopServlet" method="get">
+            <input class="nav-search-input" type="search" name="q" placeholder="Search products">
+            <button class="nav-search-button" type="submit" title="Search">
+                <img src="${pageContext.request.contextPath}/images/search.png" alt="Search">
+            </button>
+        </form>
+        <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Wishlist"></a>
         <a href="${pageContext.request.contextPath}/BagServlet" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
         <a href="${pageContext.request.contextPath}/ProfileServlet" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="User"></a>
         <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-seller">Be a Seller</a>
@@ -36,7 +43,7 @@
 <section class="hero">
     <div class="hero-text">
         <p class="eyebrow">Our Story</p>
-        <h1 class="hero-title">Not Just<br>A Store.<br><span class="accent">A Movement.</span></h1>
+        <h1 class="hero-title">Not Just A Store<br><span class="accent">A Movement</span></h1>
         <p class="hero-body">
             We started Thrift&amp;Drift with a simple belief — fashion shouldn't cost the earth.
             Every piece we carry has a past life and deserves a second chapter. We're the bridge
@@ -44,48 +51,11 @@
         </p>
     </div>
     <div class="hero-image-area">
-        <div class="hero-img-box">
-            <svg class="hero-img-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="40" y="60" width="120" height="140" rx="4" fill="#3a2a1a" opacity="0.5"/>
-                <rect x="60" y="40" width="80" height="22" rx="3" fill="#b91c1c" opacity="0.7"/>
-                <line x1="100" y1="40" x2="100" y2="18" stroke="#b91c1c" stroke-width="2"/>
-                <circle cx="100" cy="13" r="7" fill="#b91c1c" opacity="0.6"/>
-                <rect x="58" y="78" width="84" height="106" rx="2" fill="#5a3a20" opacity="0.35"/>
-                <line x1="58" y1="110" x2="142" y2="110" stroke="#b91c1c" stroke-width="0.8" opacity="0.4"/>
-                <line x1="58" y1="130" x2="142" y2="130" stroke="#b91c1c" stroke-width="0.8" opacity="0.4"/>
-                <text x="100" y="165" text-anchor="middle" font-family="Arial" font-size="9"
-                      fill="#c4a070" letter-spacing="2">CIRCA 2019</text>
-            </svg>
-            <p class="hero-img-caption">The first 40 pieces</p>
-        </div>
+        <img class="hero-photo" src="${pageContext.request.contextPath}/images/clothesCloset.jpg" alt="Curated thrift clothing">
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     STATS BAR
-════════════════════════════════════════════════════════════════════════════ -->
-<div class="stats-bar">
-    <div class="stat-item">
-        <span class="stat-num">12K+</span>
-        <span class="stat-label">Items Rehomed</span>
-    </div>
-    <div class="stat-item">
-        <span class="stat-num">4,800</span>
-        <span class="stat-label">Happy Drifters</span>
-    </div>
-    <div class="stat-item">
-        <span class="stat-num">97%</span>
-        <span class="stat-label">Verified Pre-Loved</span>
-    </div>
-    <div class="stat-item">
-        <span class="stat-num">38T</span>
-        <span class="stat-label">Litres Water Saved</span>
-    </div>
-</div>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     OUR STORY
-════════════════════════════════════════════════════════════════════════════ -->
 <section class="section section-white">
     <div class="two-col">
         <div class="story-text">
@@ -110,27 +80,13 @@
         </div>
         <div class="story-image">
             <div class="img-block img-warm">
-                <svg viewBox="0 0 240 320" fill="none" xmlns="http://www.w3.org/2000/svg" class="story-svg">
-                    <rect x="30" y="40" width="180" height="250" rx="6" fill="#c4a882" opacity="0.25"/>
-                    <rect x="50" y="20" width="140" height="30" rx="4" fill="#b91c1c" opacity="0.55"/>
-                    <line x1="120" y1="20" x2="120" y2="0" stroke="#b91c1c" stroke-width="2.5"/>
-                    <circle cx="120" cy="0" r="9" fill="#b91c1c" opacity="0.5" transform="translate(0,8)"/>
-                    <rect x="55" y="72" width="130" height="200" rx="3" fill="#a88060" opacity="0.2"/>
-                    <line x1="55" y1="120" x2="185" y2="120" stroke="#c4a070" stroke-width="0.8" opacity="0.5"/>
-                    <line x1="55" y1="155" x2="185" y2="155" stroke="#c4a070" stroke-width="0.8" opacity="0.5"/>
-                    <line x1="55" y1="190" x2="185" y2="190" stroke="#c4a070" stroke-width="0.8" opacity="0.5"/>
-                    <line x1="55" y1="225" x2="185" y2="225" stroke="#c4a070" stroke-width="0.8" opacity="0.5"/>
-                    <text x="120" y="262" text-anchor="middle" font-family="Arial" font-size="10"
-                          fill="#8a6840" letter-spacing="3">THE FIRST 40 PIECES</text>
-                </svg>
+                <img class="story-photo" src="${pageContext.request.contextPath}/images/ourStory.jpg" alt="Thrift&Drift story">
             </div>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     FOUNDER QUOTE
-════════════════════════════════════════════════════════════════════════════ -->
+
 <section class="quote-section">
     <div class="quote-mark">&ldquo;</div>
     <blockquote class="quote-text">Fashion is the second most polluting industry on the planet. We're not here to add to that. We're here to be the antidote.</blockquote>
@@ -181,14 +137,11 @@
                 </svg>
             </div>
             <h3 class="value-title">Community Over Commerce</h3>
-            <p class="value-body">We're building a community of conscious drifters — people who believe style is personal, not disposable. Our sellers are not vendors. They're storytellers passing on pieces they loved.</p>
+            <p class="value-body">We're building a community of conscious drifters - people who believe style is personal, not disposable. Our sellers are not vendors. They're storytellers passing on pieces they loved.</p>
         </div>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     TIMELINE
-════════════════════════════════════════════════════════════════════════════ -->
 <section class="section section-dark" id="process">
     <p class="eyebrow eyebrow-red">Our journey</p>
     <h2 class="section-title section-title-light">Five years of drifting<br>in the right direction.</h2>
@@ -367,7 +320,7 @@
             <ul>
                 <li><a href="${pageContext.request.contextPath}/SellerServlet">Sell</a></li>
                 <li><a href="${pageContext.request.contextPath}/AboutServlet">About Us</a></li>
-                <li><a href="#">Collections</a></li>
+                <li><a href="${pageContext.request.contextPath}/ShopServlet#shop-products">Collections</a></li>
                 <li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li>
                 <li><a href="#footer">Contact</a></li>
             </ul>

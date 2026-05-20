@@ -179,29 +179,39 @@
 </div>
 
 <section class="newsletter-banner">
+
     <div class="newsletter-text">
-        <span>Not only sell, but share the memories behind your wardrobe.</span>
+        <span>
+        Not only sell, but share the memories behind your wardrobe.
+        </span>
     </div>
+    
     <div class="newsletter-form">
+    
         <form method="post" action="${pageContext.request.contextPath}/NewsletterServlet">
+            
             <div class="newsletter-input-wrap">
+            
                 <span>&#9993;</span>
+                
                 <input type="email" name="email" placeholder="Enter your email address" required>
             </div>
-            <button type="submit" class="btn-subscribe">Subscribe to Newsletter</button>
             
-            <c:if test="${newsletterSuccess}">
-    <p style="color:#fff; font-size:13px; font-weight:700; margin-top:8px;">
-        Subscribed successfully!
-    </p>
-</c:if>
-<c:if test="${newsletterError}">
-    <p style="color:#ffe0e0; font-size:13px; margin-top:8px;">
-        Please enter a valid email.
-    </p>
-</c:if>
+            <button type="submit" class="btn-subscribe">Subscribe to Newsletter</button>
+             </form>
+             
+             <c:if test="${not empty newsletterSuccess}">
+            <p class="newsletter-success">
+                ${newsletterSuccess}
+            </p>
+        </c:if>
 
-        </form>
+        <!-- Error Message -->
+        <c:if test="${not empty newsletterError}">
+            <p class="newsletter-error">
+                ${newsletterError}
+            </p>
+        </c:if>
     </div>
 </section>
 
