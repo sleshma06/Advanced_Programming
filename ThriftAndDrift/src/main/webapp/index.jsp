@@ -29,7 +29,7 @@
         <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
  
 
-        <li><a href="#">About</a></li>
+        <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 
@@ -158,14 +158,14 @@
         <h2>Crafted with purpose, worn with pride.</h2>
         <p>We take pre-loved fashion and give it a second life — each piece cleaned, steamed, and ready for decades more.</p>
         <div class="story-btns">
-            <a href="${pageContext.request.contextPath}/about" class="btn-outline-white">Meet the team</a>
-            <a href="${pageContext.request.contextPath}/about#process" class="btn-outline-white">Get to know the process</a>
+            <a href="${pageContext.request.contextPath}/AboutServlet" class="btn-outline-white">Meet the team</a>
+            <a href="${pageContext.request.contextPath}/AboutServlet#process" class="btn-outline-white">Get to know the process</a>
         </div>
     </div>
 
     <div class="story-footer">
         <span>Est. 2018 &middot; Kathmandu, Nepal &middot; 100% circular sourcing</span>
-        <a href="${pageContext.request.contextPath}/about">Full story &rarr;</a>
+        <a href="${pageContext.request.contextPath}/AboutServlet">Full story &rarr;</a>
     </div>
 </section>
 
@@ -273,7 +273,7 @@
             <h4>Quick Links</h4>
             <ul>
                 <li><a href="#">Sell</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="${pageContext.request.contextPath}/AboutServlet">About Us</a></li>
                 <li><a href="#">Collections</a></li>
                 <li><a href="#">Explore products</a></li>
                 <li><a href="#">Contact</a></li>

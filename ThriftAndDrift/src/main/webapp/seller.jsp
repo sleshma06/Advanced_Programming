@@ -16,7 +16,7 @@
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 
@@ -198,7 +198,7 @@
             <h4>Quick Links</h4>
             <ul>
                 <li><a href="${pageContext.request.contextPath}/SellerServlet">Sell</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="${pageContext.request.contextPath}/AboutServlet">About Us</a></li>
                 <li><a href="#">Collections</a></li>
                 <li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li>
                 <li><a href="#">Contact</a></li>

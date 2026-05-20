@@ -15,7 +15,7 @@
     <ul class="nav-links">
         <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 
@@ -88,7 +88,7 @@
             <p>01 4335544</p>
             <a href="#" class="site-link">thrift&amp;drift.com</a>
         </div>
-        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="${pageContext.request.contextPath}/SellerServlet">Sell</a></li><li><a href="#">About Us</a></li><li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li></ul></div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="${pageContext.request.contextPath}/SellerServlet">Sell</a></li><li><a href="${pageContext.request.contextPath}/AboutServlet">About Us</a></li><li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li></ul></div>
         <div class="footer-col"><h4>Services</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Shipping &amp; Returns</a></li></ul></div>
     </div>
     <div class="footer-brand-name">THRIFT&amp;DRIFT</div>

@@ -14,7 +14,9 @@ html {
 body {
     background: #f1ece6;
     color: #24211f;
-    font-family: Arial, sans-serif;
+    font-family: 'DM Sans', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 a {

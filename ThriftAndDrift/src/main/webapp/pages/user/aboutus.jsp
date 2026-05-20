@@ -5,6 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us — Thrift&amp;Drift</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,800;1,400;1,800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/about.css">
 </head>
 <body>
@@ -12,18 +15,18 @@
 <!-- ── NAVBAR ── -->
 <nav class="navbar">
     <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
+        <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
+        <li><a href="#footer">Contact</a></li>
     </ul>
 
     <div class="nav-right">
-        <a href="#" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
-        <a href="#" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Star"></a>
-        <a href="#" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
-        <a href="#" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="User"></a>
-        <a href="#" class="btn-seller">Be a Seller</a>
+        <a href="${pageContext.request.contextPath}/ShopServlet" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
+        <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Star"></a>
+        <a href="${pageContext.request.contextPath}/BagServlet" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
+        <a href="${pageContext.request.contextPath}/ProfileServlet" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="User"></a>
+        <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-seller">Be a Seller</a>
     </div>
 </nav>
 
@@ -186,7 +189,7 @@
 <!-- ═══════════════════════════════════════════════════════════════════════════
      TIMELINE
 ════════════════════════════════════════════════════════════════════════════ -->
-<section class="section section-dark">
+<section class="section section-dark" id="process">
     <p class="eyebrow eyebrow-red">Our journey</p>
     <h2 class="section-title section-title-light">Five years of drifting<br>in the right direction.</h2>
 
@@ -337,12 +340,12 @@
     </div>
     <div class="cta-btns">
         <a href="${pageContext.request.contextPath}/ShopServlet#shop-products" class="btn-dark">Shop New Arrivals</a>
-        <a href="sell.html"            class="btn-outline">Sell With Us</a>
+        <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-outline">Sell With Us</a>
     </div>
 </section>
 
 <!-- ── FOOTER ── -->
-<footer class="footer">
+<footer class="footer" id="footer">
     <div class="footer-top">
         <div class="footer-brand">
             <p>Islington College</p>
@@ -362,11 +365,11 @@
         <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="#">Sell</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="${pageContext.request.contextPath}/SellerServlet">Sell</a></li>
+                <li><a href="${pageContext.request.contextPath}/AboutServlet">About Us</a></li>
                 <li><a href="#">Collections</a></li>
-                <li><a href="#">Explore products</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li>
+                <li><a href="#footer">Contact</a></li>
             </ul>
         </div>
 
