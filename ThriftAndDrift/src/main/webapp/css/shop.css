@@ -35,6 +35,8 @@ a {
     text-transform: uppercase;
 }
 
+
+
 .shop-shell {
     display: grid;
     grid-template-columns: 250px minmax(0, 1fr);
@@ -389,7 +391,7 @@ a {
     display: flex;
     gap: 14px;
     justify-content: space-between;
-    padding-right: 150px;
+   
 }
 
 .product-price {
@@ -697,13 +699,13 @@ a {
 
 /* Filter selection highlight */
 .filter-item:has(input[type="radio"]:checked) {
-    background: #ff0000;;
+    background:rgb(255, 157,157);
     color: #8b1515;
     font-weight: 700;
 }
 
 .size-btn:has(input[type="radio"]:checked) {
-    background: #ff0000;
+    background: #8b1515;
     color: #fff;
     font-weight: 700;
     border-color: #800000;

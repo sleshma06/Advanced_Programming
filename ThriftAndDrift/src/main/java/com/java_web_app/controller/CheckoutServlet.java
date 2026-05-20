@@ -1,29 +1,26 @@
 package com.java_web_app.controller;
 
-import com.java_web_app.utils.SessionUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/HomeServlet")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/CheckoutServlet")
+public class CheckoutServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (!SessionUtil.isLoggedIn(request)) {
-            response.sendRedirect(request.getContextPath() + "/LoginServlet");
-            return;
-        }
-
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("/pages/user/checkout.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        request.setAttribute("orderMessage", "Your order has been placed for review.");
+        request.getRequestDispatcher("/pages/user/checkout.jsp").forward(request, response);
     }
 }

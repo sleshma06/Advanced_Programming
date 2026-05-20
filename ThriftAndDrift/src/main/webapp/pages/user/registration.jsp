@@ -15,7 +15,9 @@
         
             <div class="form-panel">
                 <div class="form-content">
-                    <a href="${pageContext.request.contextPath}/index.jsp" class="back-home">
+
+                    <a href="${pageContext.request.contextPath}/HomeServlet" class="back-home">
+
                         <span>&#8592;</span> Go back to home page
                     </a>
                     
@@ -25,13 +27,19 @@
                         <div class="error-message">${error}</div>
                     </c:if>
                     
+
+                    <c:if test="${not empty error}">
+                        <div class="error-message">${error}</div>
+                    </c:if>
+
                     <form action="${pageContext.request.contextPath}/register" method="post" class="registration-form">
                         <div class="input-group">
-                            <input type="email" name="email" placeholder="Email address" value="${param.email}" required>
+                            <input type="email" name="email" placeholder="Email address" value="${email}" required>
                         </div>
                         
                         <div class="input-group">
-                            <input type="text" name="username" placeholder="Username" value="${param.username}" required>
+                            <input type="text" name="username" placeholder="Username" value="${username}" required>
+
                         </div>
                         
                         <div class="input-group">
@@ -47,7 +55,7 @@
                 </div>
                 
                 <div class="logo-container">
-                    <span class="logo-text">THRIFT&DRIFT</span>
+                    <span class="logo-text">THRIFT&amp;DRIFT</span>
                 </div>
             </div>
             

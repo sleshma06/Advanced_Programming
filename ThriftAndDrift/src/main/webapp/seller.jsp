@@ -14,17 +14,20 @@
 
 <nav class="navbar">
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 
     <div class="nav-right">
-        <a href="#" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
+        <form class="nav-search" action="${pageContext.request.contextPath}/ShopServlet" method="get">
+            <input class="nav-search-input" type="search" name="q" placeholder="Search products">
+            <button class="nav-search-button" type="submit" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></button>
+        </form>
         <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Wishlist"></a>
         <a href="${pageContext.request.contextPath}/BagServlet" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
-        <a href="#" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="Account"></a>
+        <a href="${pageContext.request.contextPath}/ProfileServlet" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="Account"></a>
         <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-seller">Be a Seller</a>
     </div>
 </nav>
@@ -40,6 +43,9 @@
         <c:if test="${not empty successMessage}">
             <div class="seller-success">${successMessage}</div>
         </c:if>
+        <c:if test="${not empty errorMessage}">
+            <div class="seller-error">${errorMessage}</div>
+        </c:if>
 
         <form class="seller-form" action="${pageContext.request.contextPath}/SellerServlet" method="post" enctype="multipart/form-data">
             <div class="form-column details-column">
@@ -49,7 +55,7 @@
                 </div>
 
                 <div class="field-group">
-                    <label for="listingTitle">Listing Title</label>
+                    <label for="listingTitle">Item Name</label>
                     <input type="text" id="listingTitle" name="listingTitle" placeholder="e.g. Vintage Levi's 501 Jeans">
                 </div>
 
@@ -90,8 +96,13 @@
                 </div>
 
                 <div class="field-group">
+
                     <label for="price">Price</label>
                     <input type="text" id="price" name="price" placeholder="Rs 0.00">
+
+                    <label for="price">Your Estimated Price</label>
+                    <input type="text" id="price" name="price" placeholder="Rs.  0.00">
+
                 </div>
 
                 <div class="field-group">
@@ -103,7 +114,7 @@
             <div class="form-column contact-column">
                 <div class="form-title">
                     <span class="title-icon">▣</span>
-                    <h2>Photos &amp; Contact</h2>
+                    <h2>Drop-off &amp; Payout</h2>
                 </div>
 
                 <div class="upload-box">
@@ -118,22 +129,42 @@
                 </div>
 
                 <div class="meetup-box">
-                    <h3>Meetup Information</h3>
+                    <h3>Store Drop-off</h3>
+                    <div class="readonly-address">
+                        Thrift&amp;Drift Store, Islington College, Kamalpokhari, Kathmandu
+                    </div>
 
-                    <div class="field-group">
-                        <label for="whatsappNumber">WhatsApp Number</label>
-                        <input type="tel" id="whatsappNumber" name="whatsappNumber" placeholder="+91 00000 00000">
+                    <div class="field-row">
+                        <div class="field-group">
+                            <label for="dropDate">Preferred Drop-off Date</label>
+                            <input type="date" id="dropDate" name="dropDate">
+                        </div>
+
+                        <div class="field-group">
+                            <label for="dropSlot">Time Slot</label>
+                            <select id="dropSlot" name="dropSlot">
+                                <option value="">Select Slot</option>
+                                <option>10:00 AM - 12:00 PM</option>
+                                <option>12:00 PM - 2:00 PM</option>
+                                <option>2:00 PM - 4:00 PM</option>
+                                <option>4:00 PM - 6:00 PM</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="field-group">
-                        <label for="meetupLocation">Preferred Meetup Location</label>
-                        <select id="meetupLocation" name="meetupLocation">
-                            <option value="">Select Campus Area</option>
-                            <option>College Gate</option>
-                            <option>Cafeteria</option>
-                            <option>Library Area</option>
-                            <option>Reception</option>
-                        </select>
+                        <label for="payoutInfo">Payout Account</label>
+                        <input type="text" id="payoutInfo" name="payoutInfo" placeholder="eSewa ID or bank account number">
+                    </div>
+
+                    <p class="review-note">Our team will inspect your item and confirm the listing price. You'll be notified once it's live.</p>
+
+                    <div class="status-tracker">
+                        <span class="active">Submitted</span>
+                        <span>Under Review</span>
+                        <span>Approved / Rejected</span>
+                        <span>Listed</span>
+                        <span>Sold</span>
                     </div>
                 </div>
 

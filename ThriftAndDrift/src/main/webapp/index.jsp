@@ -22,17 +22,25 @@
      ======================== -->
 <nav class="navbar">
     <ul class="nav-links">
-        <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+
+    
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
+
+        <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
+ 
+
         <li><a href="#">About</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 
     <div class="nav-right">
-        <a href="#" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
+        <form class="nav-search" action="${pageContext.request.contextPath}/ShopServlet" method="get">
+            <input class="nav-search-input" type="search" name="q" placeholder="Search products">
+            <button class="nav-search-button" type="submit" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></button>
+        </form>
         <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Wishlist"></a>
         <a href="${pageContext.request.contextPath}/BagServlet" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
-        <a href="#" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="User"></a>
+        <a href="${pageContext.request.contextPath}/ProfileServlet" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="User"></a>
         <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-seller">Be a Seller</a>
     </div>
 </nav>

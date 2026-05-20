@@ -10,35 +10,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Shop | Thrift&amp;Drift</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nav.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/shop.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer.css">
+
 </head>
 <body>
 
 <nav class="navbar">
     <ul class="nav-links">
+
         <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
         <li><a href="${pageContext.request.contextPath}/pages/user/aboutus.jsp">About</a></li>
         <li><a href="#footer">Contact</a></li>
     </ul>
 
+  
     <div class="nav-right">
-        <a href="#shop-products" class="nav-icon" title="Search"><img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></a>
+        <form class="nav-search" action="${pageContext.request.contextPath}/ShopServlet" method="get">
+            <input class="nav-search-input" type="search" name="q" placeholder="Search products">
+            <button class="nav-search-button" type="submit" title="Search">
+            <img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></button>
+        </form>
         <a href="${pageContext.request.contextPath}/WishlistServlet" class="nav-icon" title="Wishlist"><img src="${pageContext.request.contextPath}/images/star.png" alt="Wishlist"></a>
         <a href="${pageContext.request.contextPath}/BagServlet" class="nav-icon" title="Bag"><img src="${pageContext.request.contextPath}/images/bag.png" alt="Bag"></a>
-        <a href="${pageContext.request.contextPath}/LoginServlet" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="User"></a>
+        <a href="${pageContext.request.contextPath}/ProfileServlet" class="nav-icon" title="Account"><img src="${pageContext.request.contextPath}/images/user.png" alt="User"></a>
+
         <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-seller">Be a Seller</a>
     </div>
 </nav>
 
-<section class="page-title">
+
+<div class="page-title">
     <h1>Explore Products</h1>
-</section>
+    <p>All items are inspected, priced, and sold by Thrift&amp;Drift.</p>
+</div>
 
 <div class="shop-shell" id="shop-products">
+
     <aside class="sidebar">
     <form class="filter-form" method="get" action="${pageContext.request.contextPath}/ShopServlet">
         <div class="sidebar-header">
@@ -47,6 +59,7 @@
         </div>
 
         <div class="filter-section">
+
             <div class="filter-section-title"><span>Category</span></div>
             <label class="filter-item">
                 <input type="radio" name="category" value="" ${empty selCategory ? 'checked' : ''}>
@@ -106,6 +119,19 @@
                     <span>${condition}</span><span>&#8250;</span>
                 </label>
             </c:forEach>
+
+            <div class="filter-item"><span>Tops</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Skirts</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Outerwear</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Pants</span><span>&#8250;</span></div>
+        </div>
+
+        <div class="filter-section">
+            <div class="filter-section-title"><span>Condition</span><span>&#8743;</span></div>
+            <div class="filter-item"><span>Like New</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Good</span><span>&#8250;</span></div>
+            <div class="filter-item"><span>Fair</span><span>&#8250;</span></div>
+
         </div>
 
         <div class="filter-section">
@@ -129,6 +155,7 @@
 </aside>
 
     <main class="product-area">
+
         <div class="shop-results-header">
             <p class="product-meta">Showing ${productCount} products &nbsp; Sort by: <strong>Newest First</strong></p>
         </div>
@@ -182,6 +209,38 @@
                 </c:otherwise>
             </c:choose>
         </section>
+
+        <div class="product-area-header">
+            <h2>Store Picks</h2>
+            <div class="product-meta">
+                <span>Showing approved store products &nbsp;&nbsp; Sort by: <strong>Newest First &#8964;</strong></span>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <c:forEach var="product" items="${products}">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <span class="badge-new">${product.condition}</span>
+                        <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
+                        <a class="wishlist-btn" href="${pageContext.request.contextPath}/WishlistServlet" title="Add to Wishlist">&#9734;</a>
+                    </div>
+                    <div class="product-info">
+                        <p class="product-name">${product.name}</p>
+                        <p class="product-meta-line">Sold by Thrift&amp;Drift Store | ${product.size}</p>
+                        <div class="product-bottom">
+                            <span class="product-price">Rs ${product.price}</span>
+                            <a href="${pageContext.request.contextPath}/BagServlet" class="btn-add-bag">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+
+            <c:if test="${empty products}">
+                <p>No approved products are listed yet.</p>
+            </c:if>
+        </div>
+
     </main>
 </div>
 
@@ -199,7 +258,7 @@
             
             <c:if test="${newsletterSuccess}">
     <p style="color:#fff; font-size:13px; font-weight:700; margin-top:8px;">
-        ✓ Subscribed successfully!
+        Subscribed successfully!
     </p>
 </c:if>
 <c:if test="${newsletterError}">
@@ -229,6 +288,7 @@
             </div>
         </div>
 
+
         <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
@@ -250,14 +310,8 @@
             </ul>
         </div>
 
-        <div class="footer-col">
-            <div class="footer-logos">
-                <div class="footer-logo-box"></div>
-                <div class="footer-logo-box"></div>
-            </div>
-        </div>
-    </div>
 
+    </div>
     <div class="footer-brand-name">THRIFT&amp;DRIFT</div>
     <div class="footer-copy">&copy; 2024 Thrift&amp;Drift. All rights reserved.</div>
 </footer>

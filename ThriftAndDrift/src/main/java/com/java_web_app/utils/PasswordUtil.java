@@ -13,6 +13,14 @@ public class PasswordUtil {
 
     // Call this when logging in — compares plain text against stored hash
     public static boolean checkPassword(String plainPassword, String storedHash) {
-        return BCrypt.checkpw(plainPassword, storedHash);
+        if (plainPassword == null || storedHash == null || storedHash.trim().isEmpty()) {
+            return false;
+        }
+
+        try {
+            return BCrypt.checkpw(plainPassword, storedHash);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 }

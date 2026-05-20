@@ -15,23 +15,20 @@ import java.time.format.DateTimeFormatter;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private static final int SESSION_TIME = 30 * 60;
     private final LoginService loginService = new LoginService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // If admin already logged in via session, send to dashboard
+        if (SessionUtil.isAdminLoggedIn(request)) {
+            response.sendRedirect(request.getContextPath() + "/DashboardServlet");
+            return;
+        }
         // If user already logged in via session, send home
         if (SessionUtil.isLoggedIn(request)) {
             response.sendRedirect(request.getContextPath() + "/HomeServlet");
-            return;
-        }
-        // If admin already logged in via cookie, send to dashboard
-        String adminId = CookieUtil.getCookieValue(request, "adminId");
-        if (adminId != null && !adminId.trim().isEmpty()) {
-            String adminName = CookieUtil.getCookieValue(request, "adminName");
-            response.sendRedirect(request.getContextPath()
-                    + "/DashboardServlet?adminId=" + adminId
-                    + "&adminName=" + (adminName != null ? adminName : ""));
             return;
         }
         request.getRequestDispatcher("/pages/user/login.jsp").forward(request, response);
@@ -53,18 +50,15 @@ public class LoginServlet extends HttpServlet {
                         .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
                 if ("admin".equals(user.getRole())) {
-                    // ADMIN: query string and non-sensitive cookies only
-                    CookieUtil.addCookie(response, "last_login", loginTime, 3600);
-                    CookieUtil.addCookie(response, "adminId",    String.valueOf(user.getId()), 3600);
-                    CookieUtil.addCookie(response, "adminName",  user.getName(), 3600);
+                    // ADMIN: keep admin details in session
+                    SessionUtil.createAdminSession(request, user, SESSION_TIME);
+                    CookieUtil.addCookie(response, "last_login", loginTime, SESSION_TIME);
 
-                    response.sendRedirect(request.getContextPath()
-                            + "/DashboardServlet?adminId=" + user.getId()
-                            + "&adminName=" + user.getName());
+                    response.sendRedirect(request.getContextPath() + "/DashboardServlet");
                 } else {
                     // USER: session for sensitive info and cookie for last login only
-                    SessionUtil.createUserSession(request, user, 3600);
-                    CookieUtil.addCookie(response, "last_login", loginTime, 3600);
+                    SessionUtil.createUserSession(request, user, SESSION_TIME);
+                    CookieUtil.addCookie(response, "last_login", loginTime, SESSION_TIME);
 
                     response.sendRedirect(request.getContextPath() + "/HomeServlet");
                 }

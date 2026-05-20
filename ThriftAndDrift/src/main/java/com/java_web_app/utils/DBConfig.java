@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConfig {
 
-    private static final String DB_URL  = "jdbc:mysql://localhost:3306/thriftanddrift";
+    private static final String DB_URL  = "jdbc:mysql://localhost:3306/thriftanddrift?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "";
 
@@ -14,7 +14,7 @@ public class DBConfig {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            throw new SQLException("MySQL driver was not found. Check Maven dependencies.", e);
         }
         return DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
     }

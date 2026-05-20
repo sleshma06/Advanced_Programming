@@ -21,7 +21,7 @@ public class LoginService {
             return "Incorrect password";
         } catch (SQLException e) {
             e.printStackTrace();
-            return "Database error. Please try again.";
+            return "Database error: " + e.getMessage();
         }
     }
 

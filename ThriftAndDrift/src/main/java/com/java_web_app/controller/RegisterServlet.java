@@ -15,17 +15,22 @@ import java.sql.SQLException;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private final UserDAO userDAO = new UserDAO();
 
-    public RegisterServlet() {
-        super();
+    private UserDAO userDAO = new UserDAO();
+
+
+    @Override
+    public void init() {
+        userDAO = new UserDAO();
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/pages/user/registration.jsp").forward(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -33,17 +38,23 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
 
+        request.setAttribute("email", email);
+        request.setAttribute("username", username);
+
+
         if (isBlank(email) || isBlank(username) || isBlank(password) || isBlank(confirmPassword)) {
             request.setAttribute("error", "Please fill in all fields.");
             doGet(request, response);
             return;
         }
 
-        if (!password.equals(confirmPassword)) {
-            request.setAttribute("error", "Passwords do not match.");
+
+        if (password.length() < 6) {
+            request.setAttribute("error", "Password must be at least 6 characters.");
             doGet(request, response);
             return;
         }
+
 
         try {
             if (userDAO.getUserByEmail(email.trim()) != null) {
@@ -53,20 +64,29 @@ public class RegisterServlet extends HttpServlet {
             }
 
             UserModel user = new UserModel();
-            user.setEmail(email.trim());
+
             user.setName(username.trim());
+            user.setEmail(email.trim());
+
             user.setPassword(PasswordUtil.hashPassword(password));
             user.setRole("user");
 
             if (userDAO.registerUser(user)) {
+
                 response.sendRedirect(request.getContextPath() + "/LoginServlet?registered=true");
             } else {
                 request.setAttribute("error", "Could not create account. Please try again.");
+
+                request.setAttribute("success", "Account created successfully. Please log in.");
+         
                 doGet(request, response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            request.setAttribute("error", "Database error. Please try again.");
+
+
+            request.setAttribute("error", "Database error: " + e.getMessage());
+
             doGet(request, response);
         }
     }

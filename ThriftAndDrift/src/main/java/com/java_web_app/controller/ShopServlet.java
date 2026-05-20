@@ -1,22 +1,36 @@
 package com.java_web_app.controller;
 
+
+import com.java_web_app.dao.ProductDAO;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import java.sql.SQLException;
+
+
 @WebServlet("/ShopServlet")
 public class ShopServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private ProductDAO productDAO;
+
+    @Override
+    public void init() {
+        productDAO = new ProductDAO();
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
 
         // Read filter params
         final String category  = request.getParameter("category");
@@ -68,6 +82,14 @@ public class ShopServlet extends HttpServlet {
         request.setAttribute("selMinPrice", minPrice);
         request.setAttribute("selMaxPrice", maxPrice);
 
+
+        try {
+            request.setAttribute("products", productDAO.getListedProducts());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Could not load products from database.");
+        }
+
         request.getRequestDispatcher("/pages/user/shop.jsp").forward(request, response);
     }
 
@@ -77,9 +99,12 @@ public class ShopServlet extends HttpServlet {
         doGet(request, response);
     }
 
+
     private int parsePrice(String value, int fallback) {
         if (value == null || value.isBlank()) return fallback;
         try { return Integer.parseInt(value); }
         catch (NumberFormatException e) { return fallback; }
     }
 }
+
+
