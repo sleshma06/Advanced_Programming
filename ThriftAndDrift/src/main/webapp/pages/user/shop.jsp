@@ -31,7 +31,7 @@
   
     <div class="nav-right">
         <form class="nav-search" action="${pageContext.request.contextPath}/ShopServlet" method="get">
-            <input class="nav-search-input" type="search" name="q" placeholder="Search products">
+            <input class="nav-search-input" type="search" name="q" placeholder="Search products" value="${searchQuery}">
             <button class="nav-search-button" type="submit" title="Search">
             <img src="${pageContext.request.contextPath}/images/search.png" alt="Search"></button>
         </form>
@@ -119,22 +119,6 @@
                     <span>${condition}</span><span>&#8250;</span>
                 </label>
             </c:forEach>
-
-        
-
-        <div class="filter-section">
-            <div class="filter-section-title"><span>Style</span></div>
-            <label class="filter-item">
-                <input type="radio" name="style" value="" ${empty selStyle ? 'checked' : ''}>
-                <span>All</span><span>&#8250;</span>
-            </label>
-            
-            <c:forEach var="style" items="${styles}">
-                <label class="filter-item">
-                    <input type="radio" name="style" value="${style}" ${selStyle eq style ? 'checked' : ''}>
-                    <span>${style}</span><span>&#8250;</span>
-                </label>
-            </c:forEach>
         </div>
 
         <button class="btn-apply" type="submit">Apply Filter</button>
@@ -144,88 +128,46 @@
 
     <main class="product-area">
 
-        <div class="shop-results-header">
-            <p class="product-meta">Showing ${productCount} products &nbsp; Sort by: <strong>Newest First</strong></p>
-        </div>
-
-
-
-        <section class="category-block">
-            <div class="category-header">
-                <h2>All Products</h2>
-                <p class="product-meta">${productCount} products</p>
-            </div>
-
-            <c:choose>
-                <c:when test="${empty products}">
-                <section class="empty-products">
-                    <h2>No products found</h2>
-                    <p>Try changing the category, size, style, condition, or price range.</p>
-                    <a href="${pageContext.request.contextPath}/ShopServlet">View all products</a>
-                </section>
-                </c:when>
-                <c:otherwise>
-                    <div class="product-grid">
-                        <c:forEach var="product" items="${products}">
-                            <article class="product-card">
-                                <a class="product-img-wrap" href="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}">
-                                    <span class="product-badge">${product.badge}</span>
-                                    <img src="${pageContext.request.contextPath}/images/${product.image}" alt="${product.name}">
-                                </a>
-
-                                <form method="post" action="${pageContext.request.contextPath}/WishlistServlet">
-                                    <input type="hidden" name="productId" value="${product.id}">
-                                    <button type="submit" class="wishlist-btn" title="Add to wishlist">&#9734;</button>
-                                </form>
-
-                                <div class="product-info">
-                                    <a class="product-name" href="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}">${product.name}</a>
-                                    <p class="product-condition">${product.category} &middot; ${product.condition} &middot; Size ${product.size}</p>
-                                    <div class="product-bottom">
-                                        <span class="product-price">Rs ${product.price}</span>
-                                        <form method="post" action="${pageContext.request.contextPath}/BagServlet">
-                                            <input type="hidden" name="productId" value="${product.id}">
-                                            <input type="hidden" name="productName" value="${product.name}">
-                                            <input type="hidden" name="productPrice" value="${product.price}">
-                                            <button type="submit" class="btn-card-bag" title="Add to bag">Add to Bag</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </article>
-                        </c:forEach>
-                    </div>
-                </c:otherwise>
-            </c:choose>
-        </section>
-
         <div class="product-area-header">
-            <h2>Store Picks</h2>
-            <div class="product-meta">
-                <span>Showing approved store products &nbsp;&nbsp; Sort by: <strong>Newest First &#8964;</strong></span>
-            </div>
+            <h2>All Products</h2>
+            <p class="product-meta">Showing ${productCount} approved store products</p>
         </div>
 
         <div class="product-grid">
             <c:forEach var="product" items="${products}">
                 <div class="product-card">
                     <div class="product-img-wrap">
-                        <span class="badge-new">${product.condition}</span>
-                        <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
-                        <a class="wishlist-btn" href="${pageContext.request.contextPath}/WishlistServlet" title="Add to Wishlist">&#9734;</a>
+                        <a class="product-image-link" href="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}">
+                            <span class="condition-chip">${product.condition}</span>
+                            <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
+                        </a>
+                        <form method="post" action="${pageContext.request.contextPath}/WishlistServlet">
+                            <input type="hidden" name="productId" value="${product.id}">
+                            <button type="submit" class="wishlist-btn" title="Add to Wishlist">&#9734;</button>
+                        </form>
                     </div>
                     <div class="product-info">
-                        <p class="product-name">${product.name}</p>
-                        <p class="product-meta-line">Sold by Thrift&amp;Drift Store | ${product.size}</p>
+                        <a class="product-name" href="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}">${product.name}</a>
+                        <p class="product-meta-line">Sold by Thrift&amp;Drift Store | Size ${product.size}</p>
                         <div class="product-bottom">
                             <span class="product-price">Rs ${product.price}</span>
-                            <a href="${pageContext.request.contextPath}/BagServlet" class="btn-add-bag">Add to Cart</a>
+                            <form method="post" action="${pageContext.request.contextPath}/BagServlet">
+                                <input type="hidden" name="productId" value="${product.id}">
+                                <input type="hidden" name="productName" value="${product.name}">
+                                <input type="hidden" name="productPrice" value="${product.price}">
+                                <button type="submit" class="btn-add-bag">Add to Bag</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </c:forEach>
 
             <c:if test="${empty products}">
-                <p>No approved products are listed yet.</p>
+                <section class="empty-products">
+                    <h2>No products found</h2>
+                    <p>Try changing the category, size, condition, or price range.</p>
+                    <a href="${pageContext.request.contextPath}/ShopServlet">View all products</a>
+                </section>
             </c:if>
         </div>
 

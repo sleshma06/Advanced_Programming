@@ -27,6 +27,21 @@ public class ProductDAO {
         return products;
     }
 
+    public ProductModel getListedProductById(int id) throws SQLException {
+        String sql = "SELECT * FROM products WHERE id = ? AND status = 'Listed'";
+
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return mapProduct(rs);
+                }
+            }
+        }
+        return null;
+    }
+
     private ProductModel mapProduct(ResultSet rs) throws SQLException {
         ProductModel product = new ProductModel();
         product.setId(rs.getInt("id"));

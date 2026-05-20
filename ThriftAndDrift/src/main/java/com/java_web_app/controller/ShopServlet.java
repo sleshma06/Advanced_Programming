@@ -2,6 +2,7 @@ package com.java_web_app.controller;
 
 
 import com.java_web_app.dao.ProductDAO;
+import com.java_web_app.model.ProductModel;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -10,6 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -32,13 +35,12 @@ public class ShopServlet extends HttpServlet {
             throws ServletException, IOException {
 
 
-        // Read filter params
         final String category  = request.getParameter("category");
         final String size      = request.getParameter("size");
-        final String style     = request.getParameter("style");
         final String condition = request.getParameter("condition");
         final String minP      = request.getParameter("minPrice");
         final String maxP      = request.getParameter("maxPrice");
+        final String query     = request.getParameter("q");
 
         int minPrice = parsePrice(minP, 99);
         int maxPrice = parsePrice(maxP, 10000);
@@ -48,47 +50,38 @@ public class ShopServlet extends HttpServlet {
         final int selectedMinPrice = minPrice;
         final int selectedMaxPrice = maxPrice;
 
-        List<Map<String, String>> products = ProductCatalog.products();
-
-        products = products.stream()
-            .filter(p -> {
-                if (category != null && !category.isEmpty())
-                    if (!p.get("category").equalsIgnoreCase(category)) return false;
-                if (size != null && !size.isEmpty())
-                    if (!p.get("size").equalsIgnoreCase(size)) return false;
-                if (style != null && !style.isEmpty())
-                    if (!p.get("badge").equalsIgnoreCase(style)) return false;
-                if (condition != null && !condition.isEmpty())
-                    if (!p.get("condition").equalsIgnoreCase(condition)) return false;
-                int price = Integer.parseInt(p.get("price"));
-                if (price < selectedMinPrice || price > selectedMaxPrice) return false;
-                return true;
-            })
-            .collect(Collectors.toList());
-
-        request.setAttribute("products", products);
-        request.setAttribute("categories", ProductCatalog.categories(ProductCatalog.products()));
-        request.setAttribute("categoryGroups", ProductCatalog.groupedByCategory(products));
-        request.setAttribute("sizes", List.of("S", "M", "L", "XL"));
-        request.setAttribute("styles", List.of("New-in", "Vintage", "Designer"));
-        request.setAttribute("conditions", List.of("Like New", "Good", "Fair"));
-        request.setAttribute("productCount", products.size());
-        request.setAttribute("shopLoaded", true);
-
-        request.setAttribute("selCategory", category);
-        request.setAttribute("selSize",     size);
-        request.setAttribute("selStyle",    style);
-        request.setAttribute("selCondition", condition);
-        request.setAttribute("selMinPrice", minPrice);
-        request.setAttribute("selMaxPrice", maxPrice);
-
-
         try {
-            request.setAttribute("products", productDAO.getListedProducts());
+            List<ProductModel> allProducts = productDAO.getListedProducts();
+            List<ProductModel> filteredProducts = allProducts.stream()
+                .filter(p -> matches(category, p.getCategory()))
+                .filter(p -> matches(size, p.getSize()))
+                .filter(p -> matches(condition, p.getCondition()))
+                .filter(p -> p.getPrice() >= selectedMinPrice && p.getPrice() <= selectedMaxPrice)
+                .filter(p -> query == null || query.isBlank()
+                        || p.getName().toLowerCase().contains(query.toLowerCase())
+                        || (p.getCategory() != null && p.getCategory().toLowerCase().contains(query.toLowerCase())))
+                .collect(Collectors.toList());
+
+            request.setAttribute("products", filteredProducts);
+            request.setAttribute("categories", categories(allProducts));
+            request.setAttribute("productCount", filteredProducts.size());
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Could not load products from database.");
+            request.setAttribute("products", List.of());
+            request.setAttribute("categories", List.of());
+            request.setAttribute("productCount", 0);
         }
+
+        request.setAttribute("sizes", List.of("S", "M", "L", "XL"));
+        request.setAttribute("conditions", List.of("Like New", "Good", "Fair"));
+        request.setAttribute("shopLoaded", true);
+        request.setAttribute("selCategory", category);
+        request.setAttribute("selSize", size);
+        request.setAttribute("selCondition", condition);
+        request.setAttribute("selMinPrice", minPrice);
+        request.setAttribute("selMaxPrice", maxPrice);
+        request.setAttribute("searchQuery", query);
 
         request.getRequestDispatcher("/pages/user/shop.jsp").forward(request, response);
     }
@@ -104,6 +97,31 @@ public class ShopServlet extends HttpServlet {
         if (value == null || value.isBlank()) return fallback;
         try { return Integer.parseInt(value); }
         catch (NumberFormatException e) { return fallback; }
+    }
+
+    private boolean matches(String selectedValue, String productValue) {
+        return selectedValue == null || selectedValue.isBlank()
+                || (productValue != null && productValue.equalsIgnoreCase(selectedValue));
+    }
+
+    private List<Map<String, String>> categories(List<ProductModel> products) {
+        Map<String, Integer> counts = new LinkedHashMap<>();
+        for (ProductModel product : products) {
+            String category = product.getCategory();
+            if (category == null || category.isBlank()) {
+                continue;
+            }
+            counts.put(category, counts.getOrDefault(category, 0) + 1);
+        }
+
+        List<Map<String, String>> categories = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : counts.entrySet()) {
+            Map<String, String> category = new LinkedHashMap<>();
+            category.put("name", entry.getKey());
+            category.put("count", String.valueOf(entry.getValue()));
+            categories.add(category);
+        }
+        return categories;
     }
 }
 

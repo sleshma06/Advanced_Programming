@@ -5,8 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-final class ProductCatalog {
-    private ProductCatalog() {
+final class ProductCatalogServlet {
+    private ProductCatalogServlet() {
     }
 
     static List<Map<String, String>> products() {
@@ -118,6 +118,19 @@ final class ProductCatalog {
     static Map<String, String> findById(String id) {
         for (Map<String, String> product : products()) {
             if (product.get("id").equals(id)) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    static Map<String, String> findByName(String name) {
+        if (name == null) {
+            return null;
+        }
+
+        for (Map<String, String> product : products()) {
+            if (name.equalsIgnoreCase(product.get("name"))) {
                 return product;
             }
         }
