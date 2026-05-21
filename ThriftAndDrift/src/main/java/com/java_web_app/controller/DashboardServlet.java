@@ -1,6 +1,7 @@
 package com.java_web_app.controller;
 
 import com.java_web_app.dao.AdminDAO;
+import com.java_web_app.dao.ContactMessageDAO;
 import com.java_web_app.utils.SessionUtil;
 
 import jakarta.servlet.ServletException;
@@ -15,10 +16,12 @@ import java.sql.SQLException;
 public class DashboardServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private AdminDAO adminDAO;
+    private ContactMessageDAO contactMessageDAO;
 
     @Override
     public void init() {
         adminDAO = new AdminDAO();
+        contactMessageDAO = new ContactMessageDAO();
     }
 
     @Override
@@ -37,6 +40,7 @@ public class DashboardServlet extends HttpServlet {
             request.setAttribute("totalProducts", adminDAO.countRows("products"));
             request.setAttribute("totalOrders", adminDAO.countRows("orders"));
             request.setAttribute("pendingSubmissions", adminDAO.countSubmissionsByStatus("Submitted"));
+            request.setAttribute("contactMessages", contactMessageDAO.countMessages());
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Could not load dashboard numbers.");

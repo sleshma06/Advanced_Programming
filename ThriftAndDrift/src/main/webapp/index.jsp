@@ -18,9 +18,7 @@
 
 <body>
 
-<!-- ========================
-     SECTION 1 — NAVBAR
-     ======================== -->
+<!--  NAVBAR -->
 <nav class="navbar">
     <ul class="nav-links">
 
@@ -46,9 +44,7 @@
     </div>
 </nav>
 
-<!-- ========================
-     BRAND HEADING BLOCK
-     ======================== -->
+<!-- BRAND HEADING BLOCK -->
 <div class="brand-heading-block">
     <span class="brand-title">THRIFT&amp;DRIFT</span>
     <div class="brand-tagline-row">
@@ -56,9 +52,7 @@
     </div>
 </div>
 
-<!-- ========================
-     SECTION 2 — HERO IMAGE
-     ======================== -->
+<!--  HERO IMAGE -->
 <section class="hero">
     <img class="hero-img" src="${pageContext.request.contextPath}/images/hanger.jpg" alt="Clothing rack - Thrift and Drift">
 
@@ -71,18 +65,14 @@
     <div class="hero-badge">PRELOVED PIECES.<br>NEW ENERGY</div>
 </section>
 
-<!-- ========================
-     SECTION 3 — CATEGORY SCROLL STRIP
-     ======================== -->
+<!-- CATEGORY SCROLL STRIP -->
 <div class="category-bar">
     <div class="category-bar-track">
         <span>CURATED FINDS &nbsp;&#8226;&nbsp; SUSTAINABLE STYLE &nbsp;&#8226;&nbsp; PRE-LOVED &nbsp;&#8226;&nbsp; UNIQUE PIECES &nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
 </div>
 
-<!-- ========================
-     SECTION 4 — NEW-IN FRESH DROPS
-     ======================== -->
+<!-- NEW-IN FRESH DROPS -->
 <section class="new-in-section">
     <h2 class="section-heading">New-In fresh drops</h2>
 
@@ -116,9 +106,7 @@
     </div>
 </section>
 
-<!-- ========================
-     SECTION 5 — DESIGNER FINDS
-     ======================== -->
+<!--  DESIGNER FINDS -->
 <section class="designer-section">
     <h2 class="section-heading">Some Of Our Designer Finds</h2>
     <div class="designer-grid">
@@ -137,9 +125,7 @@
     </div>
 </section>
 
-<!-- ========================
-     SECTION 6 — OUR STORY
-     ======================== -->
+<!-- OUR STORY -->
 <section class="story-section">
     <img class="story-bg-img" src="${pageContext.request.contextPath}/images/ourStory.jpg" alt="Our Story background">
     <div class="story-overlay"></div>
@@ -160,9 +146,7 @@
     </div>
 </section>
 
-<!-- ========================
-     SECTION 7 — SUSTAINABLE FEATURES
-     ======================== -->
+<!-- SUSTAINABLE FEATURES -->
 <section class="features-section">
     <h2 class="section-heading">Where Sustainable Meets Style</h2>
     <div class="features-grid">
@@ -192,7 +176,7 @@
         <div class="sell-banner-text">
             <h3>CLOTHES SITTING IN YOUR CLOSET? GIVE THEM A NEW LIFE</h3>
             <p>List your pre-loved fashion and give someone else a chance to love it.</p>
-            <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-white">SELL NOW</a>
+            <a href="${pageContext.request.contextPath}/SellerServlet" class="btn-white">SELL NOW</a>
         </div>
         <div class="sell-banner-images">
             <img src="${pageContext.request.contextPath}/images/clothesCloset.jpg" alt="Closet Shelf">
@@ -200,9 +184,9 @@
     </div>
 </section>
 
-<!-- ========================
-     SECTION 8 — STATS
-     ======================== -->
+<!-- 
+      STATS
+      -->
 <section class="stats-section">
     <div class="curated-watermark">Curated for Character</div>
     <div class="stats-row">
@@ -221,15 +205,19 @@
     </div>
 </section>
 
-<!-- ========================
-     SECTION 9 — CONTACT
-     ======================== -->
+<!-- CONTACT = -->
 <section class="contact-section" id="contact-us">
     <div class="contact-img-side">
         <img src="${pageContext.request.contextPath}/images/ContactUs.jpg" alt="Contact us">
     </div>
     <div class="contact-form-side">
         <h3>CONTACT US</h3>
+        <c:if test="${param.contactSuccess eq 'true'}">
+            <p class="contact-message success">Thank you. Your message has been sent.</p>
+        </c:if>
+        <c:if test="${param.contactError eq 'true'}">
+            <p class="contact-message error">Please fill the contact form correctly.</p>
+        </c:if>
         <form action="${pageContext.request.contextPath}/contact" method="POST">
             <div class="contact-fields">
                 <input type="text" name="name" placeholder="Name" required>

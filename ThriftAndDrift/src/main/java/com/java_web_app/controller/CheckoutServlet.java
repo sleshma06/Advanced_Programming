@@ -62,7 +62,11 @@ public class CheckoutServlet extends HttpServlet {
             }
 
             if (orderDAO.createOrder(user.getId(), total, paymentMethod, deliveryType)) {
-                cartDAO.clearCart(user.getId());
+                try {
+                    cartDAO.clearCart(user.getId());
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
                 response.sendRedirect(request.getContextPath() + "/BagServlet?ordered=true");
                 return;
             }

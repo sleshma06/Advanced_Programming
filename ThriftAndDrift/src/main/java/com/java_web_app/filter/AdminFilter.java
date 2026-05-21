@@ -18,10 +18,12 @@ import java.io.IOException;
         "/AdminListingsServlet",
         "/AdminUsersServlet",
         "/AdminOrdersServlet",
+        "/AdminContactMessagesServlet",
         "/pages/admin/dashboard.jsp",
         "/pages/admin/managelisting.jsp",
         "/pages/admin/manageusers.jsp",
-        "/pages/admin/reports.jsp"
+        "/pages/admin/reports.jsp",
+        "/pages/admin/contactmessages.jsp"
 })
 public class AdminFilter extends HttpFilter implements Filter {
     private static final long serialVersionUID = 1L;
@@ -52,6 +54,11 @@ public class AdminFilter extends HttpFilter implements Filter {
 
             if ("/pages/admin/reports.jsp".equals(path)) {
                 httpResp.sendRedirect(httpReq.getContextPath() + "/AdminOrdersServlet");
+                return;
+            }
+
+            if ("/pages/admin/contactmessages.jsp".equals(path)) {
+                httpResp.sendRedirect(httpReq.getContextPath() + "/AdminContactMessagesServlet");
                 return;
             }
 

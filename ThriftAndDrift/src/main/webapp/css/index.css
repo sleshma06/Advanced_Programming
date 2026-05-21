@@ -632,6 +632,22 @@ img {
   margin-bottom: 60px;
 }
 
+.contact-message {
+  padding: 14px 18px;
+  margin: -32px 0 28px;
+  background: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+}
+
+.contact-message.success {
+  color: #1f6b2a;
+}
+
+.contact-message.error {
+  color: #9b1c1c;
+}
+
 .contact-fields {
   display: flex;
   flex-direction: column;

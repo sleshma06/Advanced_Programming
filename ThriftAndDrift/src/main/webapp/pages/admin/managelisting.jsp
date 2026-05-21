@@ -17,6 +17,7 @@
             <a href="${pageContext.request.contextPath}/AdminListingsServlet" class="active">Manage Listings</a>
             <a href="${pageContext.request.contextPath}/AdminUsersServlet">Manage Users</a>
             <a href="${pageContext.request.contextPath}/AdminOrdersServlet">Orders</a>
+            <a href="${pageContext.request.contextPath}/AdminContactMessagesServlet">Contact Messages</a>
             <a href="${pageContext.request.contextPath}/LogoutServlet">Log Out</a>
         </nav>
     </aside>

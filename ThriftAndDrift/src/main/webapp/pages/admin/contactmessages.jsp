@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Users</title>
+    <title>Contact Messages</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/manageusers.css">
 </head>
 <body>
@@ -15,22 +15,19 @@
         <nav class="sidebar-nav">
             <a href="${pageContext.request.contextPath}/DashboardServlet">Dashboard</a>
             <a href="${pageContext.request.contextPath}/AdminListingsServlet">Manage Listings</a>
-            <a href="${pageContext.request.contextPath}/AdminUsersServlet" class="active">Manage Users</a>
+            <a href="${pageContext.request.contextPath}/AdminUsersServlet">Manage Users</a>
             <a href="${pageContext.request.contextPath}/AdminOrdersServlet">Orders</a>
-            <a href="${pageContext.request.contextPath}/AdminContactMessagesServlet">Contact Messages</a>
+            <a href="${pageContext.request.contextPath}/AdminContactMessagesServlet" class="active">Contact Messages</a>
             <a href="${pageContext.request.contextPath}/LogoutServlet">Log Out</a>
         </nav>
     </aside>
 
     <div class="main-area">
         <header class="topbar">
-            <h1 class="topbar-title">Manage Users</h1>
+            <h1 class="topbar-title">Contact Messages</h1>
         </header>
 
         <main class="page-body">
-            <c:if test="${not empty success}">
-                <p class="success-message">${success}</p>
-            </c:if>
             <c:if test="${not empty error}">
                 <p class="error-message">${error}</p>
             </c:if>
@@ -39,34 +36,29 @@
                 <table class="data-table">
                     <thead>
                     <tr>
-                        <th>User ID</th>
+                        <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Role</th>
-                        <th>Actions</th>
+                        <th>Phone</th>
+                        <th>Message</th>
+                        <th>Date</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="user" items="${users}">
+                    <c:forEach var="message" items="${messages}">
                         <tr>
-                            <td>USR-${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.email}</td>
-                            <td><span class="badge badge-active">${user.role}</span></td>
-                            <td>
-                                <form action="${pageContext.request.contextPath}/AdminUsersServlet" method="post">
-                                    <input type="hidden" name="userId" value="${user.id}">
-                                    <button class="btn-approve" type="submit" name="action" value="makeAdmin">Make Admin</button>
-                                    <button class="btn-primary" type="submit" name="action" value="makeUser">Make User</button>
-                                    <button class="btn-reject" type="submit" name="action" value="delete">Delete</button>
-                                </form>
-                            </td>
+                            <td>MSG-${message.id}</td>
+                            <td>${message.name}</td>
+                            <td>${message.email}</td>
+                            <td>${message.phone}</td>
+                            <td>${message.message}</td>
+                            <td>${message.createdAt}</td>
                         </tr>
                     </c:forEach>
 
-                    <c:if test="${empty users}">
+                    <c:if test="${empty messages}">
                         <tr>
-                            <td colspan="5">No users found.</td>
+                            <td colspan="6">No contact messages yet.</td>
                         </tr>
                     </c:if>
                     </tbody>
