@@ -31,7 +31,12 @@ public class ShopServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
+    	// Check if user is logged in
+        if (request.getSession().getAttribute("username") == null) {
+            response.sendRedirect(request.getContextPath() + "/pages/login.jsp");
+            return;
+        }
+        
         final String category  = request.getParameter("category");
         final String size      = request.getParameter("size");
         final String condition = request.getParameter("condition");
