@@ -17,7 +17,7 @@
         <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
         <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
     </ul>
 
     <div class="nav-right">
@@ -60,6 +60,13 @@
                 <div class="safety-box">
                     <div class="safety-icon">-</div>
                     <div><p>Item removed from your bag.</p></div>
+                </div>
+            </c:if>
+
+            <c:if test="${param.ordered eq 'true'}">
+                <div class="safety-box">
+                    <div class="safety-icon">OK</div>
+                    <div><p>Your order has been placed.</p></div>
                 </div>
             </c:if>
 
@@ -170,7 +177,7 @@
                 <li><a href="${pageContext.request.contextPath}/AboutServlet">About Us</a></li>
                 <li><a href="#">Collections</a></li>
                 <li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
             </ul>
         </div>
 

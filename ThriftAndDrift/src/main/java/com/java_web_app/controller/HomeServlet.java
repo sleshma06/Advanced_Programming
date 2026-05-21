@@ -29,12 +29,10 @@ public class HomeServlet extends HttpServlet {
 
         try {
             request.setAttribute("newInProducts", productDAO.getLatestProducts(3));
-            request.setAttribute("designerProducts", productDAO.getDesignerProducts(3));
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("homeError", "Could not load new products.");
             request.setAttribute("newInProducts", List.of());
-            request.setAttribute("designerProducts", List.of());
         }
 
         request.getRequestDispatcher("/index.jsp").forward(request, response);

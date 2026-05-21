@@ -28,6 +28,13 @@ public class AdminOrdersServlet extends HttpServlet {
             return;
         }
 
+        if ("true".equals(request.getParameter("updated"))) {
+            request.setAttribute("success", "Order status updated.");
+        }
+        if ("true".equals(request.getParameter("invalid"))) {
+            request.setAttribute("error", "Please choose a valid order and status.");
+        }
+
         try {
             request.setAttribute("orders", adminDAO.getAllOrders());
         } catch (SQLException e) {
@@ -48,9 +55,16 @@ public class AdminOrdersServlet extends HttpServlet {
         int orderId = getInt(request.getParameter("orderId"));
         String status = request.getParameter("orderStatus");
 
+        if (orderId <= 0 || !isValidStatus(status)) {
+            response.sendRedirect(request.getContextPath() + "/AdminOrdersServlet?invalid=true");
+            return;
+        }
+
         try {
-            adminDAO.updateOrderStatus(orderId, status);
-            request.setAttribute("success", "Order status updated.");
+            boolean updated = adminDAO.updateOrderStatus(orderId, status);
+            response.sendRedirect(request.getContextPath() + "/AdminOrdersServlet?"
+                    + (updated ? "updated=true" : "invalid=true"));
+            return;
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Database error while updating order.");
@@ -73,5 +87,12 @@ public class AdminOrdersServlet extends HttpServlet {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    private boolean isValidStatus(String status) {
+        return "Processing".equals(status)
+                || "Ready for Pickup".equals(status)
+                || "Delivered".equals(status)
+                || "Cancelled".equals(status);
     }
 }

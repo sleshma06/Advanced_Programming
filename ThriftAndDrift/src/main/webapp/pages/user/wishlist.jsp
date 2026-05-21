@@ -18,7 +18,7 @@
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
 
         <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
 </ul>
 
     <div class="nav-right">
@@ -148,7 +148,7 @@
                 <li><a href="${pageContext.request.contextPath}/ShopServlet">Collections</a></li>
 
                 <li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li>
-                <li><a href="#footer">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
             </ul>
         </div>
 

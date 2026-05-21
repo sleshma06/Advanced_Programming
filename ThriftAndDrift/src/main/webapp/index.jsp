@@ -31,7 +31,7 @@
         
 
         <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
     </ul>
 
     <div class="nav-right">
@@ -122,16 +122,18 @@
 <section class="designer-section">
     <h2 class="section-heading">Some Of Our Designer Finds</h2>
     <div class="designer-grid">
-        <c:forEach var="product" items="${designerProducts}">
-            <a href="${pageContext.request.contextPath}/ProductDetailServlet?id=${product.id}" class="designer-card">
-                <img src="${pageContext.request.contextPath}/${product.imageUrl}" alt="${product.name}">
-                <div class="designer-card-label">${product.name}</div>
-            </a>
-        </c:forEach>
-
-        <c:if test="${empty designerProducts}">
-            <p>No designer products are listed yet.</p>
-        </c:if>
+        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
+            <img src="${pageContext.request.contextPath}/images/gucci.jpg" alt="Gucci inspired pre-loved find">
+            <div class="designer-card-label">Gucci Finds</div>
+        </a>
+        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
+            <img src="${pageContext.request.contextPath}/images/DiorEmb.jpg" alt="Dior embroidered pre-loved find">
+            <div class="designer-card-label">Dior Embroidery</div>
+        </a>
+        <a href="${pageContext.request.contextPath}/ShopServlet" class="designer-card">
+            <img src="${pageContext.request.contextPath}/images/PradaCoat.jpg" alt="Prada coat pre-loved find">
+            <div class="designer-card-label">Prada Coats</div>
+        </a>
     </div>
 </section>
 
@@ -190,7 +192,7 @@
         <div class="sell-banner-text">
             <h3>CLOTHES SITTING IN YOUR CLOSET? GIVE THEM A NEW LIFE</h3>
             <p>List your pre-loved fashion and give someone else a chance to love it.</p>
-            <a href="${pageContext.request.contextPath}/sell" class="btn-white">SELL NOW</a>
+            <a href="${pageContext.request.contextPath}/ShopServlet" class="btn-white">SELL NOW</a>
         </div>
         <div class="sell-banner-images">
             <img src="${pageContext.request.contextPath}/images/clothesCloset.jpg" alt="Closet Shelf">
@@ -222,7 +224,7 @@
 <!-- ========================
      SECTION 9 — CONTACT
      ======================== -->
-<section class="contact-section">
+<section class="contact-section" id="contact-us">
     <div class="contact-img-side">
         <img src="${pageContext.request.contextPath}/images/ContactUs.jpg" alt="Contact us">
     </div>
@@ -265,7 +267,7 @@
                 <li><a href="${pageContext.request.contextPath}/AboutServlet">About Us</a></li>
                 <li><a href="#">Collections</a></li>
                 <li><a href="#">Explore products</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
             </ul>
         </div>
 

@@ -28,7 +28,7 @@
         <li><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
         <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
-        <li><a href="#footer">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
     </ul>
 
   
@@ -240,7 +240,7 @@
                 <li><a href="${pageContext.request.contextPath}/AboutServlet">About Us</a></li>
                 <li><a href="#shop-products">Collections</a></li>
                 <li><a href="${pageContext.request.contextPath}/ShopServlet">Explore products</a></li>
-                <li><a href="#footer">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
             </ul>
         </div>
 

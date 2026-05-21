@@ -17,7 +17,7 @@
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
 
         <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
 
 
     </ul>
@@ -36,35 +36,15 @@
 <main class="profile-page">
     <aside class="profile-menu">
         <h1>My Account</h1>
-        <a href="#profile">My Profile</a>
+        <p>Manage your basic account details here.</p>
+        <a href="#profile">Profile Details</a>
         <a href="${pageContext.request.contextPath}/LogoutServlet">Log Out</a>
     </aside>
 
     <section class="profile-content">
-        <div class="panel" id="submissions">
-            <h2>My Submissions</h2>
-            <p>Denim Jacket <span>Under Review</span></p>
-            <p>Floral Midi Skirt <span>Listed</span></p>
-            <p>Leather Bag <span>Sold</span></p>
-        </div>
-
-        <div class="panel" id="orders">
-            <h2>My Orders</h2>
-            <p>Vintage Levi's 501 <span>Processing</span></p>
-            <p>Y2K Leather Shoulder Bag <span>Ready for Pickup</span></p>
-            <p>Graphic Sweatshirt <span>Delivered</span></p>
-        </div>
-
-        <div class="panel" id="payouts">
-            <h2>Payouts</h2>
-            <div class="payout-grid">
-                <strong>Rs. 3,200 <small>Pending payout</small></strong>
-                <strong>Rs. 8,900 <small>Received</small></strong>
-            </div>
-        </div>
-
         <div class="panel" id="profile">
-            <h2>Edit Profile</h2>
+            <h2>Profile Details</h2>
+            <p class="profile-help">Update your name, email, or password. Leave password fields blank if you do not want to change it.</p>
 
             <c:if test="${not empty success}">
                 <p class="profile-message success">${success}</p>
@@ -78,7 +58,7 @@
                 <input type="email" name="email" placeholder="Email" value="${profileUser.email}" required>
                 <input type="password" name="newPassword" placeholder="New password optional">
                 <input type="password" name="confirmPassword" placeholder="Confirm new password">
-                <button type="submit">Save Profile</button>
+                <button type="submit">Save Changes</button>
             </form>
         </div>
     </section>

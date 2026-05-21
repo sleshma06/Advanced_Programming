@@ -186,7 +186,8 @@ public class AdminDAO {
                 OrderModel order = new OrderModel();
                 order.setId(rs.getInt("id"));
                 order.setUserId(rs.getInt("user_id"));
-                order.setCustomerName(rs.getString("customer_name"));
+                String customerName = rs.getString("customer_name");
+                order.setCustomerName(customerName == null ? "Unknown User" : customerName);
                 order.setTotalAmount(rs.getDouble("total_amount"));
                 order.setOrderStatus(rs.getString("order_status"));
                 order.setPaymentMethod(rs.getString("payment_method"));

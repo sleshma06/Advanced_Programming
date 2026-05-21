@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Orders</title>
+    <title>Manage Orders</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/manageusers.css">
 </head>
 <body>
@@ -33,50 +33,6 @@
             <c:if test="${not empty error}">
                 <p class="error-message">${error}</p>
             </c:if>
-
-
-            <!-- ===== KPI STAT CARDS ===== -->
-            <div class="stats-grid">
-
-                <!-- Total Revenue -->
-                <div class="stat-card">
-                    <div class="stat-label">Total Revenue</div>
-                
-                    <div class="stat-value">Rs 16,558,500</div>
-                    <div class="stat-delta">
-                        <span class="delta-up">+12%</span> vs last month
-                    </div>
-                </div>
-
-                <!-- Most Popular Category -->
-                <div class="stat-card">
-                    <div class="stat-label">Most Popular Category</div>
-               
-                    <div class="stat-value big-text">Vintage Outerwear</div>
-                    <div class="stat-delta">
-                        <span class="delta-trend">Trending</span> vs last month
-                    </div>
-                </div>
-
-                <!-- Avg. Selling Price -->
-                <div class="stat-card">
-                    <div class="stat-label">Avg. Selling Price</div>
-                
-                    <div class="stat-value">Rs 6,450</div>
-                    <div class="stat-delta">
-                        <span class="delta-down">-2%</span> vs last month
-                    </div>
-                </div>
-
-                <!-- Return Rate -->
-                <div class="stat-card">
-                    <div class="stat-label">Return Rate</div>
-                  
-                    <div class="stat-value">2.4%</div>
-                    <div class="stat-delta">
-                        <span class="delta-down">-0.5%</span> vs last month
-                    </div>
-                </div>
 
             <div class="table-card">
                 <table class="data-table">
@@ -106,17 +62,44 @@
                                 <form action="${pageContext.request.contextPath}/AdminOrdersServlet" method="post">
                                     <input type="hidden" name="orderId" value="${order.id}">
                                     <select name="orderStatus">
-                                        <option value="Processing">Processing</option>
-                                        <option value="Ready for Pickup">Ready for Pickup</option>
-                                        <option value="Delivered">Delivered</option>
-                                        <option value="Cancelled">Cancelled</option>
+                                        <c:choose>
+                                            <c:when test="${order.orderStatus eq 'Processing'}">
+                                                <option value="Processing" selected>Processing</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="Processing">Processing</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:choose>
+                                            <c:when test="${order.orderStatus eq 'Ready for Pickup'}">
+                                                <option value="Ready for Pickup" selected>Ready for Pickup</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="Ready for Pickup">Ready for Pickup</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:choose>
+                                            <c:when test="${order.orderStatus eq 'Delivered'}">
+                                                <option value="Delivered" selected>Delivered</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="Delivered">Delivered</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        <c:choose>
+                                            <c:when test="${order.orderStatus eq 'Cancelled'}">
+                                                <option value="Cancelled" selected>Cancelled</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <option value="Cancelled">Cancelled</option>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </select>
                                     <button class="btn-primary" type="submit">Update</button>
                                 </form>
                             </td>
                         </tr>
                     </c:forEach>
-
 
                     <c:if test="${empty orders}">
                         <tr>

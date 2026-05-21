@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
         <li><a href="${pageContext.request.contextPath}/HomeServlet">Home</a></li>
         <li><a href="${pageContext.request.contextPath}/ShopServlet">Shop</a></li>
         <li><a href="${pageContext.request.contextPath}/AboutServlet">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="${pageContext.request.contextPath}/HomeServlet#contact-us">Contact</a></li>
     </ul>
 
     <div class="nav-right">
@@ -33,12 +34,15 @@
 
 <main class="checkout-page">
     <h1>Checkout</h1>
+    <c:if test="${not empty error}">
+        <p class="checkout-message">${error}</p>
+    </c:if>
     <form class="checkout-layout" action="${pageContext.request.contextPath}/CheckoutServlet" method="post">
         <section class="checkout-card">
             <h2>Delivery Details</h2>
             <div class="toggle-row">
-                <label><input type="radio" name="fulfillment" checked> Delivery</label>
-                <label><input type="radio" name="fulfillment"> In-store Pickup</label>
+                <label><input type="radio" name="fulfillment" value="Delivery" checked> Delivery</label>
+                <label><input type="radio" name="fulfillment" value="In-store Pickup"> In-store Pickup</label>
             </div>
 
             <div class="field-grid">
@@ -62,18 +66,18 @@
 
             <h2>Payment Method</h2>
             <div class="payment-options">
-                <label><input type="radio" name="payment" checked> eSewa</label>
-                <label><input type="radio" name="payment"> Khalti</label>
-                <label><input type="radio" name="payment"> Cash on Delivery</label>
-                <label><input type="radio" name="payment"> Bank Transfer</label>
+                <label><input type="radio" name="payment" value="eSewa" checked> eSewa</label>
+                <label><input type="radio" name="payment" value="Khalti"> Khalti</label>
+                <label><input type="radio" name="payment" value="Cash on Delivery"> Cash on Delivery</label>
+                <label><input type="radio" name="payment" value="Bank Transfer"> Bank Transfer</label>
             </div>
         </section>
 
         <aside class="summary-card">
             <h2>Order Summary</h2>
-            <div class="summary-row"><span>Subtotal</span><strong>Rs. 4,398</strong></div>
-            <div class="summary-row"><span>Platform Fee</span><strong>Rs. 50</strong></div>
-            <div class="summary-row total"><span>Total</span><strong>Rs. 4,448</strong></div>
+            <div class="summary-row"><span>Subtotal</span><strong>Rs. ${subtotal}</strong></div>
+            <div class="summary-row"><span>Platform Fee</span><strong>Rs. ${platformFee}</strong></div>
+            <div class="summary-row total"><span>Total</span><strong>Rs. ${total}</strong></div>
             <button type="submit">Place Order</button>
         </aside>
     </form>

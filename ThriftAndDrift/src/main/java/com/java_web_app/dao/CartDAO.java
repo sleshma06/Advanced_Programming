@@ -66,6 +66,15 @@ public class CartDAO {
         return products;
     }
 
+    public boolean clearCart(int userId) throws SQLException {
+        String sql = "DELETE FROM cart WHERE user_id = ?";
+        try (Connection conn = DBConfig.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, userId);
+            return stmt.executeUpdate() > 0;
+        }
+    }
+
     private boolean isItemInCart(int userId, int productId) throws SQLException {
         String sql = "SELECT product_id FROM cart WHERE user_id = ? AND product_id = ?";
         try (Connection conn = DBConfig.getConnection();
