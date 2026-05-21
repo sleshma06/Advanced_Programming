@@ -30,14 +30,9 @@ public class ProductDAO {
     public List<ProductModel> searchListedProducts(String category, String size, String condition,
             int minPrice, int maxPrice, String keyword) throws SQLException {
         List<ProductModel> products = new ArrayList<>();
-        String sql = "SELECT * FROM products "
-                + "WHERE status IN ('available', 'Listed') "
-                + "AND (? IS NULL OR category = ?) "
-                + "AND (? IS NULL OR size = ?) "
-                + "AND (? IS NULL OR condition_rating = ?) "
-                + "AND price BETWEEN ? AND ? "
-                + "AND (? IS NULL OR name LIKE ? OR category LIKE ?) "
-                + "ORDER BY product_id DESC";
+        String sql = "SELECT * FROM products " + "WHERE status IN ('available', 'Listed') " + "AND (? IS NULL OR category = ?) "
+                + "AND (? IS NULL OR size = ?) " + "AND (? IS NULL OR condition_rating = ?) "
+                + "AND price BETWEEN ? AND ? " + "AND (? IS NULL OR name LIKE ? OR category LIKE ?) " + "ORDER BY product_id DESC";
 
         String cleanCategory = emptyToNull(category);
         String cleanSize = emptyToNull(size);
