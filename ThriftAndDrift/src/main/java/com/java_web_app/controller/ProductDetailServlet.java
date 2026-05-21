@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -49,7 +48,7 @@ public class ProductDetailServlet extends HttpServlet {
 
             request.setAttribute("product", detailProduct(product));
             request.getRequestDispatcher("/pages/user/productdetail.jsp").forward(request, response);
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             Map<String, String> catalogProduct = ProductCatalogServlet.findById(String.valueOf(productId));
             if (catalogProduct != null) {

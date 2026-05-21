@@ -15,9 +15,9 @@ public class LoginService {
         if (email == null || email.trim().isEmpty()) return "Email is required";
         if (password == null || password.isEmpty())  return "Password is required";
         try {
-            UserModel user = userDAO.getUserByEmail(email);
+            UserModel user = userDAO.getUserByEmail(email.trim());
             if (user == null) return "No account found with that email";
-            if (PasswordUtil.checkPassword(password, user.getPassword())) return "Success";
+            if (PasswordUtil.checkPassword(password.trim(), user.getPassword())) return "Success";
             return "Incorrect password";
         } catch (SQLException e) {
             e.printStackTrace();
@@ -27,6 +27,6 @@ public class LoginService {
 
     // Fetch user after successful authentication
     public UserModel getUserByEmail(String email) throws SQLException {
-        return userDAO.getUserByEmail(email);
+        return userDAO.getUserByEmail(email.trim());
     }
 }
