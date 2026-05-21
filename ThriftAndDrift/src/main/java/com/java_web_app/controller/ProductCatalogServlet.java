@@ -1,5 +1,7 @@
 package com.java_web_app.controller;
 
+import com.java_web_app.model.ProductModel;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -76,6 +78,24 @@ final class ProductCatalogServlet {
                 "A clean black midi dress that can be styled up or down for reliable wardrobe mileage."));
         
         return products;
+    }
+
+    static List<ProductModel> productModels() {
+        List<ProductModel> catalogProducts = new ArrayList<>();
+        for (Map<String, String> catalogProduct : products()) {
+            ProductModel product = new ProductModel();
+            product.setId(Integer.parseInt(catalogProduct.get("id")));
+            product.setName(catalogProduct.get("name"));
+            product.setCategory(catalogProduct.get("category"));
+            product.setCondition(catalogProduct.get("condition"));
+            product.setSize(catalogProduct.get("size"));
+            product.setPrice(Double.parseDouble(catalogProduct.get("price")));
+            product.setStatus("available");
+            product.setImageUrl("images/" + catalogProduct.get("image"));
+            product.setDescription(catalogProduct.get("description"));
+            catalogProducts.add(product);
+        }
+        return catalogProducts;
     }
 
     static List<Map<String, String>> categories(List<Map<String, String>> products) {

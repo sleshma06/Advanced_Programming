@@ -130,7 +130,18 @@ public class ProductDAO {
         if (imageUrl == null || imageUrl.trim().isEmpty()) {
             return "images/c1.jfif";
         }
-        return imageUrl.trim();
+
+        String cleanImageUrl = imageUrl.trim().replace("\\", "/");
+        int imagesIndex = cleanImageUrl.indexOf("images/");
+        if (imagesIndex >= 0) {
+            return cleanImageUrl.substring(imagesIndex);
+        }
+
+        if (cleanImageUrl.startsWith("/") || cleanImageUrl.matches("^[A-Za-z]:/.*")) {
+            return "images/c1.jfif";
+        }
+
+        return cleanImageUrl;
     }
 
     private Integer conditionToRating(String condition) {

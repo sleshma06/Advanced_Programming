@@ -3,6 +3,7 @@ package com.java_web_app.controller;
 
 import com.java_web_app.dao.ProductDAO;
 import com.java_web_app.model.ProductModel;
+import com.java_web_app.utils.SessionUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,8 +16,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import java.sql.SQLException;
 
 
 @WebServlet("/ShopServlet")
@@ -33,7 +32,11 @@ public class ShopServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
+        if (!SessionUtil.isLoggedIn(request) && !SessionUtil.isAdminLoggedIn(request)) {
+            response.sendRedirect(request.getContextPath() + "/LoginServlet");
+            return;
+        }
+        
         final String category  = request.getParameter("category");
         final String size      = request.getParameter("size");
         final String condition = request.getParameter("condition");
@@ -51,16 +54,16 @@ public class ShopServlet extends HttpServlet {
             List<ProductModel> filteredProducts = productDAO.searchListedProducts(
                     category, size, condition, minPrice, maxPrice, query);
             if (allProducts.isEmpty()) {
-                allProducts = catalogProducts();
+                allProducts = ProductCatalogServlet.productModels();
                 filteredProducts = filterProducts(allProducts, category, size, condition, minPrice, maxPrice, query);
             }
 
             request.setAttribute("products", filteredProducts);
             request.setAttribute("categories", categories(allProducts));
             request.setAttribute("productCount", filteredProducts.size());
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            List<ProductModel> allProducts = catalogProducts();
+            List<ProductModel> allProducts = ProductCatalogServlet.productModels();
             List<ProductModel> filteredProducts = filterProducts(allProducts, category, size, condition,
                     minPrice, maxPrice, query);
             request.setAttribute("products", filteredProducts);
@@ -112,24 +115,6 @@ public class ShopServlet extends HttpServlet {
             url += "?" + query;
         }
         return url;
-    }
-
-    private List<ProductModel> catalogProducts() {
-        List<ProductModel> products = new ArrayList<>();
-        for (Map<String, String> catalogProduct : ProductCatalogServlet.products()) {
-            ProductModel product = new ProductModel();
-            product.setId(Integer.parseInt(catalogProduct.get("id")));
-            product.setName(catalogProduct.get("name"));
-            product.setCategory(catalogProduct.get("category"));
-            product.setCondition(catalogProduct.get("condition"));
-            product.setSize(catalogProduct.get("size"));
-            product.setPrice(Double.parseDouble(catalogProduct.get("price")));
-            product.setStatus("available");
-            product.setImageUrl("images/" + catalogProduct.get("image"));
-            product.setDescription(catalogProduct.get("description"));
-            products.add(product);
-        }
-        return products;
     }
 
     private List<ProductModel> filterProducts(List<ProductModel> products, String category, String size,

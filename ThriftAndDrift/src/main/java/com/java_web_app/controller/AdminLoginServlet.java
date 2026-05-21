@@ -51,7 +51,7 @@ public class AdminLoginServlet extends HttpServlet {
 
         UserModel user;
         try {
-            user = userDAO.getUserByEmailAndPassword(email.trim(), password);
+            user = userDAO.getUserByEmailAndPassword(email.trim(), password.trim());
         } catch (SQLException e) {
             e.printStackTrace();
             request.setAttribute("error", "Database error: " + e.getMessage());
