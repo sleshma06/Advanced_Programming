@@ -2,12 +2,14 @@ package com.java_web_app.controller;
 
 import com.java_web_app.dao.SellerSubmissionDAO;
 import com.java_web_app.model.SellerSubmissionModel;
+import com.java_web_app.utils.FileUploadUtil;
 import com.java_web_app.model.UserModel;
 import com.java_web_app.utils.SessionUtil;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Part;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -68,6 +70,8 @@ public class SellerServlet extends HttpServlet {
             return;
         }
 
+        String imageUrl = saveUploadedImage(request, user.getId());
+
         SellerSubmissionModel submission = new SellerSubmissionModel();
         submission.setUserId(user.getId());
         submission.setItemName(itemName.trim());
@@ -78,6 +82,7 @@ public class SellerServlet extends HttpServlet {
         submission.setDropoffDate(dropDate);
         submission.setDropoffTimeSlot(dropSlot);
         submission.setPayoutInfo(payoutInfo.trim());
+        submission.setImageUrl(imageUrl);
         submission.setStatus("Submitted");
 
         try {
@@ -104,5 +109,18 @@ public class SellerServlet extends HttpServlet {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    private String saveUploadedImage(HttpServletRequest request, int userId) throws IOException, ServletException {
+        Part photo = request.getPart("photoOne");
+        if (photo == null || photo.getSize() == 0 || !FileUploadUtil.isImage(photo)) {
+            return null;
+        }
+
+        String extension = FileUploadUtil.getFileExtension(photo.getSubmittedFileName());
+        String fileName = "seller-" + userId + "-" + System.currentTimeMillis() + extension;
+        String uploadDir = getServletContext().getRealPath("/images/seller");
+        FileUploadUtil.saveFile(photo, uploadDir, fileName);
+        return "images/seller/" + fileName;
     }
 }

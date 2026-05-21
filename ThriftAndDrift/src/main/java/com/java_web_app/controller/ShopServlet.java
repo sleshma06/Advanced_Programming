@@ -41,7 +41,7 @@ public class ShopServlet extends HttpServlet {
         final String maxP      = request.getParameter("maxPrice");
         final String query     = request.getParameter("q");
 
-        int minPrice = parsePrice(minP, 99);
+        int minPrice = parsePrice(minP, 0);
         int maxPrice = parsePrice(maxP, 10000);
         if (minPrice > maxPrice) {
             int tmp = minPrice; minPrice = maxPrice; maxPrice = tmp;
@@ -71,6 +71,8 @@ public class ShopServlet extends HttpServlet {
         request.setAttribute("sizes", List.of("S", "M", "L", "XL"));
         request.setAttribute("conditions", List.of("Like New", "Good", "Fair"));
         request.setAttribute("shopLoaded", true);
+        moveSessionMessage(request, "newsletterSuccess");
+        moveSessionMessage(request, "newsletterError");
         request.setAttribute("selCategory", category);
         request.setAttribute("selSize", size);
         request.setAttribute("selCondition", condition);
@@ -93,6 +95,14 @@ public class ShopServlet extends HttpServlet {
         if (value == null || value.isBlank()) return fallback;
         try { return Integer.parseInt(value); }
         catch (NumberFormatException e) { return fallback; }
+    }
+
+    private void moveSessionMessage(HttpServletRequest request, String name) {
+        Object message = request.getSession().getAttribute(name);
+        if (message != null) {
+            request.setAttribute(name, message);
+            request.getSession().removeAttribute(name);
+        }
     }
 
     private String currentUrl(HttpServletRequest request) {

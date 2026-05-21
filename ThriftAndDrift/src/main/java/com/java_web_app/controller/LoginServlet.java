@@ -45,9 +45,10 @@ public class LoginServlet extends HttpServlet {
         if ("Success".equals(status)) {
             try {
                 UserModel user = loginService.getUserByEmail(email);
+                request.changeSessionId();
 
                 String loginTime = LocalDateTime.now()
-                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
 
                 if ("admin".equals(user.getRole())) {
                     // ADMIN: keep admin details in session

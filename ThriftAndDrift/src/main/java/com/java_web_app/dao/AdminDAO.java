@@ -96,10 +96,12 @@ public class AdminDAO {
 
     public boolean listSubmissionInShop(int id) throws SQLException {
         SellerSubmissionModel submission = getSubmissionById(id);
-        if (submission == null || submission.getFinalPrice() <= 0) {
+        if (submission == null || submission.getFinalPrice() <= 0
+                || !"Approved".equalsIgnoreCase(submission.getStatus())) {
             return false;
         }
 
+        String existingProduct = "SELECT product_id FROM products WHERE submission_id = ?";
         String insertProduct = "INSERT INTO products "
                 + "(user_id, name, price, size, category, description, condition_rating, image, status, submission_id) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'available', ?)";
@@ -108,8 +110,17 @@ public class AdminDAO {
         try (Connection conn = DBConfig.getConnection()) {
             conn.setAutoCommit(false);
 
-            try (PreparedStatement productStmt = conn.prepareStatement(insertProduct);
+            try (PreparedStatement existingStmt = conn.prepareStatement(existingProduct);
+                 PreparedStatement productStmt = conn.prepareStatement(insertProduct);
                  PreparedStatement submissionStmt = conn.prepareStatement(updateSubmission)) {
+
+                existingStmt.setInt(1, submission.getId());
+                try (ResultSet rs = existingStmt.executeQuery()) {
+                    if (rs.next()) {
+                        conn.rollback();
+                        return false;
+                    }
+                }
 
                 productStmt.setInt(1, submission.getUserId());
                 productStmt.setString(2, submission.getItemName());
@@ -118,7 +129,7 @@ public class AdminDAO {
                 productStmt.setString(5, submission.getCategory());
                 productStmt.setString(6, "Listed from seller submission #" + submission.getId());
                 productStmt.setInt(7, conditionToRating(submission.getCondition()));
-                productStmt.setString(8, "images/c1.jfif");
+                productStmt.setString(8, imageOrDefault(submission.getImageUrl()));
                 productStmt.setInt(9, submission.getId());
                 productStmt.executeUpdate();
 
@@ -223,10 +234,18 @@ public class AdminDAO {
         submission.setDropoffDate(rs.getString("dropoff_date"));
         submission.setDropoffTimeSlot(rs.getString("dropoff_time_slot"));
         submission.setPayoutInfo(rs.getString("payout_info"));
+        submission.setImageUrl(rs.getString("image"));
         submission.setStatus(rs.getString("status"));
         submission.setAdminNote(rs.getString("admin_note"));
         submission.setCreatedAt(rs.getString("created_at"));
         return submission;
+    }
+
+    private String imageOrDefault(String imageUrl) {
+        if (imageUrl == null || imageUrl.trim().isEmpty()) {
+            return "images/c1.jfif";
+        }
+        return imageUrl.trim();
     }
 
     private int conditionToRating(String condition) {

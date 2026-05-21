@@ -12,8 +12,8 @@ public class SessionUtil {
     public static void createUserSession(HttpServletRequest request, UserModel user, int seconds) {
         HttpSession session = request.getSession(true);
         session.removeAttribute("admin");
-        session.removeAttribute("loggedInUser");
         session.setAttribute("user", user);
+        session.setAttribute("loggedInUser", user);
         session.setAttribute("userId", user.getId());
         session.setAttribute("userName", user.getName());
         session.setAttribute("userRole", user.getRole());

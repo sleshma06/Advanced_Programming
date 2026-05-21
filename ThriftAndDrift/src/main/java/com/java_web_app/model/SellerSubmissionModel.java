@@ -13,6 +13,7 @@ public class SellerSubmissionModel {
     private String dropoffDate;
     private String dropoffTimeSlot;
     private String payoutInfo;
+    private String imageUrl;
     private String status;
     private String adminNote;
     private String createdAt;
@@ -111,6 +112,14 @@ public class SellerSubmissionModel {
 
     public void setPayoutInfo(String payoutInfo) {
         this.payoutInfo = payoutInfo;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getStatus() {

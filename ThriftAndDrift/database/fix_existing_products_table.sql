@@ -2,10 +2,12 @@ USE thriftanddrift;
 
 -- Run this once only if your existing products table was created by the old schema.
 ALTER TABLE products CHANGE id product_id INT AUTO_INCREMENT;
+ALTER TABLE products ADD COLUMN user_id INT NOT NULL DEFAULT 0;
 ALTER TABLE products ADD COLUMN description TEXT;
 ALTER TABLE products ADD COLUMN condition_rating INT DEFAULT 3;
 ALTER TABLE products ADD COLUMN image VARCHAR(255);
 ALTER TABLE products ADD COLUMN submission_id INT;
+ALTER TABLE seller_submissions ADD COLUMN image VARCHAR(255);
 
 UPDATE products
 SET condition_rating = CASE

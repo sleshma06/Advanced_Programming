@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS seller_submissions (
     dropoff_date DATE,
     dropoff_time_slot VARCHAR(50),
     payout_info VARCHAR(255),
+    image VARCHAR(255),
     status VARCHAR(50) DEFAULT 'Submitted',
     admin_note TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -68,6 +69,12 @@ CREATE TABLE IF NOT EXISTS admin_actions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- If your tables already existed, run these only if a column is missing.
 -- ALTER TABLE products CHANGE id product_id INT AUTO_INCREMENT;
 -- ALTER TABLE products ADD COLUMN user_id INT NOT NULL;
@@ -75,6 +82,7 @@ CREATE TABLE IF NOT EXISTS admin_actions (
 -- ALTER TABLE products ADD COLUMN condition_rating INT DEFAULT 3;
 -- ALTER TABLE products ADD COLUMN image VARCHAR(255);
 -- ALTER TABLE products ADD COLUMN submission_id INT;
+-- ALTER TABLE seller_submissions ADD COLUMN image VARCHAR(255);
 -- ALTER TABLE orders ADD COLUMN total_amount DECIMAL(10,2) DEFAULT 0;
 -- ALTER TABLE orders ADD COLUMN order_status VARCHAR(50) DEFAULT 'Processing';
 -- ALTER TABLE orders ADD COLUMN payment_method VARCHAR(50);

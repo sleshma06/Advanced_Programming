@@ -82,14 +82,14 @@
             <div class="price-inputs">
                 <label>
                     <span>Min</span>
-                    <input type="number" name="minPrice" min="99" max="10000" value="${not empty param.minPrice ? selMinPrice : ''}">
+                    <input type="number" name="minPrice" min="0" max="10000" value="${not empty param.minPrice ? selMinPrice : ''}">
                 </label>
                 <label>
                     <span>Max</span>
                     <input type="number" name="maxPrice" min="99" max="10000" value="${not empty param.maxPrice ? selMaxPrice : ''}">
                 </label>
             </div>
-            <div class="price-labels"><span>Rs 99</span><span>Rs 10000</span></div>
+            <div class="price-labels"><span>Rs 0</span><span>Rs 10000</span></div>
         </div>
 
         <div class="filter-section">
@@ -178,7 +178,7 @@
     </main>
 </div>
 
-<section class="newsletter-banner">
+<section class="newsletter-banner" id="newsletter">
 
     <div class="newsletter-text">
         <span>
